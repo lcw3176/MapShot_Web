@@ -1,25 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
     <head>
         <meta charset="utf-8">
         <title>MapShot</title>
     </head>
-    <body>
-        <!-- 이미지 지도를 표시할 div 입니다 -->
-        <div id="staticMap" style="width:1000px;height:1000px;"></div>
 
-        <a id="download" download="thumbnail.jpg" target="_blank">
-            <img id="preview" src="" width="300" alt="로컬에 있는 이미지가 보여지는 영역">
-        </a>
+    <body>
+
+        <div class="jumbotron">
+            <div class="container">
+                <h1>MapShot</h1>
+                <h4>위성 사진 캡쳐, 합치기</h4>
+                <h5>소스: <a href="https://github.com/lcw3176/MapShot_Web">MapShot_Web</a></h5>
+                <h5>문의: chanwoo3176@naver.com</h5>
+            </div>
+        </div>
+
+          
+          <div class="panel panel-default" style="width: 70%; margin: 0 auto;">
+            <div class="panel-heading">
+              <h3 class="panel-title">위치 검색</h3>
+            </div>
+            <div class="panel-body">
+                <div class="map_wrap">
+                    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+                
+                    <div id="menu_wrap" class="bg_white">
+                        <div class="option">
+                            <div>
+                                <form onsubmit="searchPlaces(); return false;">
+                                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15"> 
+                                    <button type="submit">검색하기</button> 
+                                </form>
+                            </div>
+                        </div>
+                        <hr>
+                        <ul id="placesList"></ul>
+                        <div id="pagination"></div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
     </body>
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf6334d96f548310595c5643cb199334"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf6334d96f548310595c5643cb199334&libraries=services"></script>
     <script src="js/map.js"></script>
-
-    
-    <html>
+    <link rel="stylesheet" href="css/map.css">
 </html>
