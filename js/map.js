@@ -25,7 +25,7 @@ for (var i = 0; i < imgUrl.length; i++)
 
 var img = new File(byteNumbers, "imgFromUrl.jpg", { type: "image/jpeg" }); 
 
-$file.onchange = function () { 
+img.onchange = function () { 
     var fileList = img.files;
 
     // 읽기
