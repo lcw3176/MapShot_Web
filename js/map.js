@@ -13,6 +13,9 @@ window.onload = function (){
     var img =sm.getElementsByTagName("img");
     var link = document.getElementById("downloadLink");
     link.href = img[0].src;
+
+    var imagetag = document.getElementById("downloadImage");
+    imagetag.src = img[0].src;
 }
 
 
