@@ -7,33 +7,16 @@ var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지
 
 // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
 var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
-var filename = 'image.png'
-var data;
-
-window.onload = function (){
-    var sm = document.getElementById('staticMap');
-    var img =sm.getElementsByTagName("img");
-    data = img[0].src;
-}
-
 
 function downloadImage(){
-    if (window.navigator.msSaveOrOpenBlob) {
-        window.navigator.msSaveBlob(data, fileName);
-        return;
-      }
-      
-      const blob = new Blob([data], { type: 'image/png' })
-      const path = window.URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = path
-      link.download = fileName
-      link.click()
-      link.remove()
+    var sm = document.getElementById('staticMap');
+    var img =sm.getElementsByTagName("img");
+    var link = document.createElement("a");
+    link.href = img[0].src;
+    link.download = "이미지.jpg";
+    link.click();
+    link.remove();
 }
-
-
-
 // var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 //     mapOption = { 
 //         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
