@@ -24,7 +24,7 @@ function downloadImage(){
       }
       
       const blob = new Blob([data], { type: 'image/png' })
-      const path = window.URL.createObjectURL(data)
+      const path = window.URL.createObjectURL(blob)
       const link = document.createElement('a')
       link.href = path
       link.download = fileName
