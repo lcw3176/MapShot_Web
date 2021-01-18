@@ -11,10 +11,10 @@ var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
 function downloadImage(){
     var sm = document.getElementById('staticMap');
     var img =sm.getElementsByTagName("img");
-    var button = document.getElementById("downloadButton");
-    button.href = img[0].src;
-    button.download = "이미지";
-    button.click();
+    const link = document.createElement("a");
+    link.href = img[0].src;
+    link.download = "이미지.jpg";
+    link.click();
 
 }
 // var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
