@@ -51,8 +51,8 @@ window.onload = function(){
                 var latlng = mouseEvent.latLng; 
                 var latInput = document.getElementById("lat");
                 var lngInput = document.getElementById("lng");
-                latInput.innerHTML = latlng.getLat();
-                lngInput.innerHTML = latlng.getLng();
+                latInput.value = latlng.getLat();
+                lngInput.value = latlng.getLng();
             }   
         });
     });
