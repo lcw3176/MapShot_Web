@@ -82,7 +82,43 @@
           </div>
          
           <div class="panel panel-default" style="width: 50%; margin:0 auto;">
-            <div class="panel-heading">3. 캡쳐 시작</div>
+            <div class="panel-heading">3. 지도 타입 설정</div>
+            <div class="panel-body">
+                <p><strong>베이스 설정</strong></p>
+                <div id="staticMap" style="width:100px;height:100px;"></div>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                	<label class="btn btn-default" style="margin:10px;">
+                		<input type="radio" name="jb-radio" id="jb-radio-1" onclick="setBaseMap(1);"> 일반지도 
+                	</label>
+                	<label class="btn btn-default" style="margin:10px;">
+                		<input type="radio" name="jb-radio" id="jb-radio-2" onclick="setBaseMap(2);"> 스카이뷰
+                	</label>
+                	<label class="btn btn-default" style="margin:10px;">
+                		<input type="radio" name="jb-radio" id="jb-radio-3" onclick="setBaseMap(3);"> 하이브리드
+                    </label>
+                </div>  
+
+                <p><strong>오버레이 설정</strong></p>
+                <div id="staticMap" style="width:100px;height:100px;"></div>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-default" style="margin:10px;">
+                		<input type="radio" name="jb-radio" id="jb-radio-1" onclick="setOverlayMap(0);"> 없음 
+                	</label>
+                	<label class="btn btn-default" style="margin:10px;">
+                		<input type="radio" name="jb-radio" id="jb-radio-1" onclick="setOverlayMap(1);"> 레이블 
+                	</label>
+                	<label class="btn btn-default" style="margin:10px;">
+                		<input type="radio" name="jb-radio" id="jb-radio-2" onclick="setOverlayMap(2);"> 지형도
+                	</label>
+                	<label class="btn btn-default" style="margin:10px;">
+                		<input type="radio" name="jb-radio" id="jb-radio-3" onclick="setOverlayMap(3);"> 지적편집도
+                    </label>
+                </div>  
+             </div> 
+          </div>
+
+          <div class="panel panel-default" style="width: 50%; margin:0 auto;">
+            <div class="panel-heading">4. 캡쳐 시작</div>
             <div class="panel-body">
                
                 <div class="progress">
@@ -95,7 +131,7 @@
                 <span style="margin: 20px;"><strong>작업이 끝난후 나온 결과링크를 클릭하신 후에, 마우스 우클릭을 통해 저장해주세요.</strong></span>
             </div>
           </div>
-
+          
           <footer>
               <div>
                   <h2>something</h2>
