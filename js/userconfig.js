@@ -41,8 +41,17 @@ function checkValue(){
         return false;
     }
 
-    if(!(userQuality >= 0 && userQuality <= 1)){
+    if(!(quality >= 0 && quality <= 1)){
         alert("잘못된 화질 설정입니다. 지속된다면 새로고침을 해주세요");
+        return false;
+    }
+
+    var lat = document.getElementById("lat").value;
+    var lng = document.getElementById("lng").value;
+
+
+    if(lat == "" || lng == ""){
+        alert("좌표값을 설정해주세요");
         return false;
     }
 
@@ -51,11 +60,13 @@ function checkValue(){
 
 
 function startCapture(){
-    var lat = document.getElementById("lat").value;
-    var lng = document.getElementById("lng").value;
+    
 
     if(checkValue()){
         
+        var lat = document.getElementById("lat").value;
+        var lng = document.getElementById("lng").value;
+
         var tempMapContainer = document.getElementById('hideStaticMap');
         var tempOption = { 
             center: new kakao.maps.LatLng(lat, lng), // 이미지 지도의 중심좌표
