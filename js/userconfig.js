@@ -41,6 +41,23 @@ function setBaseMap(userBaseMap){
     }    
 }
 
+function changeExample(){
+
+    var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
+    staticMapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 이미지 지도의 중심좌표
+        level: 3 // 이미지 지도의 확대 레벨
+    };
+
+    // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
+    var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+    staticMap.setMapTypeId(baseMap);
+
+    if(overlay != null){
+        staticMap.addOverlayMapTypeId(overlay);
+    }
+
+}
 function checkValue(){
     if(!(zoomLevel >= 1 && zoomLevel <= 3)){
         alert("잘못된 배율값입니다. 지속된다면 새로고침을 해주세요");
