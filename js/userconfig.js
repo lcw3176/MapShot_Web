@@ -23,6 +23,8 @@ function setOverlayMap(userOverlay){
         default:
             break;     
     }    
+
+    changeExample();
 }
 
 function setBaseMap(userBaseMap){
@@ -39,6 +41,8 @@ function setBaseMap(userBaseMap){
         default:
             break;     
     }    
+
+    changeExample();
 }
 
 function changeExample(){
