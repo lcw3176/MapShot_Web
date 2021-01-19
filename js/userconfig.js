@@ -91,7 +91,6 @@ function startCapture(){
 
                 ctx.drawImage(img, xPosition, yPosition);
                     
-                tempMapContainer.removeChild(tempMapContainer.lastElementChild);
                 xPosition += 1000;
                 
             }
