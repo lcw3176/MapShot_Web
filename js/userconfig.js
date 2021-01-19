@@ -8,6 +8,10 @@ function setZoomLevel(userZoomLevel){
 
 function setOverlayMap(userOverlay){
 
+    if(overlay != null){
+        removeOverlayMapTypeId(overlay);
+    } 
+
     if(userOverlay == 0){
         overlay = null;
     } else if(userOverlay == 1){
