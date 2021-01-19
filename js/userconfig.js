@@ -17,33 +17,6 @@ function setZoomLevel(userZoomLevel){
     zoomLevel = userZoomLevel;
 }
 
-function setOverlayMap(userOverlay){
-    var changeMaptype;
-
-    if(userOverlay == 1){
-        changeMaptype = kakao.maps.MapTypeId.OVERLAY;  
-    } else if(userOverlay == 2){
-        changeMaptype = kakao.maps.MapTypeId.TERRAIN;
-    } else if(userOverlay == 3){
-        changeMaptype = kakao.maps.MapTypeId.USE_DISTRICT;
-    } else if(userOverlay == 0){
-        exStaticMap.removeOverlayMapTypeId(currentTypeId);    
-        return;
-    } 
-
-  
-    // 이미 등록된 지도 타입이 있으면 제거합니다
-    if (currentTypeId) {
-        exStaticMap.removeOverlayMapTypeId(currentTypeId);    
-    }
-    
-    // maptype에 해당하는 지도타입을 지도에 추가합니다
-    exStaticMap.addOverlayMapTypeId(changeMaptype);
-
-    // 지도에 추가된 타입정보를 갱신합니다
-    currentTypeId = changeMaptype;  
-}
-
 function setBaseMap(userBaseMap){
 
     if(userBaseMap == 1){
