@@ -53,10 +53,13 @@ window.onload = function(){
 
     // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
     kakao.maps.event.addListener(map, 'idle', function() {
-        searchAddrFromCoords(map.getCenter(), callback);
+        searchAddrFromCoords(map.getCenter(), displayCenterInfo);
     });
 }
 
+function displayCenterInfo(){
+    
+}
 
 function searchAddrFromCoords(coords, callback) {
     // 좌표로 행정동 주소 정보를 요청합니다
