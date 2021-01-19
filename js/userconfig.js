@@ -40,6 +40,7 @@ function checkValue(){
 
     return true;
 }
+var container;
 
 function startCapture(){
     var lat = document.getElementById("lat").value;
@@ -47,10 +48,10 @@ function startCapture(){
 
     if(checkValue()){
         
-        var container  = document.createElement('div'); // 이미지 지도를 표시할 div  
-        container.style.width = "1000px";
-        container.style.height = "1000px";
-        
+        container  = document.createElement('div').style.width; // 이미지 지도를 표시할 div  
+        container.style.width = 1000 +"px";
+        container.style.height = 1000 +"px";
+
         staticMapOption = { 
             center: new kakao.maps.LatLng(lat, lng), // 이미지 지도의 중심좌표
             level: 3 // 이미지 지도의 확대 레벨
