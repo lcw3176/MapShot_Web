@@ -1,6 +1,6 @@
 var zoomLevel = 1;
 var baseMap = kakao.maps.MapTypeId.ROADMAP;
-var overlay = null;
+var overlay = "";
 
 var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
 staticMapOption = { 
@@ -17,12 +17,12 @@ function setZoomLevel(userZoomLevel){
 
 function setOverlayMap(userOverlay){
 
-    if(overlay != null){
+    if(overlay != ""){
         exStaticMap.removeOverlayMapTypeId(overlay);
     } 
 
     if(userOverlay == 0){
-        overlay = null;
+        overlay = "";
     } else if(userOverlay == 1){
         overlay = kakao.maps.MapTypeId.OVERLAY;
     } else if(userOverlay == 1){
@@ -51,7 +51,7 @@ function changeExample(){
 
     exStaticMap.setMapTypeId(baseMap);
 
-    if(overlay != null){
+    if(overlay != ""){
         exStaticMap.addOverlayMapTypeId(overlay);
     } 
 }
