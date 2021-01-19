@@ -54,7 +54,7 @@ function startCapture(){
         };
 
         // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
-        new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+        new kakao.maps.StaticMap(container, staticMapOption);
 
         var aTag = document.getElementById('downloadLink');
         aTag.src = container.lastElementChild.lastElementChild.src;
