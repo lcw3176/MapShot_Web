@@ -70,7 +70,7 @@ function startCapture(){
         var tempMapContainer = document.getElementById('hideStaticMap');
         var tempOption = { 
             center: new kakao.maps.LatLng(lat, lng), // 이미지 지도의 중심좌표
-            level: 3,
+            level: quality,
             mapTypeId: baseMap
         };
 
