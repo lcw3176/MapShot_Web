@@ -75,8 +75,8 @@ function startCapture(){
         var xPosition = 0;
         var yPosition = 0;
         
-        // for(var i = 0; i < 3; i++){
-        //     for(var j = 0; j < 3; j++){
+        for(var i = 0; i < 3; i++){
+            for(var j = 0; j < 3; j++){
 
                 var tempMapContainer = document.getElementById('hideStaticMap');
                 var tempOption = { 
@@ -88,7 +88,6 @@ function startCapture(){
                 // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
                 new kakao.maps.StaticMap(tempMapContainer, tempOption);
                 var tempImg = new Image();
-                tempImg.setAttribute('crossorigin', 'anonymous');
 
                 tempImg.onload = function(){
                     
@@ -97,23 +96,23 @@ function startCapture(){
                     tempMapContainer.removeChild(tempMapContainer.lastElementChild);
                     xPosition += 1000;
 
-                    var img = document.createElement("img");
-                    img.src = canvas.toDataURL("image/jpeg", "100%");
+                    // var img = document.createElement("img");
+                    // img.src = canvas.toDataURL("image/jpeg", "100%");
                     
 
-                    var aTag = document.getElementById('downloadLink');
-                    aTag.href = img.src;
-                    aTag.innerHTML = "사진 다운로드";
+                    // var aTag = document.getElementById('downloadLink');
+                    // aTag.href = img.src;
+                    // aTag.innerHTML = "사진 다운로드";
                 }
 
                 
                 tempImg.src = tempMapContainer.lastElementChild.lastElementChild.src;
-        //     }
+            }
 
-        //     xPosition = 0;
-        //     yPosition += 1000;
+            xPosition = 0;
+            yPosition += 1000;
            
-        // }
+        }
 
        
     }
