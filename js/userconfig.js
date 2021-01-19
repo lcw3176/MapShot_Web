@@ -78,8 +78,8 @@ function startCapture(){
         var xPosition = 0;
         var yPosition = 0;
         
-        for(var i = 0; i < 3; i++){
-            for(var j = 0; j < 3; j++){
+        // for(var i = 0; i < 3; i++){
+        //     for(var j = 0; j < 3; j++){
 
                 var tempMapContainer = document.getElementById('hideStaticMap');
                 var tempOption = { 
@@ -99,14 +99,14 @@ function startCapture(){
                     tempMapContainer.removeChild(tempMapContainer.lastElementChild);
                     xPosition += 1000;
                 }
-                
-                tempImg.src = tempMapContainer.lastElementChild.lastElementChild.src;
-            }
 
-            xPosition = 0;
-            yPosition += 1000;
+                tempImg.src = tempMapContainer.lastElementChild.lastElementChild.src;
+        //     }
+
+        //     xPosition = 0;
+        //     yPosition += 1000;
            
-        }
+        // }
 
         var img = document.createElement("img");
         img.src = canvas.toDataURL("image/jpeg", "100%");
