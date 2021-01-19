@@ -47,6 +47,17 @@ function startCapture(){
 
     if(checkValue()){
         
+        var container  = document.createElement('div'), // 이미지 지도를 표시할 div  
+        staticMapOption = { 
+            center: new kakao.maps.LatLng(lat, lng), // 이미지 지도의 중심좌표
+            level: 3 // 이미지 지도의 확대 레벨
+        };
+
+        // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
+        new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+
+        var aTag = document.getElementById('downloadLink');
+        aTag.src = container.lastElementChild.lastElementChild.src;
         
     }
 }

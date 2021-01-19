@@ -66,7 +66,7 @@
           <div class="panel panel-default" style="width: 50%; margin:0 auto;">
             <div class="panel-heading">2. 배율 설정</div>
             <div class="panel-body">
-                <p><strong>대략적인 수치입니다. 정확하지는 않을 수 있습니다.</strong></p>
+                <p><strong>대략적인 수치입니다. 정확하지 않을 수 있습니다.</strong></p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 	<label class="btn btn-default" style="margin:10px;">
                 		<input type="radio" name="jb-radio" id="jb-radio-1" onclick="setZoomLevel(1);"> 1단계 ( 반경 8km )
@@ -84,7 +84,6 @@
           <div class="panel panel-default" style="width: 50%; margin:0 auto;">
             <div class="panel-heading">3. 지도 타입 설정</div>
             <div class="panel-body">
-                <p><strong>베이스 설정</strong></p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 	<label class="btn btn-default" style="margin:10px;" onclick="setBaseMap(1);">
                 		<input type="radio" name="jb-radio" id="jb-radio-1"> 일반지도 
@@ -113,6 +112,7 @@
 
                 <button class="btn btn-success" onclick="startCapture();">시작하기</button>
                 <span style="margin: 20px;"><strong>작업이 끝난후 나온 결과링크를 클릭하신 후에, 마우스 우클릭을 통해 저장해주세요.</strong></span>
+                <a id="downloadLink" download></a>
             </div>
           </div>
           
