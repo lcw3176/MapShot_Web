@@ -98,6 +98,13 @@ function startCapture(){
                     
                     tempMapContainer.removeChild(tempMapContainer.lastElementChild);
                     xPosition += 1000;
+
+                    var img = document.createElement("img");
+                    img.src = canvas.toDataURL("image/jpeg", "100%");
+            
+                    var aTag = document.getElementById('downloadLink');
+                    aTag.href = img.src;
+                    aTag.innerHTML = "사진 다운로드";
                 }
 
                 tempImg.src = tempMapContainer.lastElementChild.lastElementChild.src;
@@ -108,11 +115,6 @@ function startCapture(){
            
         // }
 
-        var img = document.createElement("img");
-        img.src = canvas.toDataURL("image/jpeg", "100%");
-
-        var aTag = document.getElementById('downloadLink');
-        aTag.href = img.src;
-        aTag.innerHTML = "사진 다운로드";
+       
     }
 }
