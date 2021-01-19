@@ -48,7 +48,7 @@ function startCapture(){
 
     if(checkValue()){
         
-        container  = document.createElement('div').style.width; // 이미지 지도를 표시할 div  
+        container  = document.createElement('div'); // 이미지 지도를 표시할 div  
         container.style.width = 1000 +"px";
         container.style.height = 1000 +"px";
 
