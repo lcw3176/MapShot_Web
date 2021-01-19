@@ -71,10 +71,7 @@ function startCapture(){
         canvas.width = 3000;
         canvas.height = 3000;
         var ctx = canvas.getContext("2d");
-        
-        var imageWidth = 1000;
-        var imageHeight = 1000;
-    
+
         var xPosition = 0;
         var yPosition = 0;
         
@@ -94,7 +91,7 @@ function startCapture(){
 
                 tempImg.onload = function(){
                     
-                    ctx.drawImage(tempImg, xPosition, yPosition, imageWidth, imageHeight);
+                    ctx.drawImage(tempImg, xPosition, yPosition);
                     
                     tempMapContainer.removeChild(tempMapContainer.lastElementChild);
                     xPosition += 1000;
