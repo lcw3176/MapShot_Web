@@ -42,8 +42,8 @@ function checkValue(){
 }
 
 function startCapture(){
-    var lat = document.getElementById("lat");
-    var lng = document.getElementById("lng");
+    var lat = document.getElementById("lat").value;
+    var lng = document.getElementById("lng").value;
 
     if(checkValue()){
         
