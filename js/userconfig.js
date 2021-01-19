@@ -88,8 +88,8 @@ function startCapture(){
                 // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
                 new kakao.maps.StaticMap(tempMapContainer, tempOption);
                 var tempImg = new Image();
-                tempImg.crossorigin = "anonymous";
-                
+                tempImg.setAttribute('crossorigin', 'anonymous');
+
                 tempImg.onload = function(){
                     
                     ctx.drawImage(tempImg, xPosition, yPosition);
