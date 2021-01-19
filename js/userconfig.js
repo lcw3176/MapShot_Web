@@ -60,25 +60,48 @@ function checkValue(){
 
 
 function startCapture(){
-    
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var imageWidth = 1000;
+    var imageHeight = 1000;
+
+    var xPosition = 0;
+    var yPosition = 0;
 
     if(checkValue()){
         
-        var lat = document.getElementById("lat").value;
-        var lng = document.getElementById("lng").value;
+        var centerLat = document.getElementById("lat").value;
+        var centerLng = document.getElementById("lng").value;
 
-        var tempMapContainer = document.getElementById('hideStaticMap');
-        var tempOption = { 
-            center: new kakao.maps.LatLng(lat, lng), // 이미지 지도의 중심좌표
-            level: quality,
-            mapTypeId: baseMap
-        };
+        for(var i = 0; i < 3; i++){
+            for(var j = 0; j < 3; j++){
 
-        // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
-        new kakao.maps.StaticMap(tempMapContainer, tempOption);
+                var tempMapContainer = document.getElementById('hideStaticMap');
+                var tempOption = { 
+                    center: new kakao.maps.LatLng(centerLat, centerLng), // 이미지 지도의 중심좌표
+                    level: quality,
+                    mapTypeId: baseMap
+                };
+        
+                // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
+                new kakao.maps.StaticMap(tempMapContainer, tempOption);
+                var img = new Image();
+                img.src = tempMapContainer.lastElementChild.lastElementChild.src;
+                ctx.drawImage(img, xPosition, yPosition, imageWidth, imageHeight);
+    
+                xPosition += 1000;
+            }
 
+            xPosition = 0;
+            yPosition += 1000;
+           
+        }
+
+        var img = document.createElement("img");
+        img.src = canvas.toDataURL("image/jpeg", "100%");
+        
         var aTag = document.getElementById('downloadLink');
-        aTag.href = tempMapContainer.lastElementChild.lastElementChild.src;
+        aTag.href = img.src;
         aTag.innerHTML = "사진 다운로드";
     }
 }
