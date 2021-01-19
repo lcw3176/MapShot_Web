@@ -53,19 +53,19 @@ window.onload = function(){
 
     // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
     kakao.maps.event.addListener(map, 'idle', function() {
-        searchAddrFromCoords(map.getCenter(), null);
+        searchAddrFromCoords(map.getCenter(), callback);
     });
 }
 
 
 function searchAddrFromCoords(coords, callback) {
     // 좌표로 행정동 주소 정보를 요청합니다
-    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), null);         
+    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
 }
 
 function searchDetailAddrFromCoords(coords, callback) {
     // 좌표로 법정동 상세 주소 정보를 요청합니다
-    geocoder.coord2Address(coords.getLng(), coords.getLat(), null);
+    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
 }
 
 
