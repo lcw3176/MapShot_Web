@@ -47,6 +47,12 @@ window.onload = function(){
                 // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
                 infowindow.setContent(content);
                 infowindow.open(map, marker);
+
+                var latlng = mouseEvent.latLng; 
+                var latInput = document.getElementById("lat");
+                var lngInput = document.getElementById("lng");
+                latInput.innerHTML = latlng.getLat();
+                lngInput.innerHTML = latlng.getLng();
             }   
         });
     });
@@ -58,7 +64,7 @@ window.onload = function(){
 }
 
 function displayCenterInfo(){
-    
+
 }
 
 function searchAddrFromCoords(coords, callback) {
