@@ -2,6 +2,7 @@ var zoomLevel = 1;
 var baseMap = kakao.maps.MapTypeId.ROADMAP;
 // 지도에 추가된 지도타입정보를 가지고 있을 변수입니다
 var currentTypeId;
+var quality = 1;
 
 
 var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
@@ -30,7 +31,9 @@ function setBaseMap(userBaseMap){
     exStaticMap.setMapTypeId(baseMap);
 }
 
-
+function setQuality(userQuality){
+    quality = userQuality;
+}
 
 function checkValue(){
     if(!(zoomLevel >= 1 && zoomLevel <= 3)){
@@ -38,8 +41,14 @@ function checkValue(){
         return false;
     }
 
+    if(!(userQuality >= 0 && userQuality <= 1)){
+        alert("잘못된 화질 설정입니다. 지속된다면 새로고침을 해주세요");
+        return false;
+    }
+
     return true;
 }
+
 
 function startCapture(){
     var lat = document.getElementById("lat").value;
