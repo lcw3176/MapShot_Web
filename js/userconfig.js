@@ -40,7 +40,7 @@ function checkValue(){
 
     return true;
 }
-var container;
+// var container;
 
 function startCapture(){
     var lat = document.getElementById("lat").value;
@@ -57,7 +57,7 @@ function startCapture(){
         var map = new kakao.maps.StaticMap(staticMapContainer, tempOption);
 
         var aTag = document.getElementById('downloadLink');
-        aTag.src = container.lastElementChild.lastElementChild.src;
+        aTag.src = staticMapContainer.lastElementChild.lastElementChild.src;
         
     }
 }
