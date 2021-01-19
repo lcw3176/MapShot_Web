@@ -1,6 +1,8 @@
 var zoomLevel = 1;
 var baseMap = kakao.maps.MapTypeId.ROADMAP;
-var overlay = "";
+// 지도에 추가된 지도타입정보를 가지고 있을 변수입니다
+var currentTypeId;
+
 
 var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
 staticMapOption = { 
@@ -16,22 +18,30 @@ function setZoomLevel(userZoomLevel){
 }
 
 function setOverlayMap(userOverlay){
+    var changeMaptype;
 
-    if(overlay != ""){
-        exStaticMap.removeOverlayMapTypeId(overlay);
+    if(userOverlay == 1){
+        changeMaptype = kakao.maps.MapTypeId.OVERLAY;  
+    } else if(userOverlay == 2){
+        changeMaptype = kakao.maps.MapTypeId.TERRAIN;
+    } else if(userOverlay == 3){
+        changeMaptype = kakao.maps.MapTypeId.USE_DISTRICT;
+    } else if(userOverlay == 0){
+        exStaticMap.removeOverlayMapTypeId(currentTypeId);    
+        return;
     } 
 
-    if(userOverlay == 0){
-        overlay = "";
-    } else if(userOverlay == 1){
-        overlay = kakao.maps.MapTypeId.OVERLAY;
-    } else if(userOverlay == 1){
-        overlay = kakao.maps.MapTypeId.TERRAIN;
-    } else if(userOverlay == 1){
-        overlay = kakao.maps.MapTypeId.USE_DISTRICT;
-    }
   
-    changeExample();
+    // 이미 등록된 지도 타입이 있으면 제거합니다
+    if (currentTypeId) {
+        exStaticMap.removeOverlayMapTypeId(currentTypeId);    
+    }
+    
+    // maptype에 해당하는 지도타입을 지도에 추가합니다
+    exStaticMap.addOverlayMapTypeId(changeMaptype);
+
+    // 지도에 추가된 타입정보를 갱신합니다
+    currentTypeId = changeMaptype;  
 }
 
 function setBaseMap(userBaseMap){
@@ -44,17 +54,10 @@ function setBaseMap(userBaseMap){
         baseMap = kakao.maps.MapTypeId.HYBRID;
     } 
 
-    changeExample();
-}
-
-function changeExample(){
-
     exStaticMap.setMapTypeId(baseMap);
-
-    if(overlay != ""){
-        exStaticMap.addOverlayMapTypeId(overlay);
-    } 
 }
+
+
 
 function checkValue(){
     if(!(zoomLevel >= 1 && zoomLevel <= 3)){
