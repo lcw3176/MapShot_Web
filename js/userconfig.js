@@ -40,7 +40,6 @@ function checkValue(){
 
     return true;
 }
-// var container;
 
 function startCapture(){
     var lat = document.getElementById("lat").value;
@@ -48,13 +47,14 @@ function startCapture(){
 
     if(checkValue()){
         
-        tempOption = { 
+        var tempMapContainer = document.getElementById('hideStaticMap');
+        var tempOption = { 
             center: new kakao.maps.LatLng(lat, lng), // 이미지 지도의 중심좌표
             level: 3 // 이미지 지도의 확대 레벨
         };
 
         // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
-        var map = new kakao.maps.StaticMap(staticMapContainer, tempOption);
+        new kakao.maps.StaticMap(tempMapContainer, tempOption);
 
         var aTag = document.getElementById('downloadLink');
         aTag.href = staticMapContainer.lastElementChild.lastElementChild.src;
