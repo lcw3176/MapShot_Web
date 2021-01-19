@@ -43,11 +43,8 @@ function changeExample(){
     exStaticMap.setMapTypeId(baseMap);
 
     if(overlay != null){
-        exStaticMap.removeOverlayMapTypeId(overlay);
         exStaticMap.addOverlayMapTypeId(overlay);
-    } else{
-        exStaticMap.removeOverlayMapTypeId(overlay);
-    }
+    } 
 }
 
 function checkValue(){
