@@ -91,11 +91,16 @@ function startCapture(){
                 // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
                 new kakao.maps.StaticMap(tempMapContainer, tempOption);
                 var tempImg = new Image();
-                tempImg.src = tempMapContainer.lastElementChild.lastElementChild.src;
-                ctx.drawImage(tempImg, xPosition, yPosition, imageWidth, imageHeight);
+
+                tempImg.onload = function(){
+                    
+                    ctx.drawImage(tempImg, xPosition, yPosition, imageWidth, imageHeight);
+                    
+                    tempMapContainer.removeChild(tempMapContainer.lastElementChild);
+                    xPosition += 1000;
+                }
                 
-                tempMapContainer.removeChild(tempMapContainer.lastElementChild);
-                xPosition += 1000;
+                tempImg.src = tempMapContainer.lastElementChild.lastElementChild.src;
             }
 
             xPosition = 0;
