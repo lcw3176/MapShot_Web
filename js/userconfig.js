@@ -9,7 +9,7 @@ function setZoomLevel(userZoomLevel){
 function setOverlayMap(userOverlay){
 
     if(overlay != null){
-        removeOverlayMapTypeId(overlay);
+        exStaticMap.removeOverlayMapTypeId(overlay);
     } 
 
     if(userOverlay == 0){
