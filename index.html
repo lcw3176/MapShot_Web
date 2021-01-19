@@ -100,22 +100,9 @@
              </div> 
           </div>
 
-          <div class="panel panel-default" style="width: 50%; margin:0 auto;">
-            <div class="panel-heading">4. 화질 설정</div>
-            <div class="panel-body">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                	<label class="btn btn-default" style="margin:10px;" onclick="setQuality(0);">
-                		<input type="radio" name="jb-radio" id="jb-radio-1"> 고화질
-                	</label>
-                	<label class="btn btn-default" style="margin:10px;" onclick="setQuality(1);">
-                		<input type="radio" name="jb-radio" id="jb-radio-2"> 일반화질
-                	</label>
-                </div>  
-             </div> 
-          </div>
 
           <div class="panel panel-default" style="width: 50%; margin:0 auto;">
-            <div class="panel-heading">5. 캡쳐 시작</div>
+            <div class="panel-heading">4. 캡쳐 시작</div>
             <div class="panel-body">
                
                 <div class="progress">
@@ -125,23 +112,16 @@
                 </div>
 
                 <button class="btn btn-success" onclick="startCapture();">시작하기</button>
-                <span style="margin: 20px;"><strong>작업이 끝난후 생성되는 결과링크를 통해 파일을 저장해 주세요.</strong></span>
+                <span style="margin: 20px;"><strong>작업이 끝난후 생성되는 이미지를 우클릭해 파일을 저장해 주세요.</strong></span>
             </div>
           </div>
 
-          <div class="panel panel-default" style="width: 50%; margin:0 auto;">
-            <div class="panel-heading">6. 결과 링크</div>
-            <div class="panel-body">
-              <a id="downloadLink" download></a>
-            </div>
-          </div>
-             
           <footer>
               <div>
                   <h2>something</h2>
               </div>
           </footer>
-          
+
           <canvas id="canvas"></canvas>
           <div id="hideStaticMap" style="width:1000px;height:1000px;visibility: hidden;"></div>
           

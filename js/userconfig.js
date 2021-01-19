@@ -2,7 +2,6 @@ var zoomLevel = 1;
 var baseMap = kakao.maps.MapTypeId.ROADMAP;
 // 지도에 추가된 지도타입정보를 가지고 있을 변수입니다
 var currentTypeId;
-var quality = 1;
 
 
 var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
@@ -31,18 +30,9 @@ function setBaseMap(userBaseMap){
     exStaticMap.setMapTypeId(baseMap);
 }
 
-function setQuality(userQuality){
-    quality = userQuality;
-}
-
 function checkValue(){
     if(!(zoomLevel >= 1 && zoomLevel <= 3)){
         alert("잘못된 배율값입니다. 지속된다면 새로고침을 해주세요");
-        return false;
-    }
-
-    if(!(quality >= 0 && quality <= 1)){
-        alert("잘못된 화질 설정입니다. 지속된다면 새로고침을 해주세요");
         return false;
     }
 
@@ -68,57 +58,83 @@ function startCapture(){
         var centerLng = document.getElementById("lng").value;
         
         var canvas = document.getElementById("canvas");
-        canvas.width = 3000;
-        canvas.height = 3000;
+        canvas.width = 5000;
+        canvas.height = 5000;
         var ctx = canvas.getContext("2d");
 
         var xPosition = 0;
         var yPosition = 0;
         
-        for(var i = 0; i < 3; i++){
-            for(var j = 0; j < 3; j++){
+       
+var moveXPosition = 0.00283;
+var moveYPostion = 0.00225;
+var Lat = Number(centerLat) + Number(moveYPostion);  
+var Lng = Number(centerLng) - Number(moveXPosition);
 
-                var tempMapContainer = document.getElementById('hideStaticMap');
-                var tempOption = { 
-                    center: new kakao.maps.LatLng(centerLat, centerLng), // 이미지 지도의 중심좌표
-                    level: quality,
-                    mapTypeId: baseMap
-                };
-        
-                // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
-                new kakao.maps.StaticMap(tempMapContainer, tempOption);
-              
+if(document.getElementById('hideStaticMap').childElementCount < 25){
+
+    for(var i = 0; i < 5; i++){
+    
+        for(var j = 0; j < 5; j++){
+            
+            var tempMapContainer = document.getElementById('hideStaticMap');
+            var tempOption = { 
+                center: new kakao.maps.LatLng(Lat, Lng), // 이미지 지도의 중심좌표
+                level: 1,
+                mapTypeId: baseMap
+            };
+    
+    
+            // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
+            new kakao.maps.StaticMap(tempMapContainer, tempOption);
+            
+            Lng += Number(moveXPosition);
+    
+        }
+    
+        Lng = centerLng - moveXPosition; 
+        Lat -= moveYPostion;
+    
+    }
+    
+}
+
+var func = setInterval(function(){
+    if(waitimage()){
+        for(var i = 0; i < 25; i++){
+
+            if(i % 5 == 0 && i != 0) {
+                xPosition = 0;
+                yPosition += 1000;
             }
-           
+
+            var img =  tempMapContainer.children[i].children[0];
+
+            ctx.drawImage(img, xPosition, yPosition);                
+
+            xPosition += 1000;
+            
+
         }
 
-        if(waitimage()){
-            for(var i = 0; i < 9; i++){
+        clearInterval(func);
+    }
+}, 1000);
 
-                if(i % 3 == 0 && i != 0) {
-                    xPosition = 0;
-                    yPosition += 1000;
-                }
-    
-                var img =  tempMapContainer.children[i].children[0];
-    
-                ctx.drawImage(img, xPosition, yPosition);                
-    
-                xPosition += 1000;
-                
-    
-            }
-        }
 
+
+    
     }
 }
 
 function waitimage(){
     var tempMapContainer = document.getElementById('hideStaticMap');
 
-    if(tempMapContainer.childElementCount <= 9){
+    if(tempMapContainer.childElementCount >= 25){
        return true;
     }    
-  
-      setTimeout(waitimage, 2000);  
+
+    else{
+        return false;
+    }
 }
