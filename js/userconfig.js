@@ -48,17 +48,13 @@ function startCapture(){
 
     if(checkValue()){
         
-        container  = document.createElement('div'); // 이미지 지도를 표시할 div  
-        container.style.width = 100 +"px";
-        container.style.height = 100 +"px";
-
-        MapOption = { 
+        tempOption = { 
             center: new kakao.maps.LatLng(lat, lng), // 이미지 지도의 중심좌표
             level: 3 // 이미지 지도의 확대 레벨
         };
 
         // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
-        var map = new kakao.maps.StaticMap(container, MapOption);
+        var map = new kakao.maps.StaticMap(staticMapContainer, tempOption);
 
         var aTag = document.getElementById('downloadLink');
         aTag.src = container.lastElementChild.lastElementChild.src;
