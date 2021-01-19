@@ -70,14 +70,15 @@ var moveXPosition = 0.00283;
 var moveYPostion = 0.00225;
 var Lat = Number(centerLat) + Number(moveYPostion);  
 var Lng = Number(centerLng) - Number(moveXPosition);
+var tempMapContainer = document.getElementById('hideStaticMap');
 
-if(document.getElementById('hideStaticMap').childElementCount < 25){
+if(tempMapContainer.childElementCount < 25){
 
     for(var i = 0; i < 5; i++){
     
         for(var j = 0; j < 5; j++){
             
-            var tempMapContainer = document.getElementById('hideStaticMap');
+            
             var tempOption = { 
                 center: new kakao.maps.LatLng(Lat, Lng), // 이미지 지도의 중심좌표
                 level: 1,
