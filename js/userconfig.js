@@ -57,7 +57,7 @@ function startCapture(){
         var map = new kakao.maps.StaticMap(staticMapContainer, tempOption);
 
         var aTag = document.getElementById('downloadLink');
-        aTag.src = staticMapContainer.lastElementChild.lastElementChild.src;
-        
+        aTag.href = staticMapContainer.lastElementChild.lastElementChild.src;
+        aTag.innerHTML = "사진 다운로드";
     }
 }
