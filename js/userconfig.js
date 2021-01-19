@@ -68,6 +68,8 @@ function startCapture(){
         var centerLng = document.getElementById("lng").value;
         
         var canvas = document.getElementById("canvas");
+        canvas.width = 3000;
+        canvas.height = 3000;
         var ctx = canvas.getContext("2d");
         
         var imageWidth = 1000;
@@ -91,7 +93,8 @@ function startCapture(){
                 var tempImg = new Image();
                 tempImg.src = tempMapContainer.lastElementChild.lastElementChild.src;
                 ctx.drawImage(tempImg, xPosition, yPosition, imageWidth, imageHeight);
-    
+                
+                tempMapContainer.removeChild(tempMapContainer.lastElementChild);
                 xPosition += 1000;
             }
 
