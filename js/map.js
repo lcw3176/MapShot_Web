@@ -9,6 +9,8 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map;
 var ps;
 var infowindow;
+var geocoder;
+var marker;
 
 window.onload = function(){
     // 지도를 생성합니다    
@@ -19,17 +21,12 @@ window.onload = function(){
 
     // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
     infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
+    // 주소-좌표 변환 객체를 생성합니다
+    geocoder = new kakao.maps.services.Geocoder();
+
+    marker = new kakao.maps.Marker(); // 클릭한 위치를 표시할 마커입니다
 }
-
-
-
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
-
-var marker = new kakao.maps.Marker(); // 클릭한 위치를 표시할 마커입니다
-
-// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
-searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
 // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
 kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
@@ -69,20 +66,6 @@ function searchDetailAddrFromCoords(coords, callback) {
     geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
 }
 
-// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
-function displayCenterInfo(result, status) {
-    if (status === kakao.maps.services.Status.OK) {
-        var infoDiv = document.getElementById('centerAddr');
-
-        for(var i = 0; i < result.length; i++) {
-            // 행정동의 region_type 값은 'H' 이므로
-            if (result[i].region_type === 'H') {
-                infoDiv.innerHTML = result[i].address_name;
-                break;
-            }
-        }
-    }    
-}
 
 // 키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
