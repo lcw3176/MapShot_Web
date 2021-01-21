@@ -131,11 +131,12 @@ function startCapture(){
                     
                 }
 
-                var resultTag = document.getElementById("resultImage");
+                var resultTag = document.createElement("a");
                 var objurl = canvas.toDataURL("image/jpeg");
                 resultTag.href = objurl;
-                resultTag.innerText = "결과 파일";
+                resultTag.download = "result.jpg";
                 resultTag.click();
+                resultTag.remove();
 
                 URL.revokeObjectURL(objurl);
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
