@@ -74,7 +74,7 @@ function startCapture(){
         var yPosition = 0;
             
         var moveXPosition = 0.00268;
-        var moveYPostion = 0.00211;
+        var moveYPostion = 0.002125;
         var Lat = Number(centerLat) + Number(moveYPostion);  
         var Lng = Number(centerLng) - Number(moveXPosition);
         var imgArray = new Array();
@@ -131,12 +131,14 @@ function startCapture(){
                     
                 }
 
-                var canvas = document.getElementById("canvas");
                 var resultTag = document.getElementById("resultImage");
-                resultTag.href = canvas.toDataURL("image/jpeg");
+                var objurl = canvas.toDataURL("image/jpeg");
+                resultTag.href = objurl;
                 resultTag.innerText = "결과 파일";
+                resultTag.click();
 
-                canvas.clearRect(0, 0, canvas.width, canvas.height);
+                URL.revokeObjectURL(objurl);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 canvas.width = 0;
                 canvas.height = 0;
 
