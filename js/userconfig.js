@@ -1,4 +1,4 @@
-var zoomLevel = 3;
+var zoomLevel = 5;
 var baseMap = kakao.maps.MapTypeId.ROADMAP;
 var baseMapForNaver = "basic";
 
@@ -13,7 +13,7 @@ staticMapOption = {
 var exStaticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
 
 function setZoomLevel(userZoomLevel){
-    if((zoomLevel >= 3 && zoomLevel <= 5)){
+    if((zoomLevel >= 5 && zoomLevel <= 7)){
         zoomLevel = userZoomLevel;
     }
     
@@ -38,7 +38,7 @@ function setBaseMap(userBaseMap){
 }
 
 function checkValue(){
-    if(!(zoomLevel >= 3 && zoomLevel <= 5)){
+    if(!(zoomLevel >= 5 && zoomLevel <= 7)){
         alert("잘못된 배율값입니다. 지속된다면 새로고침을 해주세요");
         return false;
     }
