@@ -1,4 +1,4 @@
-var zoomLevel = -1;
+var zoomLevel;
 var baseMap = kakao.maps.MapTypeId.ROADMAP;
 // 지도에 추가된 지도타입정보를 가지고 있을 변수입니다
 var currentTypeId;
@@ -14,14 +14,7 @@ staticMapOption = {
 var exStaticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
 
 function setZoomLevel(userZoomLevel){
-    if(userZoomLevel == 1){
-        zoomLevel = 1;
-    } else if(userZoomLevel == 2){
-        zoomLevel = 2;
-    } else if(userZoomLevel == 3){
-        zoomLevel = 3;
-    }
-   
+    zoomLevel = userZoomLevel;
 }
 
 function setBaseMap(userBaseMap){
@@ -55,13 +48,11 @@ function checkValue(){
     return true;
 }
 
-var imageLoadCount;
 
 function startCapture(){
 
 
     if(checkValue()){
-        imageLoadCount = 0;
         
         var centerLat = document.getElementById("lat").value;
         var centerLng = document.getElementById("lng").value;
@@ -135,32 +126,14 @@ function startCapture(){
     }
 }
 
-
 function waitimage(blockArea){
-    
-    if(imageLoadCount == 0){
-        var tempMapContainer = document.getElementById('hideStaticMap');
+    var tempMapContainer = document.getElementById('hideStaticMap');
 
-        for(var i = 0; i < blockArea; i++){
-            var img =  tempMapContainer.children[i].children[0];
-    
-            img.onload = function(){
-                imageLoadCount++;
-            }
-        }
+    if(tempMapContainer.childElementCount >= blockArea){
+       return true;
+    }    
 
+    else{
         return false;
     }
-    
-    else {
-
-        if(imageLoadCount >= blockArea){
-            return true;
-        }    
-     
-        else{
-            return false;
-        }
-    }
-    
 }
