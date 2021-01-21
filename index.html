@@ -45,28 +45,28 @@
           <div class="panel panel-default" style="width: 50%; margin:0 auto;">
             <div class="panel-heading">1. 중심점 설정</div>
             <div class="panel-body">
-                <p><strong>사진의 중심으로 놓을 위치에 가서 지도를 클릭해 주세요.</strong></p>
+                <p><strong>지도의 중심 좌표로 설정될 위치입니다. 지도의 원하는 위치를 눌러 설정을 마무리해주세요.</strong></p>
                 <div class="row">
                     <div class="col-lg-6">
                       <div class="input-group">
                         <span class="input-group-addon">위도</span>
                         <input type="text" class="form-control" id="lat">    
-                      </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->
+                      </div>
+                    </div>
                     <div class="col-lg-6">
                       <div class="input-group">
                         <span class="input-group-addon">경도</span>
                         <input type="text" class="form-control" id="lng">
-                      </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->
-                  </div><!-- /.row -->
+                      </div>
+                    </div>
+                  </div>
             </div>
           </div>
 
           <div class="panel panel-default" style="width: 50%; margin:0 auto;">
             <div class="panel-heading">2. 배율 설정</div>
             <div class="panel-body">
-                <p><strong>대략적인 수치입니다. 정확하지 않을 수 있습니다.</strong></p>
+                <p><strong>!대략적인 수치입니다. 실제 치수와 다를수 있습니다! ( 기본 값: 1단계 )</strong></p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 	<label class="btn btn-default" style="margin:10px;" onclick="setZoomLevel(5);">
                 		<input type="radio" name="jb-radio" id="jb-radio-1"> 1단계 ( 반경 1.0km )
@@ -82,17 +82,18 @@
           </div>
          
           <div class="panel panel-default" style="width: 50%; margin:0 auto;">
-            <div class="panel-heading">3. 지도 타입 설정</div>
+            <div class="panel-heading">3. 지도 종류 설정</div>
             <div class="panel-body">
+              <p><strong>기본 값: 일반 지도</strong></p>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 	<label class="btn btn-default" style="margin:10px;" onclick="setBaseMap(1);">
-                		<input type="radio" name="jb-radio" id="jb-radio-1"> 일반지도 
+                		<input type="radio" name="jb-radio" id="jb-radio-1"> 일반 지도 
                 	</label>
                 	<label class="btn btn-default" style="margin:10px;" onclick="setBaseMap(2);">
-                		<input type="radio" name="jb-radio" id="jb-radio-2"> 스카이뷰
+                		<input type="radio" name="jb-radio" id="jb-radio-2"> 스카이 뷰 (위성 지도)
                 	</label>
                 	<label class="btn btn-default" style="margin:10px;" onclick="setBaseMap(3);">
-                		<input type="radio" name="jb-radio" id="jb-radio-3"> 하이브리드
+                		<input type="radio" name="jb-radio" id="jb-radio-3"> 하이브리드 (위성 지도 + 지형지물 명칭)
                     </label>
                 </div>  
 
@@ -111,10 +112,11 @@
 
           <footer>
               <div style="margin: 0 auto; width: 500px; margin-top: 40px;">
-                <ins class="kakao_ad_area" style="display:none;" 
-                data-ad-unit    = "DAN-YjcfICJxahRuAF3r" 
-                data-ad-width   = "320" 
-                data-ad-height  = "100"></ins> 
+                  <ins class="kakao_ad_area" style="display:none;" 
+                       data-ad-unit    = "DAN-YjcfICJxahRuAF3r" 
+                       data-ad-width   = "320" 
+                       data-ad-height  = "100">
+                  </ins> 
                <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
               </div>
           </footer>
