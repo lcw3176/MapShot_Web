@@ -1,1 +1,156 @@
-var _0x431c=['lat','74267SMpslw','w=1000&h=1000','완료되었습니다.','_0x142786','width','173702xYmurx','279317nFKgyX','13009ktDMpL','_0x42a7e9','lng','onload','clearRect','&maptype=','basic','click','result.jpg','_0x1f8f41','_0x418adc','getContext','height','satellite_base','src','_0x351215','_0xf0fd5f','remove','image/jpeg','117101RCHSBy','사진\x20수집중입니다....','value','220960bcZdpr','&level=18','285791fBjbry','getElementById','_0x537bf4','createElement','23qSwQKS','alertMessage','staticMap','satellite','좌표값을\x20설정해주세요','revokeObjectURL','innerText','&center='];var _0x5a04=function(_0x50c69c,_0x3e50d2){_0x50c69c=_0x50c69c-0x11e;var _0x431cee=_0x431c[_0x50c69c];return _0x431cee;};var _0x274389=_0x5a04;(function(_0xaa2c99,_0x4857ce){var _0x2483c1=_0x5a04;while(!![]){try{var _0x4fbe4a=parseInt(_0x2483c1(0x11e))+parseInt(_0x2483c1(0x141))*-parseInt(_0x2483c1(0x125))+-parseInt(_0x2483c1(0x13b))+-parseInt(_0x2483c1(0x138))+parseInt(_0x2483c1(0x13d))+parseInt(_0x2483c1(0x123))+parseInt(_0x2483c1(0x124));if(_0x4fbe4a===_0x4857ce)break;else _0xaa2c99['push'](_0xaa2c99['shift']());}catch(_0x3b64a5){_0xaa2c99['push'](_0xaa2c99['shift']());}}}(_0x431c,0x2aec1));var _0x77be3f=0x3,_0x48fdf2=kakao[_0x274389(0x121)][_0x274389(0x134)][_0x274389(0x135)],_0x5eac80=_0x274389(0x12b),_0x49d225=document['getElementById'](_0x274389(0x143)),_0x31ce79={'_0x16c98f':new kakao[(_0x274389(0x121))][(_0x274389(0x13f))](33.450701,126.570667),'level':0x3},_0x1e6b26=new kakao['_0x142786']['_0x36a936'](_0x49d225,_0x31ce79);function _0x539a37(_0x4e8d05){_0x77be3f>=0x3&&_0x77be3f<=0x5&&(_0x77be3f=_0x4e8d05);}function _0x5ca983(_0x50e1a9){var _0x56265f=_0x274389;if(_0x50e1a9==0x1)_0x48fdf2=kakao[_0x56265f(0x121)][_0x56265f(0x134)]['_0xf0fd5f'],_0x5eac80=_0x56265f(0x12b);else{if(_0x50e1a9==0x2)_0x48fdf2=kakao[_0x56265f(0x121)][_0x56265f(0x134)][_0x56265f(0x12e)],_0x5eac80=_0x56265f(0x132);else{if(_0x50e1a9==0x3)_0x48fdf2=kakao[_0x56265f(0x121)][_0x56265f(0x134)][_0x56265f(0x12f)],_0x5eac80=_0x56265f(0x144);else return;}}_0x1e6b26[_0x56265f(0x126)](_0x48fdf2);}function _0x4b38e5(){var _0x261c70=_0x274389;if(!(_0x77be3f>=0x3&&_0x77be3f<=0x5))return alert('잘못된\x20배율값입니다.\x20지속된다면\x20새로고침을\x20해주세요'),![];var _0x15c7c6=document[_0x261c70(0x13e)](_0x261c70(0x149))[_0x261c70(0x13a)],_0x4cc742=document[_0x261c70(0x13e)](_0x261c70(0x127))[_0x261c70(0x13a)];if(_0x15c7c6==''||_0x4cc742=='')return alert(_0x261c70(0x145)),![];return!![];}function _0x3a3b8a(){var _0x2f1ce0=_0x274389;if(_0x4b38e5()){var _0x3b904e=document[_0x2f1ce0(0x13e)](_0x2f1ce0(0x149))[_0x2f1ce0(0x13a)],_0x1f77a6=document[_0x2f1ce0(0x13e)](_0x2f1ce0(0x127))['value'],_0x344079=_0x77be3f*0x2+0x1,_0x4861de=_0x344079*_0x344079,_0x558e19=document[_0x2f1ce0(0x13e)]('canvas');_0x558e19['width']=Number(_0x344079)*0x3e8,_0x558e19[_0x2f1ce0(0x131)]=Number(_0x344079)*0x3e8;var _0x2b3285=_0x558e19[_0x2f1ce0(0x130)]('2d'),_0x3d9df7=0x0,_0x4c6adb=0x0,_0xca161c=0.00268,_0x2151c5=0.002125,_0x7475f2=Number(_0x3b904e)+Number(_0x2151c5)*Number(_0x77be3f),_0x5c3085=Number(_0x1f77a6)-Number(_0xca161c)*Number(_0x77be3f),_0x1d3425=new Array(),_0x32b7a6=0x0;document[_0x2f1ce0(0x13e)](_0x2f1ce0(0x142))[_0x2f1ce0(0x147)]=_0x2f1ce0(0x139);for(var _0x3d21d8=0x0;_0x3d21d8<_0x344079;_0x3d21d8++){for(var _0x2447f9=0x0;_0x2447f9<_0x344079;_0x2447f9++){var _0x4e8fce='https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?'+_0x2f1ce0(0x11f)+_0x2f1ce0(0x148)+_0x5c3085+','+_0x7475f2+_0x2f1ce0(0x13c)+'&X-NCP-APIGW-API-KEY-ID=ny5d4sdo0e'+_0x2f1ce0(0x12a)+_0x5eac80,_0x4b123c=document['createElement']('img');_0x4b123c['crossOrigin']='*',_0x4b123c[_0x2f1ce0(0x133)]=_0x4e8fce,function(_0x185177){var _0x111945=_0x2f1ce0,_0xa22936=_0x185177;_0x4b123c[_0x111945(0x128)]=function(){_0x1d3425[_0xa22936]=this;};}(_0x32b7a6),_0x5c3085+=Number(_0xca161c),_0x32b7a6++;}_0x5c3085=Number(_0x1f77a6)-Number(_0xca161c)*Number(_0x77be3f),_0x7475f2-=_0x2151c5;}var _0x2de965=setInterval(function(){var _0x580bb4=_0x2f1ce0;if(_0x1d3425['length']==_0x4861de){for(var _0x33da18=0x0;_0x33da18<_0x4861de;_0x33da18++){_0x33da18%_0x344079==0x0&&_0x33da18!=0x0&&(_0x3d9df7=0x0,_0x4c6adb+=0x3e8);var _0x131077=_0x1d3425[_0x33da18];_0x2b3285['drawImage'](_0x131077,_0x3d9df7,_0x4c6adb),_0x3d9df7+=0x3e8;}var _0x4147b9=document[_0x580bb4(0x140)]('a'),_0x1414d2=_0x558e19['toDataURL'](_0x580bb4(0x137));_0x4147b9['href']=_0x1414d2,_0x4147b9['download']=_0x580bb4(0x12d),_0x4147b9[_0x580bb4(0x12c)](),_0x4147b9[_0x580bb4(0x136)](),URL[_0x580bb4(0x146)](_0x1414d2),_0x2b3285[_0x580bb4(0x129)](0x0,0x0,_0x558e19['width'],_0x558e19['height']),_0x558e19[_0x580bb4(0x122)]=0x0,_0x558e19[_0x580bb4(0x131)]=0x0,document[_0x580bb4(0x13e)](_0x580bb4(0x142))[_0x580bb4(0x147)]=_0x580bb4(0x120),clearInterval(_0x2de965);}},0x3e8);}}
+var zoomLevel = 3;
+var baseMap = kakao.maps.MapTypeId.ROADMAP;
+var baseMapForNaver = "basic";
+
+
+var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
+staticMapOption = { 
+    center: new kakao.maps.LatLng(33.450701, 126.570667), // 이미지 지도의 중심좌표
+    level: 3 // 이미지 지도의 확대 레벨
+};
+
+// 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
+var exStaticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+
+function setZoomLevel(userZoomLevel){
+    if((zoomLevel >= 3 && zoomLevel <= 5)){
+        zoomLevel = userZoomLevel;
+    }
+    
+}
+
+function setBaseMap(userBaseMap){
+
+    if(userBaseMap == 1){
+        baseMap = kakao.maps.MapTypeId.ROADMAP;
+        baseMapForNaver = "basic";
+    } else if(userBaseMap == 2){
+        baseMap = kakao.maps.MapTypeId.SKYVIEW;
+        baseMapForNaver = "satellite_base";
+    } else if(userBaseMap == 3){
+        baseMap = kakao.maps.MapTypeId.HYBRID;
+        baseMapForNaver = "satellite";
+    } else{
+        return;
+    }
+
+    exStaticMap.setMapTypeId(baseMap);
+}
+
+function checkValue(){
+    if(!(zoomLevel >= 3 && zoomLevel <= 5)){
+        alert("잘못된 배율값입니다. 지속된다면 새로고침을 해주세요");
+        return false;
+    }
+
+    var lat = document.getElementById("lat").value;
+    var lng = document.getElementById("lng").value;
+
+
+    if(lat == "" || lng == ""){
+        alert("좌표값을 설정해주세요");
+        return false;
+    }
+
+    return true;
+}
+
+
+function startCapture(){
+
+
+    if(checkValue()){
+        
+        var centerLat = document.getElementById("lat").value;
+        var centerLng = document.getElementById("lng").value;
+        
+        var blockWidth = (zoomLevel * 2) + 1;
+        var blockArea = blockWidth * blockWidth;
+        
+        var canvas = document.getElementById("canvas");
+        canvas.width = Number(blockWidth) * 1000;
+        canvas.height = Number(blockWidth) * 1000;
+        var ctx = canvas.getContext("2d");
+
+        var xPosition = 0;
+        var yPosition = 0;
+            
+        var moveXPosition = 0.00268;
+        var moveYPostion = 0.002125;
+        var Lat = Number(centerLat) + (Number(moveYPostion) * Number(zoomLevel));  
+        var Lng = Number(centerLng) - (Number(moveXPosition) * Number(zoomLevel));
+        var imgArray = new Array();
+        var order = 0;
+
+        document.getElementById("alertMessage").innerText = "사진 수집중입니다....";
+
+        for(var i = 0; i < blockWidth; i++){
+        
+            for(var j = 0; j < blockWidth; j++){
+
+                var tempSrc = "https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?"
+                        + "w=1000&h=1000"
+                        + "&center=" + Lng + "," + Lat
+                        + "&level=18"
+                        + "&X-NCP-APIGW-API-KEY-ID=ny5d4sdo0e"
+                        + "&maptype=" + baseMapForNaver;
+                var tag = document.createElement("img");
+                tag.crossOrigin = "*";
+                tag.src = tempSrc;
+                (function(order){
+                    var _order = order;
+                    tag.onload = function(){
+                        imgArray[_order] = this;
+                    }
+                })(order);
+
+                Lng += Number(moveXPosition);
+                order++;   
+            }
+        
+            Lng = Number(centerLng) - (Number(moveXPosition) * Number(zoomLevel));
+            Lat -= moveYPostion;
+        
+        }
+            
+        
+
+        var func = setInterval(function(){
+
+            if(imgArray.length == blockArea){
+
+                for(var i = 0; i < blockArea; i++){
+
+                    if(i % blockWidth == 0 && i != 0) {
+                        xPosition = 0;
+                        yPosition += 1000;
+                    }
+
+                    var img =  imgArray[i];
+
+                    ctx.drawImage(img, xPosition, yPosition); 
+                    xPosition += 1000;
+                    
+                }
+
+                var resultTag = document.createElement("a");
+                var objurl = canvas.toDataURL("image/jpeg");
+                resultTag.href = objurl;
+                resultTag.download = "result.jpg";
+                resultTag.click();
+                resultTag.remove();
+
+                URL.revokeObjectURL(objurl);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                canvas.width = 0;
+                canvas.height = 0;
+                
+                document.getElementById("alertMessage").innerText = "완료되었습니다.";
+                clearInterval(func);
+            }
+        }, 1000);
+
+    }
+}
+
+
