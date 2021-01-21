@@ -3,6 +3,8 @@ var baseMap = kakao.maps.MapTypeId.ROADMAP;
 // 지도에 추가된 지도타입정보를 가지고 있을 변수입니다
 var currentTypeId;
 
+var baseMapForNaver = "basic";
+
 
 var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
 staticMapOption = { 
@@ -21,10 +23,13 @@ function setBaseMap(userBaseMap){
 
     if(userBaseMap == 1){
         baseMap = kakao.maps.MapTypeId.ROADMAP;
+        baseMapForNaver = "basic";
     } else if(userBaseMap == 2){
         baseMap = kakao.maps.MapTypeId.SKYVIEW;
+        baseMapForNaver = "satellite";
     } else if(userBaseMap == 3){
         baseMap = kakao.maps.MapTypeId.HYBRID;
+        baseMapForNaver = "satellite_base";
     } 
 
     exStaticMap.setMapTypeId(baseMap);
@@ -72,39 +77,37 @@ function startCapture(){
         var moveYPostion = 0.00225;
         var Lat = Number(centerLat) + Number(moveYPostion);  
         var Lng = Number(centerLng) - Number(moveXPosition);
-        var tempMapContainer = document.getElementById('hideStaticMap');
+        var imgArray = new Array();
 
+        for(var i = 0; i < blockWidth; i++){
+        
+            for(var j = 0; j < blockWidth; j++){
 
-        if(tempMapContainer.childElementCount < blockArea){
-
-            for(var i = 0; i < blockWidth; i++){
-            
-                for(var j = 0; j < blockWidth; j++){
-                    
-                    
-                    var tempOption = { 
-                        center: new kakao.maps.LatLng(Lat, Lng), // 이미지 지도의 중심좌표
-                        level: 1,
-                        mapTypeId: baseMap
-                    };
-            
-            
-                    // 이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
-                    new kakao.maps.StaticMap(tempMapContainer, tempOption);
-                    
-                    Lng += Number(moveXPosition);
-            
+                var tempSrc = "https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?"
+                        + "w=1000&h=1000"
+                        + "&center=" + lng + "," + Lat
+                        + "&level=1"
+                        + "&X-NCP-APIGW-API-KEY-ID=ny5d4sdo0e"
+                        + "maptype=" + baseMapForNaver;
+                var tag = document.createElement("img");
+                tag.src = tempSrc;
+                tag.onload = function(){
+                    imgArray.push(this);
                 }
-            
-                Lng = centerLng - moveXPosition; 
-                Lat -= moveYPostion;
+                Lng += Number(moveXPosition);
             
             }
-            
+        
+            Lng = centerLng - moveXPosition; 
+            Lat -= moveYPostion;
+        
         }
+            
+        
 
         var func = setInterval(function(){
-            if(waitimage(blockArea)){
+            if(imgArray.length == blockArea){
+
                 for(var i = 0; i < blockArea; i++){
 
                     if(i % blockWidth == 0 && i != 0) {
@@ -112,7 +115,7 @@ function startCapture(){
                         yPosition += 1000;
                     }
 
-                    var img =  tempMapContainer.children[i].children[0];
+                    var img =  imgArray[i];
 
                     ctx.drawImage(img, xPosition, yPosition); 
                     xPosition += 1000;
@@ -123,17 +126,5 @@ function startCapture(){
             }
         }, 1000);
 
-    }
-}
-
-function waitimage(blockArea){
-    var tempMapContainer = document.getElementById('hideStaticMap');
-
-    if(tempMapContainer.childElementCount >= blockArea){
-       return true;
-    }    
-
-    else{
-        return false;
     }
 }
