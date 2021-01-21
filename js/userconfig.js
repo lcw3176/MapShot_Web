@@ -1,4 +1,4 @@
-var zoomLevel = 1;
+var zoomLevel = 3;
 var baseMap = kakao.maps.MapTypeId.ROADMAP;
 // 지도에 추가된 지도타입정보를 가지고 있을 변수입니다
 var currentTypeId;
@@ -36,7 +36,7 @@ function setBaseMap(userBaseMap){
 }
 
 function checkValue(){
-    if(!(zoomLevel >= 1 && zoomLevel <= 3)){
+    if(!(zoomLevel >= 3 && zoomLevel <= 5)){
         alert("잘못된 배율값입니다. 지속된다면 새로고침을 해주세요");
         return false;
     }
@@ -75,8 +75,8 @@ function startCapture(){
             
         var moveXPosition = 0.00268;
         var moveYPostion = 0.002125;
-        var Lat = Number(centerLat) + Number(moveYPostion);  
-        var Lng = Number(centerLng) - Number(moveXPosition);
+        var Lat = Number(centerLat) + (Number(moveYPostion) * Number(zoomLevel));  
+        var Lng = Number(centerLng) - (Number(moveXPosition) * Number(zoomLevel));
         var imgArray = new Array();
         var order = 0;
 
