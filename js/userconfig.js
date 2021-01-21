@@ -14,7 +14,14 @@ staticMapOption = {
 var exStaticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
 
 function setZoomLevel(userZoomLevel){
-    this.zoomLevel = Number(userZoomLevel);
+    if(userZoomLevel == 1){
+        zoomLevel = 1;
+    } else if(userZoomLevel == 2){
+        zoomLevel = 2;
+    } else if(userZoomLevel == 3){
+        zoomLevel = 3;
+    }
+   
 }
 
 function setBaseMap(userBaseMap){
