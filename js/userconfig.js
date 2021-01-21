@@ -1,4 +1,4 @@
-var zoomLevel;
+var zoomLevel = 1;
 var baseMap = kakao.maps.MapTypeId.ROADMAP;
 // 지도에 추가된 지도타입정보를 가지고 있을 변수입니다
 var currentTypeId;
