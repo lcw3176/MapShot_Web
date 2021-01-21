@@ -106,7 +106,7 @@ function startCapture(){
                 order++;   
             }
         
-            Lng = centerLng - moveXPosition; 
+            Lng = Number(centerLng) - (Number(moveXPosition) * Number(zoomLevel));
             Lat -= moveYPostion;
         
         }
