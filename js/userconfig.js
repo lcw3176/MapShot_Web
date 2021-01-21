@@ -52,6 +52,7 @@ function checkValue(){
 
     return true;
 }
+var canvas;
 
 function startCapture(){
 
@@ -64,7 +65,7 @@ function startCapture(){
         var blockWidth = (zoomLevel * 2) + 1;
         var blockArea = blockWidth * blockWidth;
         
-        var canvas = document.getElementById("canvas");
+        canvas = document.createElement("canvas");
         canvas.width = Number(blockWidth) * 1000;
         canvas.height = Number(blockWidth) * 1000;
         var ctx = canvas.getContext("2d");
@@ -78,6 +79,8 @@ function startCapture(){
         var Lng = Number(centerLng) - Number(moveXPosition);
         var imgArray = new Array();
         var order = 0;
+
+        document.getElementById("resultImage").innerText = "사진 수집중입니다....";
 
         for(var i = 0; i < blockWidth; i++){
         
@@ -127,11 +130,12 @@ function startCapture(){
                     xPosition += 1000;
                     
                 }
-                var canvas = document.getElementById("canvas");
- 
+
                 var resultTag = document.getElementById("resultImage");
                 resultTag.href = canvas.toDataURL("image/jpeg");
-
+                resultTag.innerText = "결과 파일";
+                
+                canvas.clearRect(0, 0, canvas.width, canvas.height);
                 clearInterval(func);
             }
         }, 1000);
