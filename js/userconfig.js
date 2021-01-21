@@ -26,10 +26,10 @@ function setBaseMap(userBaseMap){
         baseMapForNaver = "basic";
     } else if(userBaseMap == 2){
         baseMap = kakao.maps.MapTypeId.SKYVIEW;
-        baseMapForNaver = "satellite";
+        baseMapForNaver = "satellite_base";
     } else if(userBaseMap == 3){
         baseMap = kakao.maps.MapTypeId.HYBRID;
-        baseMapForNaver = "satellite_base";
+        baseMapForNaver = "satellite";
     } 
 
     exStaticMap.setMapTypeId(baseMap);
@@ -53,7 +53,6 @@ function checkValue(){
     return true;
 }
 
-
 function startCapture(){
 
 
@@ -73,11 +72,12 @@ function startCapture(){
         var xPosition = 0;
         var yPosition = 0;
             
-        var moveXPosition = 0.00283;
-        var moveYPostion = 0.00225;
+        var moveXPosition = 0.00268;
+        var moveYPostion = 0.00213;
         var Lat = Number(centerLat) + Number(moveYPostion);  
         var Lng = Number(centerLng) - Number(moveXPosition);
         var imgArray = new Array();
+        var order = 0;
 
         for(var i = 0; i < blockWidth; i++){
         
@@ -85,17 +85,22 @@ function startCapture(){
 
                 var tempSrc = "https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?"
                         + "w=1000&h=1000"
-                        + "&center=" + lng + "," + Lat
-                        + "&level=1"
+                        + "&center=" + Lng + "," + Lat
+                        + "&level=18"
                         + "&X-NCP-APIGW-API-KEY-ID=ny5d4sdo0e"
-                        + "maptype=" + baseMapForNaver;
+                        + "&maptype=" + baseMapForNaver;
                 var tag = document.createElement("img");
+                tag.crossOrigin = "*";
                 tag.src = tempSrc;
-                tag.onload = function(){
-                    imgArray.push(this);
-                }
+                (function(order){
+                    var _order = order;
+                    tag.onload = function(){
+                        imgArray[_order] = this;
+                    }
+                })(order);
+
                 Lng += Number(moveXPosition);
-            
+                order++;   
             }
         
             Lng = centerLng - moveXPosition; 
@@ -106,6 +111,7 @@ function startCapture(){
         
 
         var func = setInterval(function(){
+
             if(imgArray.length == blockArea){
 
                 for(var i = 0; i < blockArea; i++){
@@ -121,6 +127,10 @@ function startCapture(){
                     xPosition += 1000;
                     
                 }
+                var canvas = document.getElementById("canvas");
+ 
+                var resultTag = document.getElementById("resultImage");
+                resultTag.href = canvas.toDataURL("image/jpeg");
 
                 clearInterval(func);
             }
