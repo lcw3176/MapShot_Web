@@ -52,7 +52,7 @@ function checkValue(){
 
     return true;
 }
-var canvas;
+
 
 function startCapture(){
 
@@ -65,7 +65,7 @@ function startCapture(){
         var blockWidth = (zoomLevel * 2) + 1;
         var blockArea = blockWidth * blockWidth;
         
-        canvas = document.createElement("canvas");
+        var canvas = document.getElementById("canvas");
         canvas.width = Number(blockWidth) * 1000;
         canvas.height = Number(blockWidth) * 1000;
         var ctx = canvas.getContext("2d");
@@ -74,7 +74,7 @@ function startCapture(){
         var yPosition = 0;
             
         var moveXPosition = 0.00268;
-        var moveYPostion = 0.00213;
+        var moveYPostion = 0.00211;
         var Lat = Number(centerLat) + Number(moveYPostion);  
         var Lng = Number(centerLng) - Number(moveXPosition);
         var imgArray = new Array();
@@ -131,11 +131,15 @@ function startCapture(){
                     
                 }
 
+                var canvas = document.getElementById("canvas");
                 var resultTag = document.getElementById("resultImage");
                 resultTag.href = canvas.toDataURL("image/jpeg");
                 resultTag.innerText = "결과 파일";
-                
+
                 canvas.clearRect(0, 0, canvas.width, canvas.height);
+                canvas.width = 0;
+                canvas.height = 0;
+
                 clearInterval(func);
             }
         }, 1000);
