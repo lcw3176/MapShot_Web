@@ -80,7 +80,7 @@ function startCapture(){
         var imgArray = new Array();
         var order = 0;
 
-        document.getElementById("resultImage").innerText = "사진 수집중입니다....";
+        document.getElementById("alertMessage").innerText = "사진 수집중입니다....";
 
         for(var i = 0; i < blockWidth; i++){
         
@@ -142,7 +142,8 @@ function startCapture(){
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 canvas.width = 0;
                 canvas.height = 0;
-
+                
+                document.getElementById("alertMessage").innerText = "완료되었습니다.";
                 clearInterval(func);
             }
         }, 1000);
