@@ -1,4 +1,4 @@
-var zoomLevel;
+var zoomLevel = -1;
 var baseMap = kakao.maps.MapTypeId.ROADMAP;
 // 지도에 추가된 지도타입정보를 가지고 있을 변수입니다
 var currentTypeId;
@@ -14,7 +14,7 @@ staticMapOption = {
 var exStaticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
 
 function setZoomLevel(userZoomLevel){
-    zoomLevel = Number(userZoomLevel);
+    this.zoomLevel = Number(userZoomLevel);
 }
 
 function setBaseMap(userBaseMap){
