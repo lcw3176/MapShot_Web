@@ -59,7 +59,7 @@ function checkValue(){
 var url;
 
 function startCapture(){
-
+    if(isMobile){zoomLevel = 5;}
 
     if(checkValue()){
         
