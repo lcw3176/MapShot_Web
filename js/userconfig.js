@@ -56,7 +56,6 @@ function checkValue(){
 }
 
 
-var url;
 
 function startCapture(){
 
@@ -138,34 +137,31 @@ function startCapture(){
                 }
 
                 canvas.toBlob(function(blob) {
-                    var newImg = document.createElement("resultImage");
-                    url = URL.createObjectURL(blob);
+                    var newImg = document.getElementById("resultImage");                    
+                    var url = URL.createObjectURL(blob);
                   
                     newImg.onload = function() {
                         var status = document.getElementById("resultStatus");
                         status.innerText = "완료";
+                        var tag = document.getElementById("resultTag");
+                        tag.href = url;
+                        tag.innerHTML = "result.jpg";  
 
-                        document.getElementById("resultTag").innerHTML = "result.jpg";                        
-
+                        URL.revokeObjectURL(url);
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
                         canvas.width = 0;
                         canvas.height = 0;
                     };
-                  
+
+                    
                     newImg.src = url;
-                    document.getElementById("resultTag").href = url;
+                    
                 }, "image/jpeg");
 
                 clearInterval(func);
             }
         }, 1000);
 
-    }
-}
-
-function resultTagClick(){
-    if(url != ""){
-        URL.revokeObjectURL(url);
     }
 }
 
