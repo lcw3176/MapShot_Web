@@ -56,6 +56,7 @@ function checkValue(){
 }
 
 
+var url;
 
 function startCapture(){
 
@@ -84,7 +85,7 @@ function startCapture(){
         var order = 0;
         var imageLoadCount = 0;
 
-        document.getElementById("resultStatus").innerText = "사진 수집중입니다....";
+        document.getElementById("resultStatus").innerText = "사진 수집중입니다. 화면이 잠시 멈출 수 있습니다.";
 
         for(var i = 0; i < blockWidth; i++){
         
@@ -136,24 +137,27 @@ function startCapture(){
                     
                 }
 
+                if(url != ""){
+                    URL.revokeObjectURL(url);
+                }
+
                 canvas.toBlob(function(blob) {
                     var newImg = document.getElementById("resultImage");                    
-                    var url = URL.createObjectURL(blob);
+                    url = URL.createObjectURL(blob);
                   
                     newImg.onload = function() {
                         var status = document.getElementById("resultStatus");
                         status.innerText = "완료";
+
                         var tag = document.getElementById("resultTag");
                         tag.href = url;
                         tag.innerHTML = "result.jpg";  
 
-                        URL.revokeObjectURL(url);
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
                         canvas.width = 0;
                         canvas.height = 0;
                     };
 
-                    
                     newImg.src = url;
                     
                 }, "image/jpeg");
