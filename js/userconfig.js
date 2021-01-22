@@ -55,7 +55,8 @@ function checkValue(){
     return true;
 }
 
-var objurl;
+
+var url;
 
 function startCapture(){
 
@@ -137,15 +138,14 @@ function startCapture(){
                 }
 
                 canvas.toBlob(function(blob) {
-                    var newImg = document.getElementById("resultImage"),
-                        url = URL.createObjectURL(blob);
+                    var newImg = document.createElement("resultImage");
+                    url = URL.createObjectURL(blob);
                   
                     newImg.onload = function() {
                         var status = document.getElementById("resultStatus");
                         status.innerText = "완료";
 
                         document.getElementById("resultTag").innerHTML = "result.jpg";                        
-                        URL.revokeObjectURL(url);
 
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
                         canvas.width = 0;
@@ -154,12 +154,18 @@ function startCapture(){
                   
                     newImg.src = url;
                     document.getElementById("resultTag").href = url;
-                });
+                }, "image/jpeg");
 
                 clearInterval(func);
             }
         }, 1000);
 
+    }
+}
+
+function resultTagClick(){
+    if(url != ""){
+        URL.revokeObjectURL(url);
     }
 }
 
