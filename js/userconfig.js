@@ -82,7 +82,7 @@ function startCapture(){
         var imgArray = new Array();
         var order = 0;
 
-        document.getElementById("alertMessage").innerText = "사진 수집중입니다....";
+        document.getElementById("resultTag").innerText = "사진 수집중입니다....";
 
         for(var i = 0; i < blockWidth; i++){
         
@@ -133,7 +133,7 @@ function startCapture(){
                     
                 }
 
-                var resultTag = document.createElement("a");
+                var resultTag = document.getElementById("resultTag");
                 var objurl = canvas.toDataURL("image/jpeg");
                 resultTag.href = objurl;
                 resultTag.download = "result.jpg";
