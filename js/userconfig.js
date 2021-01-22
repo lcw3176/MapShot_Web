@@ -151,8 +151,7 @@ function startCapture(){
 
                         var tag = document.getElementById("resultTag");
                         tag.href = url;
-                        tag.innerHTML = "result.jpg";  
-
+                        
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
                         canvas.width = 0;
                         canvas.height = 0;
