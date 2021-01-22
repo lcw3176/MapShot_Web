@@ -82,6 +82,7 @@ function startCapture(){
         var Lng = Number(centerLng) - (Number(moveXPosition) * Number(zoomLevel));
         var imgArray = new Array();
         var order = 0;
+        var imageLoadCount = 0;
 
         document.getElementById("resultTag").innerText = "사진 수집중입니다....";
 
@@ -102,6 +103,7 @@ function startCapture(){
                     var _order = order;
                     tag.onload = function(){
                         imgArray[_order] = this;
+                        imageLoadCount++;
                     }
                 })(order);
 
@@ -118,7 +120,7 @@ function startCapture(){
 
         var func = setInterval(function(){
 
-            if(imgArray.length == blockArea){
+            if(imageLoadCount == blockArea){
 
                 for(var i = 0; i < blockArea; i++){
 
@@ -134,24 +136,29 @@ function startCapture(){
                     
                 }
 
-                var resultTag = document.getElementById("resultTag");
-                objurl = canvas.toDataURL("image/jpeg");
-                resultTag.href = objurl;
-                
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                canvas.width = 0;
-                canvas.height = 0;
-            
+                canvas.toBlob(function(blob) {
+                    var newImg = document.getElementById("resultImage"),
+                        url = URL.createObjectURL(blob);
+                  
+                    newImg.onload = function() {
+                        var resultTag = document.getElementById("resultTag");
+                        
+                        resultTag.innerText = "완료";
+                        URL.revokeObjectURL(url);
+
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        canvas.width = 0;
+                        canvas.height = 0;
+                    };
+                  
+                    newImg.src = url;
+                    resultTag.href = url;
+                });
+
                 clearInterval(func);
             }
         }, 1000);
 
-    }
-}
-
-function resultClick(){
-    if(objurl != ""){
-        URL.revokeObjectURL(objurl);
     }
 }
 
