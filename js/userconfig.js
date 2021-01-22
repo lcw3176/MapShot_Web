@@ -84,7 +84,7 @@ function startCapture(){
         var order = 0;
         var imageLoadCount = 0;
 
-        document.getElementById("resultTag").innerText = "사진 수집중입니다....";
+        document.getElementById("resultStatus").innerText = "사진 수집중입니다....";
 
         for(var i = 0; i < blockWidth; i++){
         
@@ -141,9 +141,10 @@ function startCapture(){
                         url = URL.createObjectURL(blob);
                   
                     newImg.onload = function() {
-                        var resultTag = document.getElementById("resultTag");
-                        
-                        resultTag.innerText = "완료";
+                        var status = document.getElementById("resultStatus");
+                        status.innerText = "완료";
+
+                        document.getElementById("resultTag").innerHTML = "result.jpg";                        
                         URL.revokeObjectURL(url);
 
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -152,7 +153,7 @@ function startCapture(){
                     };
                   
                     newImg.src = url;
-                    resultTag.href = url;
+                    document.getElementById("resultTag").href = url;
                 });
 
                 clearInterval(func);
