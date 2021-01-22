@@ -85,7 +85,7 @@ function startCapture(){
         var order = 0;
         var imageLoadCount = 0;
 
-        document.getElementById("resultStatus").innerText = "사진 수집중입니다. 화면이 잠시 멈출 수 있습니다.";
+        document.getElementById("resultStatus").innerText = "사진 수집중입니다. 화면이 잠시 멈출 수 있습니다. 완료 문구를 기다려주세요";
 
         for(var i = 0; i < blockWidth; i++){
         
@@ -147,7 +147,7 @@ function startCapture(){
                   
                     newImg.onload = function() {
                         var status = document.getElementById("resultStatus");
-                        status.innerText = "완료";
+                        status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
 
                         var tag = document.getElementById("resultTag");
                         tag.href = url;
