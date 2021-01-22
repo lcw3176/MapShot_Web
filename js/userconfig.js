@@ -55,6 +55,7 @@ function checkValue(){
     return true;
 }
 
+var objurl;
 
 function startCapture(){
 
@@ -134,22 +135,23 @@ function startCapture(){
                 }
 
                 var resultTag = document.getElementById("resultTag");
-                var objurl = canvas.toDataURL("image/jpeg");
+                objurl = canvas.toDataURL("image/jpeg");
                 resultTag.href = objurl;
-                resultTag.download = "result.jpg";
-                resultTag.click();
-                resultTag.remove();
-
-                URL.revokeObjectURL(objurl);
+                
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 canvas.width = 0;
                 canvas.height = 0;
-                
-                document.getElementById("alertMessage").innerText = "완료되었습니다.";
+            
                 clearInterval(func);
             }
         }, 1000);
 
+    }
+}
+
+function resultClick(){
+    if(objurl != ""){
+        URL.revokeObjectURL(objurl);
     }
 }
 
