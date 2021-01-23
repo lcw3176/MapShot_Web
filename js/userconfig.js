@@ -141,6 +141,7 @@ function startCapture(){
                 }
                 
                 canvas.toBlob(function(blob) {
+                    console.log(blob);
                     
                     if(blob == ""){
                         document.getElementById("resultStatus").innerText = "";
