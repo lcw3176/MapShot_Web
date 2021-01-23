@@ -143,6 +143,7 @@ function startCapture(){
                 }
                 
                 canvas.toBlob(function(blob) {
+                    console.log(blob.size);
                     var newImg = document.getElementById("resultImage");                    
                     url = URL.createObjectURL(blob);
                   
