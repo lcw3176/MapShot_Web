@@ -97,7 +97,7 @@ function startCapture(){
                         + "&level=18"
                         + "&X-NCP-APIGW-API-KEY-ID=ny5d4sdo0e"
                         + "&maptype=" + baseMapForNaver;
-                var tag = document.createElement("img");
+                var tag = new Image();
                 tag.crossOrigin = "*";
                 tag.src = tempSrc;
                 (function(order){
@@ -136,6 +136,8 @@ function startCapture(){
                     
                 }
 
+                console.log(canvas);
+                
                 if(url != ""){
                     URL.revokeObjectURL(url);
                 }
@@ -159,7 +161,7 @@ function startCapture(){
 
                     newImg.src = url;
                     
-                }, 'image/jpeg', 0.1);
+                }, 'image/jpeg');
 
                 clearInterval(func);
             }
