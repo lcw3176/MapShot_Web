@@ -139,7 +139,7 @@ function startCapture(){
                 if(url != ""){
                     URL.revokeObjectURL(url);
                 }
-                var tempurl = canvas.toDataURL("image/webp");
+                var tempurl = canvas.toDataURL('image/jpeg');
                 var blob = dataURLtoBlob(tempurl);
                 URL.revokeObjectURL(tempurl);
 
