@@ -131,7 +131,7 @@ function startCapture(){
 
                     var img =  imgArray[i];
 
-                    ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, xPosition, yPosition); 
+                    ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500); 
                     xPosition += 500;
                     
                 }
