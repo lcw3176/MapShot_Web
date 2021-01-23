@@ -70,8 +70,8 @@ function startCapture(){
         var blockArea = blockWidth * blockWidth;
         
         var canvas = document.getElementById("canvas");
-        canvas.width = Number(blockWidth) * 1000;
-        canvas.height = Number(blockWidth) * 1000;
+        canvas.width = Number(blockWidth) * 500;
+        canvas.height = Number(blockWidth) * 500;
         var ctx = canvas.getContext("2d");
 
         var xPosition = 0;
@@ -126,18 +126,16 @@ function startCapture(){
 
                     if(i % blockWidth == 0 && i != 0) {
                         xPosition = 0;
-                        yPosition += 1000;
+                        yPosition += 500;
                     }
 
                     var img =  imgArray[i];
 
-                    ctx.drawImage(img, xPosition, yPosition); 
-                    xPosition += 1000;
+                    ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, xPosition, yPosition); 
+                    xPosition += 500;
                     
                 }
 
-                console.log(canvas);
-                
                 if(url != ""){
                     URL.revokeObjectURL(url);
                 }
