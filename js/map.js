@@ -24,13 +24,13 @@ window.onload = function(){
 
     var filter = "win16|win32|win64|mac|macintel"; 
     
-    if ( navigator.platform ) 
-    { 
-        if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) { 
-            alert('모바일 환경에서는 배율이 1단계로 고정됩니다. 원활한 사용을 원하시면 pc로 접속해 주세요.'); 
-            isMobile = true;
-        } 
-    }
+    // if ( navigator.platform ) 
+    // { 
+    //     if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) { 
+    //         alert('모바일 환경에서는 배율이 1단계로 고정됩니다. 원활한 사용을 원하시면 pc로 접속해 주세요.'); 
+    //         isMobile = true;
+    //     } 
+    // }
 
 
     // 지도를 생성합니다    

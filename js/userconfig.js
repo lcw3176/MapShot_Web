@@ -139,69 +139,38 @@ function startCapture(){
                 if(url != ""){
                     URL.revokeObjectURL(url);
                 }
-                var tempurl = canvas.toDataURL('image/webp');
-                var blob = dataURLtoBlob(tempurl);
-                URL.revokeObjectURL(tempurl);
 
-                var newImg = document.getElementById("resultImage");                    
-                url = URL.createObjectURL(blob);
+                canvas.toBlob(function(blob) {
+                    if(blob == ""){
+                        document.getElementById("resultStatus").innerText = "";
+                        alert("결과 도출에 실패했습니다.");
+                        return;
+                    }
+
+                    var newImg = document.getElementById("resultImage");                    
+                    url = URL.createObjectURL(blob);
                   
-                newImg.onload = function() {
-                    var status = document.getElementById("resultStatus");
-                    status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
+                    newImg.onload = function() {
+                        var status = document.getElementById("resultStatus");
+                        status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
 
-                    var tag = document.getElementById("resultTag");
-                    tag.href = url;
-                    
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    canvas.width = 0;
-                    canvas.height = 0;
-                };
-
-                newImg.src = url;
-                clearInterval(func);
-                // canvas.toBlob(function(blob) {
-                //     console.log(blob);
-
-                //     if(blob == ""){
-                //         document.getElementById("resultStatus").innerText = "";
-                //         alert("결과 도출에 실패했습니다.");
-                //         return;
-                //     }
-
-                //     var newImg = document.getElementById("resultImage");                    
-                //     url = URL.createObjectURL(blob);
-                  
-                //     newImg.onload = function() {
-                //         var status = document.getElementById("resultStatus");
-                //         status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
-
-                //         var tag = document.getElementById("resultTag");
-                //         tag.href = url;
+                        var tag = document.getElementById("resultTag");
+                        tag.href = url;
                         
-                //         ctx.clearRect(0, 0, canvas.width, canvas.height);
-                //         canvas.width = 0;
-                //         canvas.height = 0;
-                //     };
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        canvas.width = 0;
+                        canvas.height = 0;
+                    };
 
-                //     newImg.src = url;
+                    newImg.src = url;
                     
-                // }, 'image/webp');
+                }, 'image/webp');
 
-                // clearInterval(func);
+                clearInterval(func);
             }
         }, 1000);
 
     }
-}
-
-function dataURLtoBlob(dataurl) {
-    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-    while(n--){
-        u8arr[n] = bstr.charCodeAt(n);
-    }
-    return new Blob([u8arr], {type:mime});
 }
 
 
