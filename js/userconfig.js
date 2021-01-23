@@ -105,7 +105,6 @@ function startCapture(){
                     tag.onload = function(){
                         imgArray[_order] = this;
                         imageLoadCount++;
-                        console.log(imageLoadCount);
                     }
                 })(order);
 
@@ -121,7 +120,6 @@ function startCapture(){
         
 
         var func = setInterval(function(){
-            console.log(imageLoadCount + "::" + blockArea);
             if(imageLoadCount == blockArea){
 
                 for(var i = 0; i < blockArea; i++){
@@ -143,7 +141,13 @@ function startCapture(){
                 }
                 
                 canvas.toBlob(function(blob) {
-                    console.log(blob.size);
+                    
+                    if(blob == ""){
+                        document.getElementById("resultStatus").innerText = "";
+                        alert("결과 도출에 실패했습니다.");
+                        return;
+                    }
+
                     var newImg = document.getElementById("resultImage");                    
                     url = URL.createObjectURL(blob);
                   
@@ -161,7 +165,7 @@ function startCapture(){
 
                     newImg.src = url;
                     
-                }, "image/jpeg");
+                }, "image/webp");
 
                 clearInterval(func);
             }
