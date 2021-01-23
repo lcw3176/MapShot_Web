@@ -14,7 +14,15 @@ var marker;
 var isMobile = false;
 
 window.onload = function(){
-    
+
+    var agent = navigator.userAgent.toLowerCase();
+
+    if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+        alert("인터넷 익스플로러에선 정상적인 결과를 도출하기 어렵습니다. 다른 브라우저로 접속 바랍니다. 본 사이트는 크롬에 최적화되어 있습니다.");
+        return;
+    }
+
+
     // 지도를 생성합니다    
     map = new kakao.maps.Map(mapContainer, mapOption); 
 
