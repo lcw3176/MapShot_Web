@@ -141,6 +141,9 @@ function startCapture(){
                 }
 
                 canvas.toBlob(function(blob) {
+
+                    console.log(blob);
+                    
                     if(blob == ""){
                         document.getElementById("resultStatus").innerText = "";
                         alert("결과 도출에 실패했습니다.");
