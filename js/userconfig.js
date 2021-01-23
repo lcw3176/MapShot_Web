@@ -142,14 +142,6 @@ function startCapture(){
 
                 canvas.toBlob(function(blob) {
 
-                    console.log(blob);
-                    
-                    if(blob == ""){
-                        document.getElementById("resultStatus").innerText = "";
-                        alert("결과 도출에 실패했습니다.");
-                        return;
-                    }
-
                     var newImg = document.getElementById("resultImage");                    
                     url = URL.createObjectURL(blob);
                   
@@ -167,7 +159,7 @@ function startCapture(){
 
                     newImg.src = url;
                     
-                }, 'image/jpeg', 0.5);
+                }, 'image/jpeg', 0.1);
 
                 clearInterval(func);
             }
