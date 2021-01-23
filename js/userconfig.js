@@ -56,8 +56,6 @@ function checkValue(){
 }
 
 
-var url;
-
 function startCapture(){
     if(isMobile){zoomLevel = 5;}
 
@@ -137,30 +135,23 @@ function startCapture(){
                     
                 }
 
-                if(url != ""){
+                var newImg = document.getElementById("resultImage");                    
+                var url = canvas.toDataURL("image/jpeg");
+              
+                newImg.onload = function() {
+                    var status = document.getElementById("resultStatus");
+                    status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
+
+                    var tag = document.getElementById("resultTag");
+                    tag.href = url;
                     URL.revokeObjectURL(url);
-                }
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    canvas.width = 0;
+                    canvas.height = 0;
+                };
 
-                canvas.toBlob(function(blob) {
-                    var newImg = document.getElementById("resultImage");                    
-                    url = URL.createObjectURL(blob);
-                  
-                    newImg.onload = function() {
-                        var status = document.getElementById("resultStatus");
-                        status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
-
-                        var tag = document.getElementById("resultTag");
-                        tag.href = url;
-                        
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        canvas.width = 0;
-                        canvas.height = 0;
-                    };
-
-                    newImg.src = url;
-                    
-                }, "image/jpeg");
-
+                newImg.src = url;
+                
                 clearInterval(func);
             }
         }, 1000);
