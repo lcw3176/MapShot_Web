@@ -56,6 +56,8 @@ function checkValue(){
 }
 
 
+var url;
+
 function startCapture(){
     if(isMobile){zoomLevel = 5;}
 
@@ -103,6 +105,7 @@ function startCapture(){
                     tag.onload = function(){
                         imgArray[_order] = this;
                         imageLoadCount++;
+                        console.log(imageLoadCount);
                     }
                 })(order);
 
@@ -118,7 +121,7 @@ function startCapture(){
         
 
         var func = setInterval(function(){
-
+            console.log(imageLoadCount + "::" + blockArea);
             if(imageLoadCount == blockArea){
 
                 for(var i = 0; i < blockArea; i++){
@@ -135,23 +138,30 @@ function startCapture(){
                     
                 }
 
-                var newImg = document.getElementById("resultImage");                    
-                var url = canvas.toDataURL("image/jpeg");
-              
-                newImg.onload = function() {
-                    var status = document.getElementById("resultStatus");
-                    status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
-
-                    var tag = document.getElementById("resultTag");
-                    tag.href = url;
+                if(url != ""){
                     URL.revokeObjectURL(url);
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    canvas.width = 0;
-                    canvas.height = 0;
-                };
-
-                newImg.src = url;
+                }
                 
+                canvas.toBlob(function(blob) {
+                    var newImg = document.getElementById("resultImage");                    
+                    url = URL.createObjectURL(blob);
+                  
+                    newImg.onload = function() {
+                        var status = document.getElementById("resultStatus");
+                        status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
+
+                        var tag = document.getElementById("resultTag");
+                        tag.href = url;
+                        
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        canvas.width = 0;
+                        canvas.height = 0;
+                    };
+
+                    newImg.src = url;
+                    
+                }, "image/jpeg");
+
                 clearInterval(func);
             }
         }, 1000);
