@@ -164,7 +164,7 @@ function startCapture(){
 
                     newImg.src = url;
                     
-                }, 'image/webp');
+                }, 'image/jpeg');
 
                 clearInterval(func);
             }
