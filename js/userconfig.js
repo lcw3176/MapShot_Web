@@ -84,8 +84,13 @@ function startCapture(){
         var imgArray = new Array();
         var order = 0;
         var imageLoadCount = 0;
+        
+        var progressWidth = 100 / (blockArea * 2);
+        var progressValue = 0;
+        var progress = document.getElementById("progressBar");
+        progress.style.width = progressValue + "%";
 
-        document.getElementById("resultStatus").innerText = "사진 수집중입니다. 화면이 잠시 멈출 수 있습니다. 완료 문구를 기다려주세요";
+        document.getElementById("resultStatus").innerText = "사진 수집중입니다.";
 
         for(var i = 0; i < blockWidth; i++){
         
@@ -110,6 +115,8 @@ function startCapture(){
 
                 Lng += Number(moveXPosition);
                 order++;   
+                progressValue += progressWidth;
+                progress.style.width = progressValue + "%";
             }
         
             Lng = Number(centerLng) - (Number(moveXPosition) * Number(zoomLevel));
@@ -134,12 +141,16 @@ function startCapture(){
                     ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500); 
                     xPosition += 500;
                     
+                    progressValue += progressWidth;
+                    progress.style.width = progressValue + "%";
                 }
 
                 if(url != ""){
                     URL.revokeObjectURL(url);
                 }
 
+                document.getElementById("resultStatus").innerText = "사진 병합중입니다. 화면이 잠시 멈출 수 있습니다. 완료 문구를 기다려주세요";
+                
                 canvas.toBlob(function(blob) {
 
                     var newImg = document.getElementById("resultImage");                    
