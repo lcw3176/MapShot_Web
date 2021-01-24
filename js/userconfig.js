@@ -104,7 +104,7 @@ function startCapture(){
                         imageLoadCount++;
 
                         progressValue += progressWidth;
-                        progressValue = Math.floor(progressValue);
+                        progressValue = progressValue.toFixed(2);
                         progress.style.width = progressValue + "%";
                         progress.innerText = progressValue + "%";
 
@@ -160,7 +160,7 @@ function mergeImage(progressValue, imgArray, blockWidth){
         xPosition += 500;
        
         progressValue += progressWidth;
-        progressValue = Math.floor(progressValue);
+        progressValue = progressValue.toFixed(2);
         progress.style.width = progressValue + "%";
         progress.innerText = progressValue + "%";
     }
@@ -185,9 +185,6 @@ function mergeImage(progressValue, imgArray, blockWidth){
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             canvas.width = 0;
             canvas.height = 0;
-
-            progress.style.width = "100%";
-            progress.innerText = "100%";
         };
 
         newImg.src = url;
