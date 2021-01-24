@@ -108,7 +108,7 @@ function startCapture(){
                         progress.innerText = progressValue + "%";
 
                         if(imageLoadCount == blockArea){
-                            mergeImage(progressValue, imgArray, blockArea);
+                            mergeImage(progressValue, imgArray, blockWidth);
                         }
                         
                     }
@@ -128,12 +128,13 @@ function startCapture(){
 }
 
 
-function mergeImage(progressValue, imgArray, blockArea){
+function mergeImage(progressValue, imgArray, blockWidth){
         
     var canvas = document.getElementById("canvas");
     canvas.width = Number(blockWidth) * 500;
     canvas.height = Number(blockWidth) * 500;
 
+    var blockArea = blockWidth * blockWidth;
     var ctx = canvas.getContext("2d");
 
     var xPosition = 0;
