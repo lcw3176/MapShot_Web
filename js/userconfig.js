@@ -104,9 +104,8 @@ function startCapture(){
                         imageLoadCount++;
 
                         progressValue += progressWidth;
-                        progressValue = parseFloat(progressValue).toFixed(2);
-                        progress.style.width = progressValue + "%";
-                        progress.innerText = progressValue + "%";
+                        progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
+                        progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
 
                         if(imageLoadCount == blockArea){
                             mergeImage(progressValue, imgArray, blockWidth);
@@ -160,9 +159,8 @@ function mergeImage(progressValue, imgArray, blockWidth){
         xPosition += 500;
        
         progressValue += progressWidth;
-        progressValue = parseFloat(progressValue).toFixed(2);
-        progress.style.width = progressValue + "%";
-        progress.innerText = progressValue + "%";
+        progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
+        progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
     }
 
     if(url != ""){
