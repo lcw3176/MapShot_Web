@@ -59,7 +59,6 @@ function checkValue(){
 var url;
 
 function startCapture(){
-    // if(isMobile){zoomLevel = 5;}
 
     if(checkValue()){
         
@@ -147,19 +146,24 @@ function mergeImage(progressValue, imgArray, blockWidth){
 
     for(var i = 0; i < blockArea; i++){
         
-        if(i % blockWidth == 0 && i != 0) {
-            xPosition = 0;
-            yPosition += 500;
-        }
+            (function(x){
+                setTimeout(function(){
+                    if(x % blockWidth == 0 && x != 0) {
+                        xPosition = 0;
+                        yPosition += 500;
+                    }
+            
+                    var img =  imgArray[x];
+            
+                    ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500); 
+                    xPosition += 500;
+                   
+                    progressValue += progressWidth;
+                    progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
+                    progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
+                }, 30);
+            })(i);
 
-        var img =  imgArray[i];
-
-        ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500); 
-        xPosition += 500;
-       
-        progressValue += progressWidth;
-        progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
-        progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
     }
 
     if(url != ""){

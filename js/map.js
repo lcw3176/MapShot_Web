@@ -11,7 +11,6 @@ var ps;
 var infowindow;
 var geocoder;
 var marker;
-var isMobile = false;
 
 window.onload = function(){
 
