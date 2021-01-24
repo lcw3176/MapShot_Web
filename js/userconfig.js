@@ -61,8 +61,6 @@ var url;
 function startCapture() {
 
     if (checkValue()) {
-
-
         var xPosition = 0;
         var yPosition = 0;
     
@@ -125,7 +123,6 @@ function startCapture() {
                         progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
 
                         imageLoadCount++;
-                        console.log(imageLoadCount);
                     }
                 })(order);
 
