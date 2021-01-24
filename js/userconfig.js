@@ -110,14 +110,17 @@ function startCapture(){
                     tag.onload = function(){
                         imgArray[_order] = this;
                         imageLoadCount++;
+
+                        progressValue += progressWidth;
+                        progress.style.width = progressValue + "%";
+                        progress.innerText = progressValue + "%";
+                        
                     }
                 })(order);
 
                 Lng += Number(moveXPosition);
                 order++;   
-                progressValue += progressWidth;
-                progress.style.width = progressValue + "%";
-                progress.innerText = progressValue + "%";
+
             }
         
             Lng = Number(centerLng) - (Number(moveXPosition) * Number(zoomLevel));
@@ -133,25 +136,23 @@ function startCapture(){
      
 
                 for(var i = 0; i < blockArea; i++){
-                    (async ()=>{
-
-                        if(i % blockWidth == 0 && i != 0) {
-                            xPosition = 0;
-                            yPosition += 500;
-                        }
-
-                        var img =  imgArray[i];
-
-                        ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500); 
-                        xPosition += 500;
-                        
                     
+                    if(i % blockWidth == 0 && i != 0) {
+                        xPosition = 0;
+                        yPosition += 500;
+                    }
+
+                    var img =  imgArray[i];
+
+                    ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500); 
+                    xPosition += 500;
+                   
+                    (function(i){
+                        console.log(progressValue);
                         progressValue += progressWidth;
                         progress.style.width = progressValue + "%";
                         progress.innerText = progressValue + "%";
-
-                    })();
-
+                    })(i);
                 }
 
                 if(url != ""){
