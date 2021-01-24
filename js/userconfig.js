@@ -75,8 +75,15 @@ function startCapture() {
         canvas.height = Number(blockWidth) * 500;
         var ctx = canvas.getContext("2d");
 
+        var fixYvalue = 37.5668; // 0.002125
+        // var fixYvalue_2 = 34.5668; 0.002210;
+        var correctFix = 0.00002833;
+        var fixValue = (fixYvalue - centerLat) * correctFix;
+        // 3 -> -0.000085
+        // 3 -> 20px  --> 33m
+        // (fixYvalue - centerLat) * correctFix
         var moveXPosition = 0.00268;
-        var moveYPostion = 0.002125;
+        var moveYPostion = 0.002125 + fixValue;
         var Lat = Number(centerLat) + (Number(moveYPostion) * Number(zoomLevel));
         var Lng = Number(centerLng) - (Number(moveXPosition) * Number(zoomLevel));
     
