@@ -132,12 +132,13 @@ function startCapture() {
         var func = setInterval(function() {
             if(imageLoadCount == blockArea){
                 for(var i = 0 ;i < blockArea; i++){
-                    if (index % blockWidth == 0 && index != 0) {
+
+                    if (i % blockWidth == 0 && i != 0) {
                         xPosition = 0;
                         yPosition += 500;
                     }
                         
-                    var img = imgArray[index];  
+                    var img = imgArray[i];  
                     
                     xPosition += 500;   
                     progressValue += progressWidth;
