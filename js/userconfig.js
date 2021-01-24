@@ -123,6 +123,7 @@ function startCapture() {
                         progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
 
                         imageLoadCount++;
+                        console.log(imageLoadCount);
                     }
                 })(order);
 
@@ -137,13 +138,13 @@ function startCapture() {
 
         }
 
-
+        
         var func = setInterval(function() {
 
             if(imageLoadCount == blockArea) {
-
+                console.log(canvas);
                 canvas.toBlob(function (blob) {
-                    
+                    console.log(blob);
                     var newImg = document.getElementById("resultImage");
                     url = URL.createObjectURL(blob);
                 
@@ -169,6 +170,7 @@ function startCapture() {
                 clearInterval(func);
             }
         }, 1000)
+
     }
 }
 
