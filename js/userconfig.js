@@ -79,6 +79,7 @@ function startCapture() {
     
         var order = 0;
         var imageLoadCount = 0;
+        var imgArray = new Array();
 
         var progressWidth = 100 / (blockArea * 2);
         var progressValue = 0;
@@ -141,22 +142,24 @@ function CreateUrlFromCanvas(blockWidth, imgArray, progressValue) {
     
     var xPosition = 0;
     var yPosition = 0;
-
+    var progressWidth = 100 / (blockArea * 2);
     var progress = document.getElementById("progressBar");
     var blockArea = blockWidth * blockWidth;
 
     document.getElementById("resultStatus").innerText = "이미지 병합중입니다."; 
 
     for (var i = 0; i < blockArea; i++) {   
-        (function (i) {
+        (function (x) {
+            var index = x;
+
             setTimeout(function() {
 
-                if (i % blockWidth == 0 && i != 0) {
+                if (index % blockWidth == 0 && index != 0) {
                     xPosition = 0;
                     yPosition += 500;
                 }
                     
-                var img = imgArray[i];  
+                var img = imgArray[index];  
                 
                 xPosition += 500;   
                 progressValue += progressWidth;
@@ -165,9 +168,10 @@ function CreateUrlFromCanvas(blockWidth, imgArray, progressValue) {
 
                 ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500);
                 
-                if(i == blockArea - 1){
-                    CanvasToBlob();
+                if(index == blockArea - 1){
+                    CanvasToBlob(canvas);
                 }
+                
             }, 10);
         })(i);
     }
