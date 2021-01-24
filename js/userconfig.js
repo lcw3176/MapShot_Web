@@ -142,17 +142,19 @@ function startCapture(){
                         yPosition += 500;
                     }
 
-                    var img =  imgArray[i];
-
-                    ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500); 
-                    xPosition += 500;
-                   
                     (function(i){
                         console.log(progressValue);
                         progressValue += progressWidth;
                         progress.style.width = progressValue + "%";
                         progress.innerText = progressValue + "%";
                     })(i);
+                    
+                    var img =  imgArray[i];
+
+                    ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500); 
+                    xPosition += 500;
+                   
+
                 }
 
                 if(url != ""){
