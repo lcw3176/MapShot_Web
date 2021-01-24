@@ -116,7 +116,7 @@ function startCapture() {
                         progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
 
                         if(imageLoadCount == blockArea){
-                            CreateUrlFromCanvas();
+                            CreateUrlFromCanvas(blockWidth);
                         }
                     }
                 })(order);
@@ -134,7 +134,7 @@ function startCapture() {
 }
 
 
-function CreateUrlFromCanvas() {
+function CreateUrlFromCanvas(blockWidth) {
 
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
@@ -143,6 +143,7 @@ function CreateUrlFromCanvas() {
     var yPosition = 0;
 
     var progress = document.getElementById("progressBar");
+    var blockArea = blockWidth * blockWidth;
 
     document.getElementById("resultStatus").innerText = "이미지 병합중입니다."; 
 
