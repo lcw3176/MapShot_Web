@@ -115,10 +115,6 @@ function startCapture() {
                         progressValue += progressWidth;
                         progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
                         progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
-
-                        if(imageLoadCount == blockArea){
-                            CreateUrlFromCanvas(blockWidth, imgArray, progressValue);
-                        }
                     }
                 })(order);
 
@@ -131,76 +127,55 @@ function startCapture() {
             Lat -= moveYPostion;
 
         }
+
+
+        var func = setInterval(function() {
+            if(imageLoadCount == blockArea){
+                for(var i = 0 ;i < blockArea; i++){
+                    if (index % blockWidth == 0 && index != 0) {
+                        xPosition = 0;
+                        yPosition += 500;
+                    }
+                        
+                    var img = imgArray[index];  
+                    
+                    xPosition += 500;   
+                    progressValue += progressWidth;
+                    progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
+                    progress.innerText = parseFloat(progressValue).toFixed(2) + "%";    
+        
+                    ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500);
+        
+                }
+            
+
+                canvas.toBlob(function (blob) {
+                    
+                    var newImg = document.getElementById("resultImage");
+                    url = URL.createObjectURL(blob);
+                
+                    newImg.onload = function () {
+                        var status = document.getElementById("resultStatus");
+                        status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
+                    
+                        var tag = document.getElementById("resultTag");
+                        tag.href = url;
+                    
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        canvas.width = 0;
+                        canvas.height = 0;
+                    
+                        progress.style.width = "100%";
+                        progress.innerText = "100%";
+                    };
+                
+                    newImg.src = url;
+                
+                }, 'image/jpeg');
+
+                clearInterval(func);
+            }
+        }, 1000)
     }
 }
-
-
-function CreateUrlFromCanvas(blockWidth, imgArray, progressValue) {
-
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
-    
-    var xPosition = 0;
-    var yPosition = 0;
-    var progressWidth = 100 / (blockArea * 2);
-    var progress = document.getElementById("progressBar");
-    var blockArea = blockWidth * blockWidth;
-
-    document.getElementById("resultStatus").innerText = "이미지 병합중입니다."; 
-
-    for (var i = 0; i < blockArea; i++) {   
-        (function (x) {
-            var index = x;
-
-            setTimeout(function() {
-
-                if (index % blockWidth == 0 && index != 0) {
-                    xPosition = 0;
-                    yPosition += 500;
-                }
-                    
-                var img = imgArray[index];  
-                
-                xPosition += 500;   
-                progressValue += progressWidth;
-                progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
-                progress.innerText = parseFloat(progressValue).toFixed(2) + "%";    
-
-                ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500);
-                
-                if(index == blockArea - 1){
-                    CanvasToBlob(canvas);
-                }
-                
-            }, 10);
-        })(i);
-    }
-}
-
-function CanvasToBlob(canvas) {
-    canvas.toBlob(function (blob) {
-                    
-        var newImg = document.getElementById("resultImage");
-        url = URL.createObjectURL(blob);
-    
-        newImg.onload = function () {
-            var status = document.getElementById("resultStatus");
-            status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
-        
-            var tag = document.getElementById("resultTag");
-            tag.href = url;
-        
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            canvas.width = 0;
-            canvas.height = 0;
-        
-            progress.style.width = "100%";
-            progress.innerText = "100%";
-        };
-    
-        newImg.src = url;
-    
-    }, 'image/jpeg');
-}
-
 
