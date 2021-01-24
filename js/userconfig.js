@@ -117,6 +117,7 @@ function startCapture(){
                 order++;   
                 progressValue += progressWidth;
                 progress.style.width = progressValue + "%";
+                progress.innerText = progressValue + "%";
             }
         
             Lng = Number(centerLng) - (Number(moveXPosition) * Number(zoomLevel));
@@ -125,32 +126,39 @@ function startCapture(){
         }
             
         
-
+          
         var func = setInterval(function(){
             if(imageLoadCount == blockArea){
+                document.getElementById("resultStatus").innerText = "사진 병합중입니다. 완료 문구를 기다려주세요";
+     
 
                 for(var i = 0; i < blockArea; i++){
+                    (async ()=>{
 
-                    if(i % blockWidth == 0 && i != 0) {
-                        xPosition = 0;
-                        yPosition += 500;
-                    }
+                        if(i % blockWidth == 0 && i != 0) {
+                            xPosition = 0;
+                            yPosition += 500;
+                        }
 
-                    var img =  imgArray[i];
+                        var img =  imgArray[i];
 
-                    ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500); 
-                    xPosition += 500;
+                        ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500); 
+                        xPosition += 500;
+                        
                     
-                    progressValue += progressWidth;
-                    progress.style.width = progressValue + "%";
+                        progressValue += progressWidth;
+                        progress.style.width = progressValue + "%";
+                        progress.innerText = progressValue + "%";
+
+                    })();
+
                 }
 
                 if(url != ""){
                     URL.revokeObjectURL(url);
                 }
 
-                document.getElementById("resultStatus").innerText = "사진 병합중입니다. 화면이 잠시 멈출 수 있습니다. 완료 문구를 기다려주세요";
-                
+ 
                 canvas.toBlob(function(blob) {
 
                     var newImg = document.getElementById("resultImage");                    
