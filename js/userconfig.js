@@ -129,6 +129,9 @@ function startCapture() {
         var func = setInterval(function () {
 
             if (imageLoadCount == blockArea) {
+                            
+                document.getElementById("resultStatus").innerText = "이미지 병합중입니다.";
+            
                 for (var i = 0; i < blockArea; i++) {
 
                     (function (x) {
@@ -148,7 +151,7 @@ function startCapture() {
                             progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
                             progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
 
-                            if(i == blockArea - 1){
+                            if(index == blockArea - 1){
                                 CreateUrlFromCanvas();
                             }
 
