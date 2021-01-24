@@ -104,7 +104,7 @@ function startCapture(){
                         imageLoadCount++;
 
                         progressValue += progressWidth;
-                        progressValue = progressValue.toFixed(2);
+                        progressValue = Number(progressValue).toFixed(2);
                         progress.style.width = progressValue + "%";
                         progress.innerText = progressValue + "%";
 
@@ -160,7 +160,7 @@ function mergeImage(progressValue, imgArray, blockWidth){
         xPosition += 500;
        
         progressValue += progressWidth;
-        progressValue = progressValue.toFixed(2);
+        progressValue = Number(progressValue).toFixed(2);
         progress.style.width = progressValue + "%";
         progress.innerText = progressValue + "%";
     }
