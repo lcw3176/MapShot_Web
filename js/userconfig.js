@@ -76,7 +76,7 @@ function startCapture() {
         var moveYPostion = 0.002125;
         var Lat = Number(centerLat) + (Number(moveYPostion) * Number(zoomLevel));
         var Lng = Number(centerLng) - (Number(moveXPosition) * Number(zoomLevel));
-        var imgArray = new Array();
+    
         var order = 0;
         var imageLoadCount = 0;
 
@@ -116,7 +116,7 @@ function startCapture() {
                         progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
 
                         if(imageLoadCount == blockArea){
-                            CreateUrlFromCanvas(blockWidth);
+                            CreateUrlFromCanvas(blockWidth, imgArray, progressValue);
                         }
                     }
                 })(order);
@@ -134,7 +134,7 @@ function startCapture() {
 }
 
 
-function CreateUrlFromCanvas(blockWidth) {
+function CreateUrlFromCanvas(blockWidth, imgArray, progressValue) {
 
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
