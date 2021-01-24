@@ -64,7 +64,6 @@ function startCapture() {
         var canvas = document.getElementById("canvas");
         canvas.width = Number(blockWidth) * 500;
         canvas.height = Number(blockWidth) * 500;
-        var ctx = canvas.getContext("2d");
 
         var xPosition = 0;
         var yPosition = 0;
@@ -133,8 +132,12 @@ function startCapture() {
 
 
         var func = setInterval(function() {
-            if(imageLoadCount == blockArea){
-                for(var i = 0 ;i < blockArea; i++){
+
+            if(imageLoadCount == blockArea) {
+                var canvas = document.getElementById("canvas");
+                var ctx = canvas.getContext("2d");
+
+                for(var i = 0 ; i < blockArea; i++) {
 
                     if (i % blockWidth == 0 && i != 0) {
                         xPosition = 0;
@@ -142,14 +145,13 @@ function startCapture() {
                     }
                         
                     var img = imgArray[i];  
+
+                    ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500);
                     
                     xPosition += 500;   
                     progressValue += progressWidth;
                     progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
                     progress.innerText = parseFloat(progressValue).toFixed(2) + "%";    
-        
-                    ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500);
-        
                 }
             
 
