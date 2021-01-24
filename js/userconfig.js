@@ -68,14 +68,6 @@ function startCapture(){
         
         var blockWidth = (zoomLevel * 2) + 1;
         var blockArea = blockWidth * blockWidth;
-        
-        var canvas = document.getElementById("canvas");
-        canvas.width = Number(blockWidth) * 500;
-        canvas.height = Number(blockWidth) * 500;
-        var ctx = canvas.getContext("2d");
-
-        var xPosition = 0;
-        var yPosition = 0;
             
         var moveXPosition = 0.00268;
         var moveYPostion = 0.002125;
@@ -114,6 +106,10 @@ function startCapture(){
                         progressValue += progressWidth;
                         progress.style.width = progressValue + "%";
                         progress.innerText = progressValue + "%";
+
+                        if(imageLoadCount == blockArea){
+                            mergeImage(progressValue, imgArray, blockArea);
+                        }
                         
                     }
                 })(order);
@@ -127,67 +123,71 @@ function startCapture(){
             Lat -= moveYPostion;
         
         }
-            
         
-          
-        var func = setInterval(function(){
-            if(imageLoadCount == blockArea){
-                document.getElementById("resultStatus").innerText = "사진 병합중입니다. 완료 문구를 기다려주세요";
+    }
+}
+
+
+function mergeImage(progressValue, imgArray, blockArea){
+        
+    var canvas = document.getElementById("canvas");
+    canvas.width = Number(blockWidth) * 500;
+    canvas.height = Number(blockWidth) * 500;
+
+    var ctx = canvas.getContext("2d");
+
+    var xPosition = 0;
+    var yPosition = 0;
+
+    var progressWidth = 100 / (blockArea * 2);
+    var progress = document.getElementById("progressBar");
+
+    document.getElementById("resultStatus").innerText = "사진 병합중입니다. 완료 문구를 기다려주세요";
      
 
-                for(var i = 0; i < blockArea; i++){
-                    
-                    if(i % blockWidth == 0 && i != 0) {
-                        xPosition = 0;
-                        yPosition += 500;
-                    }
+    for(var i = 0; i < blockArea; i++){
+        
+        if(i % blockWidth == 0 && i != 0) {
+            xPosition = 0;
+            yPosition += 500;
+        }
 
-                    (function(i){
-                        console.log(progressValue);
-                        progressValue += progressWidth;
-                        progress.style.width = progressValue + "%";
-                        progress.innerText = progressValue + "%";
-                    })(i);
-                    
-                    var img =  imgArray[i];
+        var img =  imgArray[i];
 
-                    ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500); 
-                    xPosition += 500;
-                   
-
-                }
-
-                if(url != ""){
-                    URL.revokeObjectURL(url);
-                }
-
- 
-                canvas.toBlob(function(blob) {
-
-                    var newImg = document.getElementById("resultImage");                    
-                    url = URL.createObjectURL(blob);
-                  
-                    newImg.onload = function() {
-                        var status = document.getElementById("resultStatus");
-                        status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
-
-                        var tag = document.getElementById("resultTag");
-                        tag.href = url;
-                        
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        canvas.width = 0;
-                        canvas.height = 0;
-                    };
-
-                    newImg.src = url;
-                    
-                }, 'image/jpeg');
-
-                clearInterval(func);
-            }
-        }, 1000);
-
+        ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500); 
+        xPosition += 500;
+       
+        progressValue += progressWidth;
+        progress.style.width = progressValue + "%";
+        progress.innerText = progressValue + "%";
     }
+
+    if(url != ""){
+        URL.revokeObjectURL(url);
+    }
+
+
+    canvas.toBlob(function(blob) {
+
+        var newImg = document.getElementById("resultImage");                    
+        url = URL.createObjectURL(blob);
+      
+        newImg.onload = function() {
+            var status = document.getElementById("resultStatus");
+            status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
+
+            var tag = document.getElementById("resultTag");
+            tag.href = url;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.width = 0;
+            canvas.height = 0;
+        };
+
+        newImg.src = url;
+        
+    }, 'image/jpeg');
+
 }
 
 
