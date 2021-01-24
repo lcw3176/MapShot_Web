@@ -61,10 +61,7 @@ var url;
 function startCapture() {
 
     if (checkValue()) {
-        var canvas = document.getElementById("canvas");
-        canvas.width = Number(blockWidth) * 500;
-        canvas.height = Number(blockWidth) * 500;
-        var ctx = canvas.getContext("2d");
+
 
         var xPosition = 0;
         var yPosition = 0;
@@ -74,6 +71,11 @@ function startCapture() {
 
         var blockWidth = (zoomLevel * 2) + 1;
         var blockArea = blockWidth * blockWidth;
+
+        var canvas = document.getElementById("canvas");
+        canvas.width = Number(blockWidth) * 500;
+        canvas.height = Number(blockWidth) * 500;
+        var ctx = canvas.getContext("2d");
 
         var moveXPosition = 0.00268;
         var moveYPostion = 0.002125;
@@ -142,8 +144,7 @@ function startCapture() {
         var func = setInterval(function() {
 
             if(imageLoadCount == blockArea) {
-                var canvas = document.getElementById("canvas");
-                
+
                 canvas.toBlob(function (blob) {
 
                     var newImg = document.getElementById("resultImage");
