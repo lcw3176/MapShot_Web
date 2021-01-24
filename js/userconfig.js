@@ -38,7 +38,7 @@ function setBaseMap(userBaseMap){
 }
 
 function checkValue(){
-    if(!(zoomLevel >= 5 && zoomLevel <= 7)){
+    if(!(zoomLevel >= 5 && zoomLevel <= 8)){
         alert("잘못된 배율값입니다. 지속된다면 새로고침을 해주세요");
         return false;
     }
@@ -59,7 +59,7 @@ function checkValue(){
 var url;
 
 function startCapture(){
-    if(isMobile){zoomLevel = 5;}
+    // if(isMobile){zoomLevel = 5;}
 
     if(checkValue()){
         
@@ -108,6 +108,7 @@ function startCapture(){
                         progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
 
                         if(imageLoadCount == blockArea){
+                            document.getElementById("resultStatus").innerText = "사진 병합중입니다. 완료 문구를 기다려주세요";
                             mergeImage(progressValue, imgArray, blockWidth);
                         }
                         
@@ -143,8 +144,6 @@ function mergeImage(progressValue, imgArray, blockWidth){
     var progressWidth = 100 / (blockArea * 2);
     var progress = document.getElementById("progressBar");
 
-    document.getElementById("resultStatus").innerText = "사진 병합중입니다. 완료 문구를 기다려주세요";
-     
 
     for(var i = 0; i < blockArea; i++){
         
@@ -183,6 +182,9 @@ function mergeImage(progressValue, imgArray, blockWidth){
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             canvas.width = 0;
             canvas.height = 0;
+
+            progress.style.width = "100%";
+            progress.innerText = "100%";
         };
 
         newImg.src = url;
