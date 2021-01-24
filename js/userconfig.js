@@ -64,7 +64,10 @@ function startCapture() {
         var canvas = document.getElementById("canvas");
         canvas.width = Number(blockWidth) * 500;
         canvas.height = Number(blockWidth) * 500;
+        var ctx = canvas.getContext("2d");
 
+        var xPosition = 0;
+        var yPosition = 0;
     
         var centerLat = document.getElementById("lat").value;
         var centerLng = document.getElementById("lng").value;
