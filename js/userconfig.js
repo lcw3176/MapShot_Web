@@ -64,6 +64,7 @@ function startCapture() {
         var canvas = document.getElementById("canvas");
         canvas.width = Number(blockWidth) * 500;
         canvas.height = Number(blockWidth) * 500;
+        var ctx = canvas.getContext("2d");
 
         var xPosition = 0;
         var yPosition = 0;
@@ -81,9 +82,8 @@ function startCapture() {
     
         var order = 0;
         var imageLoadCount = 0;
-        var imgArray = new Array();
 
-        var progressWidth = 100 / (blockArea * 2);
+        var progressWidth = 100 / blockArea;
         var progressValue = 0;
         var progress = document.getElementById("progressBar");
         progress.style.width = progressValue + "%";
@@ -108,20 +108,27 @@ function startCapture() {
                 var tag = new Image();
                 tag.crossOrigin = "*";
                 tag.src = tempSrc;
+                
+
                 (function (order) {
                     var _order = order;
                     tag.onload = function () {
-                        imgArray[_order] = this;
-                        imageLoadCount++;
+                        xPosition = (_order % blockWidth) * 500;
+                        yPosition = parseInt(_order / blockWidth) * 500;                    
 
+                        ctx.drawImage(this, 0, 0, this.width, this.height, xPosition, yPosition, 500, 500);
+                        
                         progressValue += progressWidth;
                         progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
                         progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
+
+                        imageLoadCount++;
                     }
                 })(order);
 
-                Lng += Number(moveXPosition);
                 order++;
+                Lng += Number(moveXPosition);
+
 
             }
 
@@ -134,26 +141,6 @@ function startCapture() {
         var func = setInterval(function() {
 
             if(imageLoadCount == blockArea) {
-                var canvas = document.getElementById("canvas");
-                var ctx = canvas.getContext("2d");
-
-                for(var i = 0 ; i < blockArea; i++) {
-
-                    if (i % blockWidth == 0 && i != 0) {
-                        xPosition = 0;
-                        yPosition += 500;
-                    }
-                        
-                    var img = imgArray[i];  
-
-                    ctx.drawImage(img, 0, 0, img.width, img.height, xPosition, yPosition, 500, 500);
-                    
-                    xPosition += 500;   
-                    progressValue += progressWidth;
-                    progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
-                    progress.innerText = parseFloat(progressValue).toFixed(2) + "%";    
-                }
-            
 
                 canvas.toBlob(function (blob) {
                     
