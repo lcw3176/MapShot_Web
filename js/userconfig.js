@@ -142,9 +142,10 @@ function startCapture() {
         var func = setInterval(function() {
 
             if(imageLoadCount == blockArea) {
-                console.log(canvas);
+                var canvas = document.getElementById("canvas");
+                
                 canvas.toBlob(function (blob) {
-                    console.log(blob);
+
                     var newImg = document.getElementById("resultImage");
                     url = URL.createObjectURL(blob);
                 
