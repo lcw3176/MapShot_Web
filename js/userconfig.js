@@ -10,11 +10,11 @@ function MapTypeController() {
 
     this.setKakao = function (type) {
         if (type == 1) {
-            mapType = kakao.maps.MapTypeId.ROADMAP;
+            mapTypeKakao = kakao.maps.MapTypeId.ROADMAP;
         } else if (type == 2) {
-            mapType = kakao.maps.MapTypeId.SKYVIEW;
+            mapTypeKakao = kakao.maps.MapTypeId.SKYVIEW;
         } else if (type == 3) {
-            mapType = kakao.maps.MapTypeId.HYBRID;
+            mapTypeKakao = kakao.maps.MapTypeId.HYBRID;
         } else {
             return;
         }
