@@ -1,5 +1,11 @@
+
+const zoomLevel = new ZoomController();
+const mapController = new MapTypeController();
+
+
+
 function MapTypeController() {
-    var mapTypeKakao = kako.maps.MapTypeId.ROADMAP;
+    var mapTypeKakao = kakao.maps.MapTypeId.ROADMAP;
     var mapTypeNaver = "basic";
 
     this.setKakao = function (type) {
@@ -53,9 +59,6 @@ function ZoomController() {
     };
 }
 
-
-const zoomLevel = new ZoomController();
-const mapController = new MapTypeController();
 
 
 var staticMapContainer = document.getElementById('staticMap');
