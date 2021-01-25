@@ -92,7 +92,7 @@ function startCapture() {
         var progress = document.getElementById("progressBar");
         progress.style.width = progressValue + "%";
 
-        document.getElementById("resultStatus").innerText = "사진 수집중입니다.";
+        document.getElementById("resultStatus").innerText = "사진 수집중입니다. 완료 문구를 기다려 주세요.";
 
         if (url != "") {
             URL.revokeObjectURL(url);
