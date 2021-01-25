@@ -19,7 +19,7 @@ function MapTypeController() {
             return;
         }
     
-        exStaticMap.setMapTypeId(baseMap);
+        exStaticMap.setMapTypeId(mapTypeKakao);
     }
 
     this.getKakao = function () {
