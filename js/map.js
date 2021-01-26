@@ -11,7 +11,8 @@ var ps;
 var infowindow;
 var geocoder;
 var marker;
-var rectangle
+var rectangle;
+
 
 
 window.onload = function(){
@@ -39,17 +40,7 @@ window.onload = function(){
     marker = new kakao.maps.Marker(); // 클릭한 위치를 표시할 마커입니다
 
 
-    // 지도에 표시할 사각형을 생성합니다
-    rectangle = new kakao.maps.Rectangle({
-      bounds: null, // 그려질 사각형의 영역정보입니다
-      strokeWeight: 4, // 선의 두께입니다
-      strokeColor: '#FF3DE5', // 선의 색깔입니다
-      strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-      strokeStyle: 'shortdashdot', // 선의 스타일입니다
-      fillColor: '#FF8AEF', // 채우기 색깔입니다
-      fillOpacity: 0.8 // 채우기 불투명도 입니다
-    });
-   
+
 
     // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
     kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
@@ -77,9 +68,19 @@ window.onload = function(){
                 latInput.value = latlng.getLat();
                 lngInput.value = latlng.getLng();
 
-
-                rectangle.setMap(null);
-                rectangle.bounds = getRectangleBounds();
+                if(rectangle != ''){
+                    rectangle.setMap(null);
+                }
+                
+                rectangle = new kakao.maps.Rectangle({
+                    bounds: getRectangleBounds(), // 그려질 사각형의 영역정보입니다
+                    strokeWeight: 4, // 선의 두께입니다
+                    strokeColor: '#FF3DE5', // 선의 색깔입니다
+                    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                    strokeStyle: 'shortdashdot', // 선의 스타일입니다
+                    fillColor: '#FF8AEF', // 채우기 색깔입니다
+                    fillOpacity: 0.8 // 채우기 불투명도 입니다
+                  });
                 rectangle.setMap(map);  
             }   
         });
