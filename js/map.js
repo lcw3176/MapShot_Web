@@ -11,8 +11,7 @@ var ps;
 var infowindow;
 var geocoder;
 var marker;
-var polyline;
-
+var rectangle
 
 
 window.onload = function(){
@@ -39,16 +38,19 @@ window.onload = function(){
 
     marker = new kakao.maps.Marker(); // 클릭한 위치를 표시할 마커입니다
 
-                    // 지도에 표시할 선을 생성합니다
-    polyline = new kakao.maps.Polyline({
-        path: null, // 선을 구성하는 좌표배열 입니다
-        strokeWeight: 5, // 선의 두께 입니다
-        strokeColor: '#FFAE00', // 선의 색깔입니다
-        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-        strokeStyle: 'solid' // 선의 스타일입니다
-    });
 
-    
+    // 지도에 표시할 사각형을 생성합니다
+    rectangle = new kakao.maps.Rectangle({
+      bounds: null, // 그려질 사각형의 영역정보입니다
+      strokeWeight: 4, // 선의 두께입니다
+      strokeColor: '#FF3DE5', // 선의 색깔입니다
+      strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+      strokeStyle: 'shortdashdot', // 선의 스타일입니다
+      fillColor: '#FF8AEF', // 채우기 색깔입니다
+      fillOpacity: 0.8 // 채우기 불투명도 입니다
+    });
+   
+
     // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
     kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
         searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
@@ -76,14 +78,9 @@ window.onload = function(){
                 lngInput.value = latlng.getLng();
 
 
-                polyline.setMap(null);
-
-                // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
-                var linePath = getLinePathFromLevel();
-                polyline.path = linePath;
-
-                // 지도에 선을 표시합니다 
-                polyline.setMap(map);  
+                rectangle.setMap(null);
+                rectangle.bounds = getRectangleBounds();
+                rectangle.setMap(map);  
             }   
         });
     });
@@ -98,7 +95,7 @@ function displayCenterInfo(){
 
 }
 
-function getLinePathFromLevel(){
+function getRectangleBounds(){
 
     var centerLat = document.getElementById("lat").value;
     var centerLng = document.getElementById("lng").value;
@@ -116,13 +113,15 @@ function getLinePathFromLevel(){
     
     var blockWidth = (zoomLevel.get() * 2) + 1;
 
-    var linePath = [
-        new kakao.maps.LatLng(Lat + (moveYPostion / 2), Lng - (moveXPosition / 2)), // nw
-        new kakao.maps.LatLng(Lat + (moveYPostion / 2), Lng + (moveXPosition * blockWidth) + (moveXPosition / 2)), // ne
-        new kakao.maps.LatLng(Lat + (moveYPostion * blockWidth) + (moveYPostion / 2), Lng - (moveXPosition / 2))  // sw
-    ];
+    var sw =  new kakao.maps.LatLng(Lat + (moveYPostion * blockWidth) + (moveYPostion / 2), Lng - (moveXPosition / 2));  // sw
+    var ne = new kakao.maps.LatLng(Lat + (moveYPostion / 2), Lng + (moveXPosition * blockWidth) + (moveXPosition / 2)), // ne
 
-    return linePath;
+    // 사각형을 구성하는 영역정보를 생성합니다
+    // 사각형을 생성할 때 영역정보는 LatLngBounds 객체로 넘겨줘야 합니다
+    var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);
+
+
+    return rectangleBounds;
 }
 
 function searchAddrFromCoords(coords, callback) {
