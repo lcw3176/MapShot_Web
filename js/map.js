@@ -94,6 +94,10 @@ window.onload = function(){
     });
 }
 
+function displayCenterInfo(){
+
+}
+
 function getLinePathFromLevel(){
 
     var centerLat = document.getElementById("lat").value;
