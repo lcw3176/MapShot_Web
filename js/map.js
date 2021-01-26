@@ -114,7 +114,7 @@ function getRectangleBounds(){
     var blockWidth = (zoomLevel.get() * 2) + 1;
 
     var sw =  new kakao.maps.LatLng(Lat + (moveYPostion * blockWidth) + (moveYPostion / 2), Lng - (moveXPosition / 2));  // sw
-    var ne = new kakao.maps.LatLng(Lat + (moveYPostion / 2), Lng + (moveXPosition * blockWidth) + (moveXPosition / 2)), // ne
+    var ne = new kakao.maps.LatLng(Lat + (moveYPostion / 2), Lng + (moveXPosition * blockWidth) + (moveXPosition / 2)); // ne
 
     // 사각형을 구성하는 영역정보를 생성합니다
     // 사각형을 생성할 때 영역정보는 LatLngBounds 객체로 넘겨줘야 합니다
