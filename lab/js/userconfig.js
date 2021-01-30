@@ -158,11 +158,12 @@ function getHelpLine(x, y){
     var neXMove = Lat + (moveYPostion / 2);
     var neYMove = Lng + (moveXPosition * blockWidth) + (moveXPosition / 2);
 
-    swXMove *= (x + 1);
-    swYMove *= (y + 1);
+    swXMove = swXMove * (x + 1);
+    swYMove = swYMove * (y + 1);
 
-    neXMove *= (x + 1);
-    neYMove *= (y + 1);
+    neXMove = neXMove * (x + 1);
+    neYMove = neYMove * (y + 1);
+    
     var sw = new kakao.maps.LatLng(swXMove, swYMove); 
     var ne = new kakao.maps.LatLng(neXMove, neYMove);
 
