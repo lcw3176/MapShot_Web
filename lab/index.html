@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>MapShot 실험실</title>
+        <meta name="naver-site-verification" content="d90ed9db7288556a55f125cba6304e0b6ff97d93" />
+  </head>
+
+    <body>
+
+        <div class="jumbotron" style="background-color: darkslategray; color: white;">
+            <div class="container">
+                <h1>MapShot</h1>
+                <h4>확대해도 깨지지 않는, 넓은 반경의 고화질 위성사진 조립</h4>
+                <h5>문의: chanwoo3176@naver.com</h5>
+            </div>
+        </div>
+
+          
+          <div class="panel panel-default" style="width: 80%; margin: 0 auto;">
+            <div class="panel-heading">
+              <h3 class="panel-title">위치 검색</h3>
+            </div>
+            <div class="panel-body">
+                <div class="map_wrap">
+                    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+                
+                    <div id="menu_wrap" class="bg_white">
+                        <div class="option">
+                            <div>
+                                <form onsubmit="searchPlaces(); return false;">
+                                    키워드 : <input type="text" id="keyword" size="15"> 
+                                    <button type="submit">검색하기</button> 
+                                </form>
+                            </div>
+                        </div>
+                        <hr>
+                        <ul id="placesList"></ul>
+                        <div id="pagination"></div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default" style="width: 50%; margin:0 auto;">
+            <div class="panel-heading">1. 중심점 설정</div>
+            <div class="panel-body">
+                <p><strong>지도의 중심 좌표로 설정될 위치입니다. 지도의 원하는 위치를 클릭해 설정을 마무리해주세요.</strong></p>
+                <p><strong>좌표가 설정되면 캡쳐될 영역이 보라색으로 표시되며, </strong></p>
+                <p><strong>배율 변경시 지도를 다시 클릭하면 설정된 값에 따라 영역이 새로 그려집니다.</strong></p>
+                <div class="row">
+                    <div class="col-lg-6">
+                      <div class="input-group">
+                        <span class="input-group-addon">위도</span>
+                        <input type="text" class="form-control" id="lat">    
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="input-group">
+                        <span class="input-group-addon">경도</span>
+                        <input type="text" class="form-control" id="lng">
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default" style="width: 50%; margin:0 auto;">
+            <div class="panel-heading">2. 배율 설정</div>
+            <div class="panel-body">
+                <p><strong>!대략적인 수치입니다. 실제 치수와 다를수 있습니다! ( 기본 값: 1단계 )</strong></p>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                	<label class="btn btn-default" style="margin:10px;" onclick="setZoomLevel(0x5);">
+                		<input type="radio" name="jb-radio" id="jb-radio-1"> 1단계 ( 반경 1.0km )
+                	</label>
+                	<label class="btn btn-default" style="margin:10px;"  onclick="setZoomLevel(0x6);">
+                		<input type="radio" name="jb-radio" id="jb-radio-2"> 2단계 ( 반경 1.3km )
+                	</label>
+                	<label class="btn btn-default" style="margin:10px;" onclick="setZoomLevel(0x7);">
+                		<input type="radio" name="jb-radio" id="jb-radio-3" > 3단계 ( 반경 1.6km )
+                  </label>
+                  <label class="btn btn-default" style="margin:10px;" onclick="setZoomLevel(0x8);">
+                      <input type="radio" name="jb-radio" id="jb-radio-3" > 4단계 ( 반경 2km )
+                  </label>
+                </div>  
+                
+                <br>
+                <br>
+                <p><strong>보조선 설정</strong></p>
+                <div class="col-lg-3">
+                  <div class="input-group">
+                    <div class="input-group-btn">
+                      <button type="button" 
+                             class="btn btn-default dropdown-toggle" 
+                             data-toggle="dropdown" 
+                             aria-expanded="false"
+                             value="X">  
+                        <span class="caret"></span>
+                      </button>
+                      
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a onclick="setLine(0);">X</a></li>
+                        <li><a onclick="setLine(1);">5km</a></li>
+                        <li><a onclick="setLine(2);">10km</a></li>
+                      </ul>
+                      
+                    </div>
+                    <input type="text" id="lineType" class="form-control" readonly="true" value="X">
+                  </div>
+                </div>
+            </div>
+          </div>
+         
+          <div class="panel panel-default" style="width: 50%; margin:0 auto;">
+            <div class="panel-heading">3. 지도 종류 설정</div>
+            <div class="panel-body">
+              <p><strong>기본 값: 일반 지도</strong></p>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                	<label class="btn btn-default" style="margin:10px;" onclick="setBaseMap(0x1);">
+                		<input type="radio" name="jb-radio" id="jb-radio-1"> 일반 지도 
+                	</label>
+                	<label class="btn btn-default" style="margin:10px;" onclick="setBaseMap(0x2);">
+                		<input type="radio" name="jb-radio" id="jb-radio-2"> 스카이 뷰 (위성 지도)
+                	</label>
+                	<label class="btn btn-default" style="margin:10px;" onclick="setBaseMap(0x3);">
+                		<input type="radio" name="jb-radio" id="jb-radio-3"> 하이브리드 (위성 지도 + 지형지물 명칭)
+                    </label>
+                </div>  
+
+                <div id="staticMap" style="width:100px;height:100px;"></div>
+             </div> 
+          </div>
+
+
+          <div class="panel panel-default" style="width: 50%; margin:0 auto;">
+            <div class="panel-heading">4. 조립 시작</div>
+            <div class="panel-body">
+                <button class="btn btn-success" onclick="startCapture();">시작하기</button>
+            </div>
+          </div>
+
+          <div class="panel panel-default" style="width: 50%; margin:0 auto;">
+            <div class="panel-heading">5. 결과</div>
+            <div class="panel-body">
+                <p><strong id="resultStatus"></strong></p>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" id="progressBar">                    
+                  </div>
+                </div>
+                <a id="resultTag" download="mapshot_result.jpg">
+                    mapshot_result.jpg
+                    <img id="resultImage" style="display: none;">
+                </a>
+            </div>
+          </div>
+          
+          <canvas id="canvas" style="display: none;"></canvas>
+          
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf6334d96f548310595c5643cb199334&libraries=services"></script>
+    <link rel="stylesheet" href="css/map.css">
+    <script src="js/map.js"></script>
+    <script src="js/userconfig.js"></script>
+</html>
