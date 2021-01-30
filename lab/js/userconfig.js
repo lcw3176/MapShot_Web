@@ -103,7 +103,7 @@ function setLine(level){
     } else if(lineLevel.get() == 2){
         document.getElementById("lineType").value = "10km";
     }
-
+  
 }
 
 
@@ -130,14 +130,18 @@ function getHelpLine(x, y){
     var centerNeY = Lat + (moveYPostion / 2);
     var centerNeX = Lng + (moveXPosition * blockWidth) + (moveXPosition / 2);
 
-    var xWidth = centerSwX - centerNeX;
-    var yWidth = centerNeY - centerSwY;
+    centerSwY = centerSwY + ((y - 2) * (moveYPostion * blockWidth) - (moveYPostion / 2));
+    centerSwX = centerSwX + ((x - 2) *  (Lng - (moveXPosition / 2)));
+    centerNeY = centerNeY + ((y - 2) *  (Lng - (moveXPosition / 2)));
+    centerNeX = centerNeX + ((x - 2) * (moveYPostion * blockWidth) - (moveYPostion / 2));
+    // var xWidth = centerSwX - centerNeX;
+    // var yWidth = centerNeY - centerSwY;
     
-    xWidth = xWidth * (x - 2);
-    yWidth = yWidth * (y - 2);
+    // xWidth = xWidth * (x - 2);
+    // yWidth = yWidth * (y - 2);
 
-    var sw = new kakao.maps.LatLng(centerSwY + yWidth, centerSwX + xWidth); 
-    var ne = new kakao.maps.LatLng(centerNeY + yWidth, centerNeX + xWidth);
+    var sw = new kakao.maps.LatLng(centerSwY, centerSwX); 
+    var ne = new kakao.maps.LatLng(centerNeY, centerNeX);
   
     // 사각형을 구성하는 영역정보를 생성합니다
     // 사각형을 생성할 때 영역정보는 LatLngBounds 객체로 넘겨줘야 합니다
