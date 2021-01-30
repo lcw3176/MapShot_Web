@@ -121,14 +121,24 @@ function getHelpLine(x, y){
     var moveYPosition = 0.002125 + fixValue;
 
     var blockWidth = (zoomLevel.get() * 2) + 1;
-
-    var cornerSwX = Number(centerLng) + ((moveXPosition * blockWidth * 2) * (x - 2)) + (moveXPosition * blockWidth / 2);
-    var cornerSwY = Number(centerLat) - ((moveYPosition * blockWidth) * (y - 1)) - (moveYPosition * blockWidth / 2);
-    var cornerNeX = Number(centerLng) + ((moveXPosition * blockWidth) * (x - 1)) + (moveXPosition * blockWidth / 2);
-    var cornerNeY = Number(centerLat) - ((moveYPosition * blockWidth * 2) * (y - 2)) - (moveYPosition * blockWidth / 2);
     
-    var sw = new kakao.maps.LatLng(cornerSwY, cornerSwX); 
-    var ne = new kakao.maps.LatLng(cornerNeY, cornerNeX);
+    var tempCenterLat = Number(centerLat) - ((moveYPosition * blockWidth) * (y - 1));
+    var tempCenterLng = Number(centerLng) + ((moveXPosition * blockWidth) * (x - 1));
+
+    moveYPosition = 0.002125 + ((fixYvalue - tempCenterLat) * correctFix);
+    
+    var sw = new kakao.maps.LatLng(
+        tempCenterLat - (moveYPosition * parseInt(blockWidth / 2)), 
+        tempCenterLng - (moveXPosition * parseInt(blockWidth / 2))
+        ); 
+
+    var ne = new kakao.maps.LatLng(
+        tempCenterLat + (moveYPosition * parseInt(blockWidth / 2)),
+        tempCenterLng + (moveXPosition * parseInt(blockWidth / 2))
+        );
+
+    // var sw = new kakao.maps.LatLng(cornerSwY, cornerSwX); 
+    // var ne = new kakao.maps.LatLng(cornerNeY, cornerNeX);
   
     // 사각형을 구성하는 영역정보를 생성합니다
     // 사각형을 생성할 때 영역정보는 LatLngBounds 객체로 넘겨줘야 합니다
