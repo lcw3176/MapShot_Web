@@ -95,7 +95,14 @@ function setBaseMap(userBaseMap) {
 function setLine(level){
     lineLevel.set(level);
 
-    document.getElementById("lineType").value = lineLevel.get();
+    if(lineLevel.get() == 0){
+        document.getElementById("lineType").value = "X";
+    } else if(lineLevel.get() == 1){
+        document.getElementById("lineType").value = "5km";
+    } else if(lineLevel.get() == 2){
+        document.getElementById("lineType").value = "10km";
+    }
+     
 }
 
 
