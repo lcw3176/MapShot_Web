@@ -88,7 +88,7 @@ window.onload = function(){
                         var helpRectangle = new kakao.maps.Rectangle({
                             bounds: getHelpLine(i, j), // 그려질 사각형의 영역정보입니다
                             strokeWeight: 4, // 선의 두께입니다
-                            strokeColor: '#FF3DE5', // 선의 색깔입니다
+                            strokeColor: '#000', // 선의 색깔입니다
                             strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                             strokeStyle: 'shortdashdot', // 선의 스타일입니다
                             fillColor: '#FF8AEF', // 채우기 색깔입니다
