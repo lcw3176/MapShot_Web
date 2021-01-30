@@ -104,33 +104,6 @@ function setLine(level){
         document.getElementById("lineType").value = "10km";
     }
 
-    if(recArray.length != 0){
-        for(var i = 0; i < recArray.length; i++){
-            recArray.pop().setMap(null);
-        }
-    }
-
-    for(var i = 1; i <= 3; i++){
-        for(var j = 1; j <= 3; j++){
-            if(i == 2 && j == 2){
-                continue;
-            }
-
-            var helpRectangle = new kakao.maps.Rectangle({
-                bounds: getHelpLine(i, j), // 그려질 사각형의 영역정보입니다
-                strokeWeight: 4, // 선의 두께입니다
-                strokeColor: '#FF3DE5', // 선의 색깔입니다
-                strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-                strokeStyle: 'shortdashdot', // 선의 스타일입니다
-                fillColor: '#FF8AEF', // 채우기 색깔입니다
-                fillOpacity: 0.1 // 채우기 불투명도 입니다
-            });
-            // 지도에 사각형을 표시합니다
-            helpRectangle.setMap(map);
-            recArray.push(helpRectangle);
-        }
-    }
-  
 }
 
 
@@ -151,16 +124,21 @@ function getHelpLine(x, y){
 
     
     var blockWidth = zoomLevel.get() * 2;
+    var centerSwY = Lat - (moveYPostion * blockWidth) - (moveYPostion / 2);
+    var centerSwX = Lng - (moveXPosition / 2);
 
-    var swXMove = Lat - (((moveYPostion * blockWidth) - (moveYPostion / 2)) * (x + 1));
-    var swYMove = Lng - ((moveXPosition / 2) * (y + 1));
+    var centerNeY = Lat + (moveYPostion / 2);
+    var centerNeX = Lng + (moveXPosition * blockWidth) + (moveXPosition / 2);
 
-    var neXMove = Lat + ((moveYPostion / 2) * (x + 1));
-    var neYMove = Lng + (((moveXPosition * blockWidth) + (moveXPosition / 2)) * (y + 1));
+    var xWidth = centerSwX - centerNeX;
+    var yWidth = centerNeY - centerSwY;
+    
+    xWidth = xWidth * (x - 2);
+    yWidth = yWidth * (y - 2);
 
-    var sw = new kakao.maps.LatLng(swXMove, swYMove); 
-    var ne = new kakao.maps.LatLng(neXMove, neYMove);
-
+    var sw = new kakao.maps.LatLng(centerSwY + yWidth, centerSwX + xWidth); 
+    var ne = new kakao.maps.LatLng(centerNeY + yWidth, centerNeX + xWidth);
+  
     // 사각형을 구성하는 영역정보를 생성합니다
     // 사각형을 생성할 때 영역정보는 LatLngBounds 객체로 넘겨줘야 합니다
     var rectangleBounds = new kakao.maps.LatLngBounds(sw, ne);

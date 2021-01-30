@@ -70,6 +70,33 @@ window.onload = function(){
             
                 // 지도에 사각형을 표시합니다
                 rectangle.setMap(map);
+                
+                if(recArray.length != 0){
+                    for(var i = 0; i < recArray.length; i++){
+                        recArray.pop().setMap(null);
+                    }
+                }
+            
+                for(var i = 1; i <= 3; i++){
+                    for(var j = 1; j <= 3; j++){
+                        if(i == 2 && j == 2){
+                            continue;
+                        }
+            
+                        var helpRectangle = new kakao.maps.Rectangle({
+                            bounds: getHelpLine(i, j), // 그려질 사각형의 영역정보입니다
+                            strokeWeight: 4, // 선의 두께입니다
+                            strokeColor: '#FF3DE5', // 선의 색깔입니다
+                            strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                            strokeStyle: 'shortdashdot', // 선의 스타일입니다
+                            fillColor: '#FF8AEF', // 채우기 색깔입니다
+                            fillOpacity: 0.1 // 채우기 불투명도 입니다
+                        });
+                        // 지도에 사각형을 표시합니다
+                        helpRectangle.setMap(map);
+                        recArray.push(helpRectangle);
+                    }
+                }
 
         searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
             if (status === kakao.maps.services.Status.OK) {
