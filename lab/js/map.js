@@ -73,8 +73,10 @@ window.onload = function(){
                 
                 if(recArray.length != 0){
                     for(var i = 0; i < recArray.length; i++){
-                        recArray.pop().setMap(null);
+                        recArray[i].setMap(null);
                     }
+
+                    recArray.length = 0;
                 }
             
                 for(var i = 1; i <= 3; i++){
