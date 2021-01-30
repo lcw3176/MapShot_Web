@@ -132,8 +132,8 @@ function getHelpLine(x, y){
 
     centerSwY = centerSwY + ((y - 2) * (moveYPostion * blockWidth) - (moveYPostion / 2));
     centerSwX = centerSwX + ((x - 2) *  (Lng - (moveXPosition / 2)));
-    centerNeY = centerNeY - ((y - 2) *  (Lng - (moveXPosition / 2)));
-    centerNeX = centerNeX - ((x - 2) * (moveYPostion * blockWidth) - (moveYPostion / 2));
+    centerNeY = centerNeY + ((y - 2) *  (Lat - (moveYPostion / 2)));
+    centerNeX = centerNeX + ((x - 2) * (moveXPosition * blockWidth) - (moveXPosition / 2));
     // var xWidth = centerSwX - centerNeX;
     // var yWidth = centerNeY - centerSwY;
     
