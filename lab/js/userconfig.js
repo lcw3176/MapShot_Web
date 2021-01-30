@@ -126,13 +126,13 @@ function getHelpLine(x, y){
     var tempCenterLng = Number(centerLng) + ((moveXPosition * blockWidth) * (x - 1));
     
     var sw = new kakao.maps.LatLng(
-        tempCenterLat - (moveYPosition * parseInt(blockWidth / 2)), 
-        tempCenterLng - (moveXPosition * parseInt(blockWidth / 2))
+        tempCenterLat - (moveYPosition * parseInt(blockWidth / 2)) - (moveYPosition / 2), 
+        tempCenterLng - (moveXPosition * parseInt(blockWidth / 2)) + (moveXPosition / 2)
         ); 
 
     var ne = new kakao.maps.LatLng(
-        tempCenterLat + (moveYPosition * parseInt(blockWidth / 2)),
-        tempCenterLng + (moveXPosition * parseInt(blockWidth / 2))
+        tempCenterLat + (moveYPosition * parseInt(blockWidth / 2)) + (moveYPosition / 2),
+        tempCenterLng + (moveXPosition * parseInt(blockWidth / 2)) + (moveXPosition / 2)
         );
 
     // var sw = new kakao.maps.LatLng(cornerSwY, cornerSwX); 
