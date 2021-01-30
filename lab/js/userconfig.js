@@ -130,11 +130,11 @@ function getHelpLine(x, y){
     var centerNeY = Lat + (moveYPostion / 2);
     var centerNeX = Lng + (moveXPosition * blockWidth) + (moveXPosition / 2);
 
-    centerSwY = centerSwY - ((moveYPostion * blockWidth) - (moveYPostion / 2)) * (y - 2);
-    centerSwX = centerSwX - (centerSwX - (moveXPosition / 2) * (x - 2));
+    centerSwY = centerSwY - ((moveYPostion * blockWidth) - (moveYPostion / 2) * (y - 2));
+    centerSwX = centerSwX - ((moveXPosition / 2) * (x - 2));
 
     centerNeY = centerNeY + ((moveYPostion / 2) * (y - 2));
-    centerNeX = centerNeX + ((moveXPosition * blockWidth) + (moveXPosition / 2)) * (x - 2);
+    centerNeX = centerNeX + ((moveXPosition * blockWidth) + (moveXPosition / 2) * (x - 2));
     
     var sw = new kakao.maps.LatLng(centerSwY, centerSwX); 
     var ne = new kakao.maps.LatLng(centerNeY, centerNeX);
