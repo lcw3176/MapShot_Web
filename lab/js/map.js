@@ -138,8 +138,11 @@ function getRectangleBounds(){
     var fixYvalue = 37.5668;
     var correctFix = 0.00002833;
     var fixValue = (fixYvalue - centerLat) * correctFix;
-
-
+    // 129.1214814821591  0.008
+    // var fixXvalue = 126.98342985255253;  
+    // var correctXFix = 
+    // var XfixValue = (fixXvalue - centerLng) * correctXFix;
+    
     var moveXPosition = 0.00268;
     var moveYPostion = 0.002125 + fixValue;
     var Lat = Number(centerLat) + (Number(moveYPostion) * Number(zoomLevel.get()));

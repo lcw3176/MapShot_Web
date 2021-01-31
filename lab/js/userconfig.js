@@ -109,33 +109,53 @@ function setLine(level){
 
 function getHelpLine(x, y){
 
-    var centerLat = document.getElementById("lat").value;
-    var centerLng = document.getElementById("lng").value;
+    var width = rectangle.getBounds().oa - rectangle.getBounds().ha;
+    var height = rectangle.getBounds().pa - rectangle.getBounds().qa;
 
-    var fixYvalue = 37.5668;
-    var correctFix = 0.00002833;
-    var fixValue = (fixYvalue - centerLat) * correctFix;
+    var swX = rectangle.getBounds().ha + (width * (x - 1));
+    var swY = rectangle.getBounds().qa - (height * (y - 1));
 
-
-    var moveXPosition = 0.00268;
-    var moveYPosition = 0.002125 + fixValue;
-
-    var blockWidth = (zoomLevel.get() * 2) + 1;
-    
-    var tempCenterLat = Number(centerLat) - ((moveYPosition * blockWidth) * (y - 1));
-    var tempCenterLng = Number(centerLng) + ((moveXPosition * blockWidth) * (x - 1));
-    
-    console.log(tempCenterLat);
-    
+    var neX = rectangle.getBounds().oa + (width * (x - 1));
+    var neY = rectangle.getBounds().pa - (height * (y - 1));
+   
     var sw = new kakao.maps.LatLng(
-        tempCenterLat - (moveYPosition * parseInt(blockWidth / 2)) - (moveYPosition / 2), 
-        tempCenterLng - (moveXPosition * parseInt(blockWidth / 2)) - (moveXPosition / 2)
+        swY, 
+        swX
         ); 
 
     var ne = new kakao.maps.LatLng(
-        tempCenterLat + (moveYPosition * parseInt(blockWidth / 2)) + (moveYPosition / 2),
-        tempCenterLng + (moveXPosition * parseInt(blockWidth / 2)) + (moveXPosition / 2)
+        neY,
+        neX
         );
+
+        
+    // var centerLat = document.getElementById("lat").value;
+    // var centerLng = document.getElementById("lng").value;
+
+    // var fixYvalue = 37.5668;
+    // var correctFix = 0.00002833;
+    // var fixValue = (fixYvalue - centerLat) * correctFix;
+
+
+    // var moveXPosition = 0.00268;
+    // var moveYPosition = 0.002125 + fixValue;
+
+    // var blockWidth = (zoomLevel.get() * 2) + 1;
+    
+    // var tempCenterLat = Number(centerLat) - ((moveYPosition * blockWidth) * (y - 1));
+    // var tempCenterLng = Number(centerLng) + ((moveXPosition * blockWidth) * (x - 1));
+    
+    // console.log(tempCenterLat);
+
+    // var sw = new kakao.maps.LatLng(
+    //     tempCenterLat - (moveYPosition * parseInt(blockWidth / 2)) - (moveYPosition / 2), 
+    //     tempCenterLng - (moveXPosition * parseInt(blockWidth / 2)) - (moveXPosition / 2)
+    //     ); 
+
+    // var ne = new kakao.maps.LatLng(
+    //     tempCenterLat + (moveYPosition * parseInt(blockWidth / 2)) + (moveYPosition / 2),
+    //     tempCenterLng + (moveXPosition * parseInt(blockWidth / 2)) + (moveXPosition / 2)
+    //     );
 
     // var sw = new kakao.maps.LatLng(cornerSwY, cornerSwX); 
     // var ne = new kakao.maps.LatLng(cornerNeY, cornerNeX);
