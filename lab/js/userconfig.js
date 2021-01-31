@@ -125,6 +125,8 @@ function getHelpLine(x, y){
     var tempCenterLat = Number(centerLat) - ((moveYPosition * blockWidth) * (y - 1));
     var tempCenterLng = Number(centerLng) + ((moveXPosition * blockWidth) * (x - 1));
     
+    console.log(tempCenterLat);
+    
     var sw = new kakao.maps.LatLng(
         tempCenterLat - (moveYPosition * parseInt(blockWidth / 2)) - (moveYPosition / 2), 
         tempCenterLng - (moveXPosition * parseInt(blockWidth / 2)) - (moveXPosition / 2)
