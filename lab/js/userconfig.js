@@ -216,7 +216,7 @@ function startCapture() {
                     var reader = new FileReader();
                     reader.onload = function(e){
                         var bdata = btoa(reader.result);
-                        var datauri = 'data:' + isbContentType + ';base64,' + bdata;
+                        var datauri = 'data:image/jpeg;base64,' + bdata;
                         var status = document.getElementById("resultStatus");
                         status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
                     
