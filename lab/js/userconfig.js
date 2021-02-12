@@ -216,6 +216,7 @@ function startCapture() {
                     
                         var tag = document.getElementById("resultTag");
                         tag.href = datauri;
+                        tag.innerHTML = "mapshot_result.jpg";
 
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
                         canvas.width = 0;
