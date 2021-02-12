@@ -19,7 +19,7 @@ function MapTypeController() {
             return;
         }
     
-        exStaticMap.setMapTypeId(mapTypeKakao);
+        // exStaticMap.setMapTypeId(mapTypeKakao);
     }
 
     this.getKakao = function () {
@@ -74,13 +74,13 @@ function LineController(){
 }
 
 
-var staticMapContainer = document.getElementById('staticMap');
-var staticMapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), 
-        level: 3 
-    }
+// var staticMapContainer = document.getElementById('staticMap');
+// var staticMapOption = {
+//         center: new kakao.maps.LatLng(33.450701, 126.570667), 
+//         level: 3 
+//     }
 
-var exStaticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+// var exStaticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
 
 function setZoomLevel(userZoomLevel) {
     zoomLevel.set(userZoomLevel);
