@@ -6,7 +6,7 @@ const lineLevel = new LineController();
 
 function MapTypeController() {
     var mapTypeKakao = kakao.maps.MapTypeId.ROADMAP;
-    var mapTypeNaver = "";
+    var mapTypeNaver;
 
     this.setKakao = function (type) {
         if (type == 1) {
@@ -100,7 +100,6 @@ function setLine(level){
 
 
 function checkValue() {
-
     if (!(zoomLevel.get() == 5 || zoomLevel.get() == 8)) {
         alert("잘못된 배율값입니다. 지속된다면 새로고침을 해주세요");
         return false;
@@ -157,10 +156,11 @@ function startCapture() {
 
         document.getElementById("resultStatus").innerText = "사진 수집중입니다. 완료 문구를 기다려 주세요.";
 
-        if(url != ""){
+        if (url != "") {
             URL.revokeObjectURL(url);
         }
 
+        
         for (var i = 0; i < blockWidth; i++) {
 
             for (var j = 0; j < blockWidth; j++) {
@@ -207,19 +207,30 @@ function startCapture() {
         var func = setInterval(function() {
 
             if(imageLoadCount == blockArea) {
-                url = canvas.toDataURL('image/jpeg', 0.7);
-                var status = document.getElementById("resultStatus");
-                status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
 
-                var tag = document.getElementById("resultTag");
-                tag.href = url;
-                tag.innerHTML = "mapshot_result.jpeg";               
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                canvas.width = 0;
-                canvas.height = 0;
+                canvas.toBlob(function (blob) {
 
-                progress.style.width = "100%";
+                    var newImg = document.getElementById("resultImage");
+                    url = URL.createObjectURL(blob);
+                    
+                    newImg.onload = function () {
+                        var status = document.getElementById("resultStatus");
+                        status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
+                    
+                        var tag = document.getElementById("resultTag");
+                        tag.href = url;
 
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        canvas.width = 0;
+                        canvas.height = 0;
+                    
+                        progress.style.width = "100%";
+                        progress.innerText = "100%";
+                    };
+                
+                    newImg.src = url;
+                
+                }, 'image/jpeg');
 
                 clearInterval(func);
             }
