@@ -6,7 +6,7 @@ const lineLevel = new LineController();
 
 function MapTypeController() {
     var mapTypeKakao = kakao.maps.MapTypeId.ROADMAP;
-    var mapTypeNaver = "basic";
+    var mapTypeNaver = "";
 
     this.setKakao = function (type) {
         if (type == 1) {
@@ -45,10 +45,10 @@ function MapTypeController() {
 
 function ZoomController() {
 
-    var zoomLevel = 5;
+    var zoomLevel;
   
     this.set = function (level) {
-        if(level >= 5 && level <= 8){
+        if(level == 5 && level == 8){
             zoomLevel = level;
         }
     };
@@ -100,7 +100,8 @@ function setLine(level){
 
 
 function checkValue() {
-    if (!(zoomLevel.get() >= 5 && zoomLevel.get() <= 8)) {
+
+    if (!(zoomLevel.get() == 5 && zoomLevel.get() == 8)) {
         alert("잘못된 배율값입니다. 지속된다면 새로고침을 해주세요");
         return false;
     }
@@ -155,10 +156,6 @@ function startCapture() {
         progress.style.width = progressValue + "%";
 
         document.getElementById("resultStatus").innerText = "사진 수집중입니다. 완료 문구를 기다려 주세요.";
-
-        // if (url != "") {
-        //     URL.revokeObjectURL(url);
-        // }
 
         
         for (var i = 0; i < blockWidth; i++) {
