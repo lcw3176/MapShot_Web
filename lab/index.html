@@ -16,15 +16,21 @@
     <body>
 
       <nav class="navbar navbar-inverse">
-        <p class="navbar-brand">Mapshot</p>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">사용법</a>
-            </li>
-           </ul>
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" style="color: white;">Mapshot</a>
           </div>
+
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">사용법</a>
+              </li>
+             </ul>
+            </div>
+
+        </div>
+      
       </nav>
 
       
@@ -112,7 +118,8 @@
 
           <div class="panel panel-default">
             <div class="panel-heading">
-              <button class="btn btn-success" onclick="startCapture();">조립 시작</button>
+              <span>4.</span>
+              <button class="btn btn-primary" onclick="startCapture();">조립 시작</button>
             </div>
             <div class="panel-body">
                 <p><strong id="resultStatus"></strong></p>

@@ -4,12 +4,12 @@
 }
 
 .box-1{
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
 }
 
 .box-2{
-    width: 40%;
+    width: 30%;
     margin: 0 auto;
     margin-left: 10px;
 }
@@ -27,6 +27,10 @@
     .box-2{
         width: 100%;
         margin: 0 auto;
+    }
+
+    #menu_wrap{
+        height: 20%;
     }
 
 }
