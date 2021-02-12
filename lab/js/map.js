@@ -37,9 +37,7 @@ window.onload = function(){
 
     marker = new kakao.maps.Marker(); // 클릭한 위치를 표시할 마커입니다
 
-   
-    document.getElementById("default_click_level").click();
-    document.getElementById("default_click_map").click();
+
 
     // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
     kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
@@ -96,6 +94,9 @@ window.onload = function(){
     kakao.maps.event.addListener(map, 'idle', function() {
         searchAddrFromCoords(map.getCenter(), displayCenterInfo);
     });
+
+    document.getElementById("default_click_level").click();
+    document.getElementById("default_click_map").click();
 }
 
 function displayCenterInfo(){
