@@ -15,13 +15,15 @@
 
     <body>
 
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand">MapShot</a>
-          </div>
-        </div>
-      </nav>
+      <ul class="navbar navbar-inverse">
+        <li class="nav-item active">
+          <h1>Mapshot</h1>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">사용법</a>
+        </li>
+      </ul>
 
       
         <div class="box">
@@ -81,14 +83,8 @@
                 	<label class="btn btn-default" style="margin:10px;" onclick="setZoomLevel(0x5);">
                 		<input type="radio" name="jb-radio" id="jb-radio-1"> 1단계 ( 반경 1.0km )
                 	</label>
-                	<label class="btn btn-default" style="margin:10px;"  onclick="setZoomLevel(0x6);">
-                		<input type="radio" name="jb-radio" id="jb-radio-2"> 2단계 ( 반경 1.3km )
-                	</label>
-                	<label class="btn btn-default" style="margin:10px;" onclick="setZoomLevel(0x7);">
-                		<input type="radio" name="jb-radio" id="jb-radio-3" > 3단계 ( 반경 1.6km )
-                  </label>
                   <label class="btn btn-default" style="margin:10px;" onclick="setZoomLevel(0x8);">
-                      <input type="radio" name="jb-radio" id="jb-radio-3" > 4단계 ( 반경 2km )
+                      <input type="radio" name="jb-radio" id="jb-radio-3" > 2단계 ( 반경 2km )
                   </label>
                 </div>  
             </div>
@@ -113,7 +109,7 @@
 
 
           <div class="panel panel-default">
-            <div class="panel-heading">4. 
+            <div class="panel-heading">
               <button class="btn btn-success" onclick="startCapture();">조립 시작</button>
             </div>
             <div class="panel-body">
