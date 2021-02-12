@@ -1,0 +1,32 @@
+.box{
+    display: flex;
+    margin:10px;
+}
+
+.box-1{
+    width: 60%;
+    margin: 0 auto;
+}
+
+.box-2{
+    width: 40%;
+    margin: 0 auto;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 600px){
+    .box{
+        display: block;
+    }
+
+    .box-1{
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .box-2{
+        width: 100%;
+        margin: 0 auto;
+    }
+
+}
