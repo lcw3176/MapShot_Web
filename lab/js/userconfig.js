@@ -157,7 +157,10 @@ function startCapture() {
 
         document.getElementById("resultStatus").innerText = "사진 수집중입니다. 완료 문구를 기다려 주세요.";
 
-        
+        if(url != ""){
+            URL.revokeObjectURL(url);
+        }
+
         for (var i = 0; i < blockWidth; i++) {
 
             for (var j = 0; j < blockWidth; j++) {
@@ -204,31 +207,19 @@ function startCapture() {
         var func = setInterval(function() {
 
             if(imageLoadCount == blockArea) {
+                url = canvas.toDataURL('image/jpeg', 0.7);
+                var status = document.getElementById("resultStatus");
+                status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
 
-                canvas.toBlob(function (blob) {
-                    
-                    var reader = new FileReader();
-                    reader.onload = function(e){
-                        var bdata = btoa(reader.result);
-                        var datauri = 'data:image/jpeg;base64,' + bdata;
-                        var status = document.getElementById("resultStatus");
-                        status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
-                    
-                        var tag = document.getElementById("resultTag");
-                        tag.href = datauri;
-                        tag.innerHTML = "mapshot_result.jpg";
+                var tag = document.getElementById("resultTag");
+                tag.href = url;
+                tag.innerHTML = "mapshot_result.jpg";               
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                canvas.width = 0;
+                canvas.height = 0;
 
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        canvas.width = 0;
-                        canvas.height = 0;
-                    
-                        progress.style.width = "100%";
-                        progress.innerText = "100%";
-                    }
+                progress.style.width = "100%";
 
-                    reader.readAsBinaryString(blob);
-                
-                }, 'image/jpeg');
 
                 clearInterval(func);
             }
