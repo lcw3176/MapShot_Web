@@ -1,7 +1,6 @@
 
 const zoomLevel = new ZoomController();
 const mapController = new MapTypeController();
-const lineLevel = new LineController();
 
 
 function MapTypeController() {
@@ -58,19 +57,6 @@ function ZoomController() {
     };
 }
 
-function LineController(){
-    var addLine = 0;
-
-    this.set = function(line){
-        if(line >= 0 && line <= 2){
-            addLine = line;
-        }
-    }
-
-    this.get = function(){
-        return addLine;
-    }
-}
 
 
 function setZoomLevel(userZoomLevel) {
@@ -81,12 +67,6 @@ function setZoomLevel(userZoomLevel) {
 function setBaseMap(userBaseMap) {
     mapController.setKakao(userBaseMap);
     mapController.setNaver(userBaseMap);
-}
-
-function setLine(level){
-    lineLevel.set(level);
-
-    document.getElementById("lineType").value = lineLevel.get();
 }
 
 
