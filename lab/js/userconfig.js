@@ -4,7 +4,7 @@ const fixValueController = new FixValueController();
 
 function FixValueController(){
 
-    var xPosition = 0.00268;
+    var xPosition;
     var yPosition;
     var viewLevel;
     var viewString;
@@ -16,16 +16,18 @@ function FixValueController(){
             var fixYvalue = 37.5668;
             var correctFix = 0.00002833;
             var fixValue = (fixYvalue - centerLat) * correctFix;
-        
+            
+            xPosition = 0.00268;
             yPosition = 0.002125 + fixValue;
             size = 500;
         }
 
         if(viewString == 'normal'){
             var fixYvalue = 37.5668;
-            var correctFix = 0.00002833;
+            var correctFix = 0.00011633;
             var fixValue = (fixYvalue - centerLat) * correctFix;
-
+            
+            xPosition = 0.01072 
             yPosition = 0.002125 + fixValue;
             size = 1000;
         }
