@@ -4,7 +4,7 @@ const fixValueController = new FixValueController();
 
 function FixValueController(){
 
-    var xPosition;
+    var xPosition = 0.00268;
     var yPosition;
     var viewLevel;
     var viewString;
@@ -16,7 +16,6 @@ function FixValueController(){
             var correctFix = 0.00002833;
             var fixValue = (fixYvalue - centerLat) * correctFix;
         
-            xPosition = 0.00268;
             yPosition = 0.002125 + fixValue;
         }
 
@@ -24,8 +23,7 @@ function FixValueController(){
             var fixYvalue = 37.5668;
             var correctFix = 0.00002833;
             var fixValue = (fixYvalue - centerLat) * correctFix;
-        
-            xPosition = 0.00268;
+
             yPosition = 0.002125 + fixValue;
         }
 
@@ -157,7 +155,7 @@ function startCapture() {
         var centerLng = document.getElementById("lng").value;
 
         fixValueController.initValues(centerLat);
-        
+
         var blockWidth = (zoomLevel.get() * 2) + 1;
         var blockArea = blockWidth * blockWidth;
 
