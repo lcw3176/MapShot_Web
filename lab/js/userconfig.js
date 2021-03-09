@@ -28,7 +28,7 @@ function FixValueController(){
             var fixValue = (fixYvalue - centerLat) * correctFix;
             
             xPosition = 0.01072 
-            yPosition = 0.002125 + fixValue;
+            yPosition = 0.0085 + fixValue;
             size = 1000;
         }
 
