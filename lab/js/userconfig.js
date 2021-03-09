@@ -7,28 +7,41 @@ function FixValueController(){
     var xPosition;
     var yPosition;
     var viewLevel;
+    var viewString;
 
-    this.setMode = function(mode){
-        // 고화질
-        if(mode == '1'){
+    this.initValues = function(centerLat){
+
+        if(viewString == 'high'){
             var fixYvalue = 37.5668;
             var correctFix = 0.00002833;
             var fixValue = (fixYvalue - centerLat) * correctFix;
         
             xPosition = 0.00268;
             yPosition = 0.002125 + fixValue;
+        }
+
+        if(viewString == 'normal'){
+            var fixYvalue = 37.5668;
+            var correctFix = 0.00002833;
+            var fixValue = (fixYvalue - centerLat) * correctFix;
+        
+            xPosition = 0.00268;
+            yPosition = 0.002125 + fixValue;
+        }
+
+    }
+    
+    this.setMode = function(mode){
+        // 고화질
+        if(mode == '1'){
             viewLevel = 18
+            viewString = 'high'
         }
 
         // 일반화질
         if(mode == '2'){
-            var fixYvalue = 37.5668;
-            var correctFix = 0.00002833;
-            var fixValue = (fixYvalue - centerLat) * correctFix;
-        
-            xPosition = 0.00268;
-            yPosition = 0.002125 + fixValue;
             viewLevel = 16
+            viewString = 'normal'
         }
     }
 
@@ -103,6 +116,7 @@ function checkValue() {
     var lat = document.getElementById("lat").value;
     var lng = document.getElementById("lng").value;
 
+    
 
     if (lat == "" || lng == "") {
         alert("좌표값을 설정해주세요");
@@ -134,6 +148,7 @@ function startCapture() {
             traceRec.setMap(map);
         }
 
+        
 
         var xPosition = 0;
         var yPosition = 0;
@@ -141,6 +156,8 @@ function startCapture() {
         var centerLat = document.getElementById("lat").value;
         var centerLng = document.getElementById("lng").value;
 
+        fixValueController.initValues(centerLat);
+        
         var blockWidth = (zoomLevel.get() * 2) + 1;
         var blockArea = blockWidth * blockWidth;
 
