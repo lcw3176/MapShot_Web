@@ -8,6 +8,7 @@ function FixValueController(){
     var yPosition;
     var viewLevel;
     var viewString;
+    var size;
 
     this.initValues = function(centerLat){
 
@@ -17,6 +18,7 @@ function FixValueController(){
             var fixValue = (fixYvalue - centerLat) * correctFix;
         
             yPosition = 0.002125 + fixValue;
+            size = 500;
         }
 
         if(viewString == 'normal'){
@@ -25,6 +27,7 @@ function FixValueController(){
             var fixValue = (fixYvalue - centerLat) * correctFix;
 
             yPosition = 0.002125 + fixValue;
+            size = 1000;
         }
 
     }
@@ -53,6 +56,10 @@ function FixValueController(){
 
     this.getYPosition = function(){
         return yPosition;
+    }
+
+    this.getSize = function(){
+        return size;
     }
     
 }
@@ -160,8 +167,8 @@ function startCapture() {
         var blockArea = blockWidth * blockWidth;
 
         var canvas = document.getElementById("canvas");
-        canvas.width = Number(blockWidth) * 500;
-        canvas.height = Number(blockWidth) * 500;
+        canvas.width = Number(blockWidth) * fixValueController.getSize();
+        canvas.height = Number(blockWidth) * fixValueController.getSize();
         var ctx = canvas.getContext("2d");
 
         // var fixYvalue = 37.5668;
@@ -205,10 +212,10 @@ function startCapture() {
                 (function (order) {
                     var _order = order;
                     tag.onload = function () {
-                        xPosition = (_order % blockWidth) * 500;
-                        yPosition = parseInt(_order / blockWidth) * 500;                    
+                        xPosition = (_order % blockWidth) * fixValueController.getSize();
+                        yPosition = parseInt(_order / blockWidth) * fixValueController.getSize();                    
 
-                        ctx.drawImage(this, 0, 0, this.width, this.height, xPosition, yPosition, 500, 500);
+                        ctx.drawImage(this, 0, 0, this.width, this.height, xPosition, yPosition, fixValueController.getSize(), fixValueController.getSize());
                         
                         progressValue += progressWidth;
                         progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
