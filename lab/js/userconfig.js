@@ -108,7 +108,7 @@ function setBaseMap(userBaseMap) {
 
 
 function checkValue() {
-    if (!(zoomLevel.get() == 5 || zoomLevel.get() == 8) || zoomLevel.get() == 10) {
+    if (!(zoomLevel.get() == 5 || zoomLevel.get() == 8 || zoomLevel.get() == 10)) {
         alert("잘못된 배율값입니다. 지속된다면 새로고침을 해주세요");
         return false;
     }
