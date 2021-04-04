@@ -234,7 +234,7 @@ function startCapture() {
             if(imageLoadCount == blockArea) {
                 
                 if(canvas.msToBlob){
-                    var blob = canvas.msToBlob('image/jpeg');
+                    var blob = canvas.msToBlob('image/jpeg', 0.5);
                     // var newImg = document.getElementById("resultImage");
                     // url = URL.createObjectURL(blob);
                     navigator.msSaveBlob(blob, 'mapshot_result.jpg');
