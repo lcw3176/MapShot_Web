@@ -233,30 +233,47 @@ function startCapture() {
 
             if(imageLoadCount == blockArea) {
                 
-                canvas.toBlobHD(function (blob) {
-
-                    var newImg = document.getElementById("resultImage");
-                    url = URL.createObjectURL(blob);
-                    
-                    newImg.onload = function () {
+                if(canvas.msToBlob){
+                    canvas.toBlob(function(blob){
+                        navigator.msSaveBlob(blob, "mapshot_result.jpg");
                         var status = document.getElementById("resultStatus");
                         status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
                     
-                        var tag = document.getElementById("resultTag");
-                        tag.href = url;
-                        tag.innerHTML = "mapshot_result.jpg";
-
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
                         canvas.width = 0;
                         canvas.height = 0;
                     
                         progress.style.width = "100%";
                         progress.innerText = "100%";
-                    };
-                
-                    newImg.src = url;
-                
-                }, 'image/jpeg');
+
+                    }, 'image/jpeg');
+
+                } else{
+                    canvas.toBlob(function (blob) {
+
+                        var newImg = document.getElementById("resultImage");
+                        url = URL.createObjectURL(blob);
+                        
+                        newImg.onload = function () {
+                            var status = document.getElementById("resultStatus");
+                            status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
+                        
+                            var tag = document.getElementById("resultTag");
+                            tag.href = url;
+                            tag.innerHTML = "mapshot_result.jpg";
+    
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            canvas.width = 0;
+                            canvas.height = 0;
+                        
+                            progress.style.width = "100%";
+                            progress.innerText = "100%";
+                        };
+                    
+                        newImg.src = url;
+                    
+                    }, 'image/jpeg');
+                }
 
 
                 clearInterval(func);
