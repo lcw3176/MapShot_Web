@@ -12,15 +12,15 @@ var infowindow;
 var geocoder;
 var marker;
 var rectangle;
-var isExplorer = false;
+// var isExplorer = false;
 
 window.onload = function(){
 
-    var agent = navigator.userAgent.toLowerCase();
+    // var agent = navigator.userAgent.toLowerCase();
 
-    if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
-        isExplorer = true;
-    }
+    // if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+    //     isExplorer = true;
+    // }
 
 
     // 지도를 생성합니다    
