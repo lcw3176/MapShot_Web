@@ -237,7 +237,7 @@ function startCapture() {
                     canvas.toBlob(function(blob){
                         navigator.msSaveBlob(blob, "mapshot_result.jpg");
                         var status = document.getElementById("resultStatus");
-                        status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
+                        status.innerText = "완료되었습니다.";
                     
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
                         canvas.width = 0;
