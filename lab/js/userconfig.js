@@ -84,7 +84,7 @@ function ZoomController() {
     var zoomLevel;
 
     this.set = function (level) {
-        if(level == 5 || level == 8 || level == 7){
+        if(level == 5 || level == 8){
             zoomLevel = level;
         }
     };
@@ -108,7 +108,7 @@ function setBaseMap(userBaseMap) {
 
 
 function checkValue() {
-    if (!(zoomLevel.get() == 5 || zoomLevel.get() == 8 || zoomLevel.get() == 7)) {
+    if (!(zoomLevel.get() == 5 || zoomLevel.get() == 8)) {
         alert("잘못된 배율값입니다. 지속된다면 새로고침을 해주세요");
         return false;
     }
@@ -247,7 +247,7 @@ function startCapture() {
                         progress.style.width = "100%";
                         progress.innerText = "100%";
 
-                    }, 'image/jpeg');
+                    }, 'image/jpeg', 0.7);
 
                 } else{
                     canvas.toBlob(function (blob) {
@@ -273,7 +273,7 @@ function startCapture() {
                     
                         // newImg.src = url;
                     
-                    }, 'image/jpeg');
+                    }, 'image/jpeg', 0.7);
                 }
 
 
