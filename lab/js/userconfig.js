@@ -98,7 +98,7 @@ function ZoomController() {
     var zoomLevel;
 
     this.set = function (level) {
-        if(level == 5 || level == 2){
+        if(level == 5 || level == 1){
             zoomLevel = level;
         }
     };
@@ -122,7 +122,7 @@ function setBaseMap(userBaseMap) {
 
 
 function checkValue() {
-    if (!(zoomLevel.get() == 5 || zoomLevel.get() == 2)) {
+    if (!(zoomLevel.get() == 5 || zoomLevel.get() == 1)) {
         alert("잘못된 배율값입니다. 지속된다면 새로고침을 해주세요");
         return false;
     }
