@@ -251,7 +251,7 @@ function startCapture() {
                 } else{
 
                    
-                    url = URL.createObjectURL(blob);
+                    url = canvas.toDataURL('image/jpeg');
                     var status = document.getElementById("resultStatus");
                     status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
                 
