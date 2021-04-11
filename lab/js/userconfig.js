@@ -247,7 +247,7 @@ function startCapture() {
                         progress.style.width = "100%";
                         progress.innerText = "100%";
 
-                    }, 'image/jpeg');
+                    }, 'image/jpeg', 0.1);
 
                 } else{
                     canvas.toBlob(function (blob) {
@@ -273,7 +273,7 @@ function startCapture() {
                     
                         // newImg.src = url;
                     
-                    }, 'image/jpeg');
+                    }, 'image/jpeg', 0.1);
                 }
 
 
