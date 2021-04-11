@@ -249,30 +249,46 @@ function startCapture() {
                     }, 'image/jpeg');
 
                 } else{
-                    canvas.toBlob(function (blob) {
+
+                   
+                    url = URL.createObjectURL(blob);
+                    var status = document.getElementById("resultStatus");
+                    status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
+                
+                    var tag = document.getElementById("resultTag");
+                    tag.href = url;
+                    tag.innerHTML = "mapshot_result.jpg";
+
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    canvas.width = 0;
+                    canvas.height = 0;
+                
+                    progress.style.width = "100%";
+                    progress.innerText = "100%";
+                    // canvas.toBlob(function (blob) {
 
                         // var newImg = document.getElementById("resultImage");
-                        url = URL.createObjectURL(blob);
-                        var status = document.getElementById("resultStatus");
-                        status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
+                        // url = URL.createObjectURL(blob);
+                        // var status = document.getElementById("resultStatus");
+                        // status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
                     
-                        var tag = document.getElementById("resultTag");
-                        tag.href = url;
-                        tag.innerHTML = "mapshot_result.jpg";
+                        // var tag = document.getElementById("resultTag");
+                        // tag.href = url;
+                        // tag.innerHTML = "mapshot_result.jpg";
     
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        canvas.width = 0;
-                        canvas.height = 0;
+                        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        // canvas.width = 0;
+                        // canvas.height = 0;
                     
-                        progress.style.width = "100%";
-                        progress.innerText = "100%";
+                        // progress.style.width = "100%";
+                        // progress.innerText = "100%";
                         // newImg.onload = function () {
                             
                         // };
                     
                         // newImg.src = url;
                     
-                    }, 'image/png');
+                    // }, 'image/jpeg');
                 }
 
 
