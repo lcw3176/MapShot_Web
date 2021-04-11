@@ -232,17 +232,16 @@ function startCapture() {
         var func = setInterval(function() {
 
             if(imageLoadCount == blockArea) {
-                sleep(2000);
-                
+
                 if(canvas.msToBlob){
                     canvas.toBlob(function(blob){
                         navigator.msSaveBlob(blob, "mapshot_result.jpg");
                         var status = document.getElementById("resultStatus");
                         status.innerText = "완료되었습니다.";
                     
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        canvas.width = 0;
-                        canvas.height = 0;
+                        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        // canvas.width = 0;
+                        // canvas.height = 0;
                     
                         progress.style.width = "100%";
                         progress.innerText = "100%";
@@ -261,9 +260,9 @@ function startCapture() {
                         tag.href = url;
                         tag.innerHTML = "mapshot_result.jpg";
     
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        canvas.width = 0;
-                        canvas.height = 0;
+                        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        // canvas.width = 0;
+                        // canvas.height = 0;
                     
                         progress.style.width = "100%";
                         progress.innerText = "100%";
@@ -284,8 +283,3 @@ function startCapture() {
     }
 }
 
-
-function sleep(ms) {
-    const wakeUpTime = Date.now() + ms
-    while (Date.now() < wakeUpTime) {}
-  }
