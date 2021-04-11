@@ -129,6 +129,10 @@ function checkValue() {
 
 var url;
 
+function sleep(ms) {
+    return new Promise((r) => setTimeout(r, ms))
+}
+
 function startCapture() {
 
     if (checkValue()) {
@@ -203,21 +207,20 @@ function startCapture() {
 
                 (function (order) {
                     var _order = order;
-                    setTimeout(() =>{
-                        
-                        tag.onload = function () {
-                            var xPos = (_order % blockWidth) * canvasBlockSize;
-                            var yPos = parseInt(_order / blockWidth) * canvasBlockSize;                    
-    
+                    tag.onload = function () {
+                        var xPos = (_order % blockWidth) * canvasBlockSize;
+                        var yPos = parseInt(_order / blockWidth) * canvasBlockSize;                    
+                        sleep(_order * 100).then(() => {
                             ctx.drawImage(this, 0, 0, this.width, this.height, xPos, yPos, canvasBlockSize, canvasBlockSize);
-                            
+                        
                             progressValue += progressWidth;
                             progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
                             progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
-    
+        
                             imageLoadCount++;
-                        }
-                    },_order * 500);
+                        });
+
+                    }
 
                 })(order);
 
