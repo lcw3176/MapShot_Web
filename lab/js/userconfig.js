@@ -205,8 +205,9 @@ function startCapture() {
                     var _order = order;
                     tag.onload = function () {
                         var xPos = (_order % blockWidth) * canvasBlockSize;
-                        var yPos = parseInt(_order / blockWidth) * canvasBlockSize;                    
-                        ctx.drawImage(this, 0, 0, this.width, this.height, xPos, yPos, canvasBlockSize, canvasBlockSize);
+                        var yPos = parseInt(_order / blockWidth) * canvasBlockSize;  
+                        ctx.drawImage(this, xPos, yPos, canvasBlockSize, canvasBlockSize);                  
+                        // ctx.drawImage(this, 0, 0, this.width, this.height, xPos, yPos, canvasBlockSize, canvasBlockSize);
                         
                         progressValue += progressWidth;
                         progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
@@ -246,7 +247,7 @@ function startCapture() {
                         progress.style.width = "100%";
                         progress.innerText = "100%";
 
-                    }, 'image/webp');
+                    }, 'image/jpeg');
 
                 } else{
                     canvas.toBlob(function (blob) {
@@ -272,7 +273,7 @@ function startCapture() {
                     
                         // newImg.src = url;
                     
-                    }, 'image/webp');
+                    }, 'image/jpeg');
                 }
 
 
