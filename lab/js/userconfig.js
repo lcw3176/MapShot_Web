@@ -34,8 +34,8 @@ function FixValueController(){
             var correctFix = 0.00011633;
             var fixValue = (fixYvalue - centerLat) * correctFix;
             
-            xPosition = 0.01072 
-            yPosition = 0.0085 + fixValue;
+            xPosition = 0.02016 
+            yPosition = 0.014875 + fixValue;
         }
 
     }
@@ -53,6 +53,7 @@ function FixValueController(){
             viewString = 'normal'
         }
 
+        // 저화질
         if(mode == '3'){
             viewLevel = 15
             viewString = 'low'
