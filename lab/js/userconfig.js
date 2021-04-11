@@ -20,23 +20,12 @@ function FixValueController(){
         //     yPosition = 0.002125 + fixValue;
         // }
 
-        if(viewString == 'normal'){
-            var fixYvalue = 37.5668;
-            var correctFix = 0.00011633;
-            var fixValue = (fixYvalue - centerLat) * correctFix;
-            
-            xPosition = 0.01072 
-            yPosition = 0.0085 + fixValue;
-        }
-
-        // if(viewString == 'low'){
-        //     var fixYvalue = 37.5668;
-        //     var correctFix = 0.00011633;
-        //     var fixValue = (fixYvalue - centerLat) * correctFix;
-            
-        //     xPosition = 0.01072 
-        //     yPosition = 0.0085 + fixValue;
-        // }
+        var fixYvalue = 37.5668;
+        var correctFix = 0.00011633;
+        var fixValue = (fixYvalue - centerLat) * correctFix;
+        
+        xPosition = 0.01072 
+        yPosition = 0.0085 + fixValue;
 
     }
     
@@ -55,8 +44,8 @@ function FixValueController(){
 
         // 저화질
         if(mode == '3'){
-            viewLevel = 15
-            viewString = 'normal'
+            viewLevel = 16
+            viewString = 'low'
         }
     }
 
@@ -70,6 +59,10 @@ function FixValueController(){
 
     this.getYPosition = function(){
         return yPosition;
+    }
+
+    this.getViewString = function(){
+        return viewString;
     }
 
 }
@@ -173,7 +166,7 @@ function startCapture() {
         var blockArea = blockWidth * blockWidth;
         var canvasBlockSize = 500;
 
-        if(zoomLevel.getViewLevel() == 16){
+        if(fixValueController.getViewString() == 'normal'){
             canvasBlockSize *= 2;
         }
 
