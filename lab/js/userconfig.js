@@ -234,7 +234,7 @@ function startCapture() {
             if(imageLoadCount == blockArea) {
                 
                 if(canvas.msToBlob){
-                    canvas.toBlob(function(blob){
+                    canvas.toBlobHD(function(blob){
                         navigator.msSaveBlob(blob, "mapshot_result.jpg");
                         var status = document.getElementById("resultStatus");
                         status.innerText = "완료되었습니다.";
@@ -249,7 +249,7 @@ function startCapture() {
                     }, 'image/jpeg');
 
                 } else{
-                    canvas.toBlob(function (blob) {
+                    canvas.toBlobHD(function (blob) {
 
                         var newImg = document.getElementById("resultImage");
                         url = URL.createObjectURL(blob);
