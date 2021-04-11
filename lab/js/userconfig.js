@@ -129,10 +129,6 @@ function checkValue() {
 
 var url;
 
-function sleep(ms) {
-    return new Promise((r) => setTimeout(r, ms))
-}
-
 function startCapture() {
 
     if (checkValue()) {
@@ -160,7 +156,7 @@ function startCapture() {
 
         var blockWidth = (zoomLevel.get() * 2) + 1;
         var blockArea = blockWidth * blockWidth;
-        var canvasBlockSize = 300;
+        var canvasBlockSize = 500;
 
         var canvas = document.getElementById("canvas");
         canvas.width = Number(blockWidth) * canvasBlockSize;
@@ -210,16 +206,13 @@ function startCapture() {
                     tag.onload = function () {
                         var xPos = (_order % blockWidth) * canvasBlockSize;
                         var yPos = parseInt(_order / blockWidth) * canvasBlockSize;                    
-                        sleep(_order * 100).then(() => {
-                            ctx.drawImage(this, 0, 0, this.width, this.height, xPos, yPos, canvasBlockSize, canvasBlockSize);
+                        ctx.drawImage(this, 0, 0, this.width, this.height, xPos, yPos, canvasBlockSize, canvasBlockSize);
                         
-                            progressValue += progressWidth;
-                            progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
-                            progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
-        
-                            imageLoadCount++;
-                        });
-
+                        progressValue += progressWidth;
+                        progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
+                        progress.innerText = parseFloat(progressValue).toFixed(2) + "%";
+    
+                        imageLoadCount++;
                     }
 
                 })(order);
