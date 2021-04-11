@@ -239,14 +239,14 @@ function startCapture() {
                         var status = document.getElementById("resultStatus");
                         status.innerText = "완료되었습니다.";
                     
-                        // ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        // canvas.width = 0;
-                        // canvas.height = 0;
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        canvas.width = 0;
+                        canvas.height = 0;
                     
                         progress.style.width = "100%";
                         progress.innerText = "100%";
 
-                    }, 'image/jpeg');
+                    }, 'image/webp');
 
                 } else{
                     canvas.toBlob(function (blob) {
@@ -260,9 +260,9 @@ function startCapture() {
                         tag.href = url;
                         tag.innerHTML = "mapshot_result.jpg";
     
-                        // ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        // canvas.width = 0;
-                        // canvas.height = 0;
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        canvas.width = 0;
+                        canvas.height = 0;
                     
                         progress.style.width = "100%";
                         progress.innerText = "100%";
@@ -272,7 +272,7 @@ function startCapture() {
                     
                         // newImg.src = url;
                     
-                    }, 'image/jpeg');
+                    }, 'image/webp');
                 }
 
 
