@@ -234,7 +234,7 @@ function startCapture() {
             if(imageLoadCount == blockArea) {
                 
                 if(canvas.msToBlob){
-                    canvas.toBlobHD(function(blob){
+                    canvas.toBlob(function(blob){
                         navigator.msSaveBlob(blob, "mapshot_result.jpg");
                         var status = document.getElementById("resultStatus");
                         status.innerText = "완료되었습니다.";
@@ -246,10 +246,10 @@ function startCapture() {
                         progress.style.width = "100%";
                         progress.innerText = "100%";
 
-                    }, 'image/jpeg');
+                    }, 'image/jpeg', 1.0);
 
                 } else{
-                    canvas.toBlobHD(function (blob) {
+                    canvas.toBlob(function (blob) {
 
                         var newImg = document.getElementById("resultImage");
                         url = URL.createObjectURL(blob);
@@ -272,7 +272,7 @@ function startCapture() {
                     
                         newImg.src = url;
                     
-                    }, 'image/jpeg');
+                    }, 'image/jpeg', 1.0);
                 }
 
 
