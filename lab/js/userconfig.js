@@ -272,7 +272,7 @@ function startCapture() {
                     
                         // newImg.src = url;
                     
-                    }, 'image/jpeg');
+                    }, 'image/png');
                 }
 
 
