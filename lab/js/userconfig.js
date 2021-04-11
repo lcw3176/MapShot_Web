@@ -156,7 +156,7 @@ function startCapture() {
 
         var blockWidth = (zoomLevel.get() * 2) + 1;
         var blockArea = blockWidth * blockWidth;
-        var canvasBlockSize = 500;
+        var canvasBlockSize = 600;
 
         var canvas = document.getElementById("canvas");
         canvas.width = Number(blockWidth) * canvasBlockSize;
