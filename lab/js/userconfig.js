@@ -11,16 +11,25 @@ function FixValueController(){
 
     this.initValues = function(centerLat){
 
-        if(viewString == 'high'){
-            var fixYvalue = 37.5668;
-            var correctFix = 0.00002833;
-            var fixValue = (fixYvalue - centerLat) * correctFix;
+        // if(viewString == 'high'){
+        //     var fixYvalue = 37.5668;
+        //     var correctFix = 0.00002833;
+        //     var fixValue = (fixYvalue - centerLat) * correctFix;
             
-            xPosition = 0.00268;
-            yPosition = 0.002125 + fixValue;
-        }
+        //     xPosition = 0.00268;
+        //     yPosition = 0.002125 + fixValue;
+        // }
 
         if(viewString == 'normal'){
+            var fixYvalue = 37.5668;
+            var correctFix = 0.00011633;
+            var fixValue = (fixYvalue - centerLat) * correctFix;
+            
+            xPosition = 0.01072 
+            yPosition = 0.0085 + fixValue;
+        }
+
+        if(viewString == 'low'){
             var fixYvalue = 37.5668;
             var correctFix = 0.00011633;
             var fixValue = (fixYvalue - centerLat) * correctFix;
@@ -33,15 +42,20 @@ function FixValueController(){
     
     this.setMode = function(mode){
         // 고화질
-        if(mode == '1'){
-            viewLevel = 18
-            viewString = 'high'
-        }
+        // if(mode == '1'){
+        //     viewLevel = 18
+        //     viewString = 'high'
+        // }
 
         // 일반화질
         if(mode == '2'){
             viewLevel = 16
             viewString = 'normal'
+        }
+
+        if(mode == '3'){
+            viewLevel = 15
+            viewString = 'low'
         }
     }
 
@@ -84,7 +98,7 @@ function ZoomController() {
     var zoomLevel;
 
     this.set = function (level) {
-        if(level == 5 || level == 8){
+        if(level == 5 || level == 2){
             zoomLevel = level;
         }
     };
@@ -108,7 +122,7 @@ function setBaseMap(userBaseMap) {
 
 
 function checkValue() {
-    if (!(zoomLevel.get() == 5 || zoomLevel.get() == 8)) {
+    if (!(zoomLevel.get() == 5 || zoomLevel.get() == 2)) {
         alert("잘못된 배율값입니다. 지속된다면 새로고침을 해주세요");
         return false;
     }
