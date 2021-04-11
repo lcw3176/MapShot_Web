@@ -29,14 +29,14 @@ function FixValueController(){
             yPosition = 0.0085 + fixValue;
         }
 
-        if(viewString == 'low'){
-            var fixYvalue = 37.5668;
-            var correctFix = 0.00011633;
-            var fixValue = (fixYvalue - centerLat) * correctFix;
+        // if(viewString == 'low'){
+        //     var fixYvalue = 37.5668;
+        //     var correctFix = 0.00011633;
+        //     var fixValue = (fixYvalue - centerLat) * correctFix;
             
-            xPosition = 0.02016 
-            yPosition = 0.014875 + fixValue;
-        }
+        //     xPosition = 0.01072 
+        //     yPosition = 0.0085 + fixValue;
+        // }
 
     }
     
@@ -56,7 +56,7 @@ function FixValueController(){
         // 저화질
         if(mode == '3'){
             viewLevel = 15
-            viewString = 'low'
+            viewString = 'normal'
         }
     }
 
@@ -99,7 +99,7 @@ function ZoomController() {
     var zoomLevel;
 
     this.set = function (level) {
-        if(level == 5 || level == 1){
+        if(level == 5 || level == 10){
             zoomLevel = level;
         }
     };
@@ -123,7 +123,7 @@ function setBaseMap(userBaseMap) {
 
 
 function checkValue() {
-    if (!(zoomLevel.get() == 5 || zoomLevel.get() == 1)) {
+    if (!(zoomLevel.get() == 5 || zoomLevel.get() == 10)) {
         alert("잘못된 배율값입니다. 지속된다면 새로고침을 해주세요");
         return false;
     }
@@ -171,7 +171,11 @@ function startCapture() {
 
         var blockWidth = (zoomLevel.get() * 2) + 1;
         var blockArea = blockWidth * blockWidth;
-        var canvasBlockSize = 1000;
+        var canvasBlockSize = 500;
+
+        if(zoomLevel.getViewLevel() == 16){
+            canvasBlockSize *= 2;
+        }
 
         var canvas = document.getElementById("canvas");
         canvas.width = Number(blockWidth) * canvasBlockSize;
@@ -221,8 +225,8 @@ function startCapture() {
                     tag.onload = function () {
                         var xPos = (_order % blockWidth) * canvasBlockSize;
                         var yPos = parseInt(_order / blockWidth) * canvasBlockSize;  
-                        ctx.drawImage(this, xPos, yPos, canvasBlockSize, canvasBlockSize);                  
-                        // ctx.drawImage(this, 0, 0, this.width, this.height, xPos, yPos, canvasBlockSize, canvasBlockSize);
+             
+                        ctx.drawImage(this, 0, 0, this.width, this.height, xPos, yPos, canvasBlockSize, canvasBlockSize);
                         
                         progressValue += progressWidth;
                         progress.style.width = parseFloat(progressValue).toFixed(2) + "%";
@@ -267,7 +271,6 @@ function startCapture() {
                 } else{
                     canvas.toBlob(function (blob) {
 
-                        // var newImg = document.getElementById("resultImage");
                         url = URL.createObjectURL(blob);
                         var status = document.getElementById("resultStatus");
                         status.innerText = "완료되었습니다. 아래에 생성된 링크를 확인하세요";
@@ -282,11 +285,6 @@ function startCapture() {
                     
                         progress.style.width = "100%";
                         progress.innerText = "100%";
-                        // newImg.onload = function () {
-                            
-                        // };
-                    
-                        // newImg.src = url;
                     
                     }, 'image/jpeg');
                 }
