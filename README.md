@@ -16,7 +16,7 @@
 * JavaScript
 
 #### __Link__
-*   https://www.mapshot.tk
+*   https://mapshot.netlify.app/
 
 
 ---
