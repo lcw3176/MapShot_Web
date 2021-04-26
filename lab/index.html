@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta property="og:url" content="https://mapshot.tk" />
+        <meta property="og:title" content="MapShot" />
+        <meta property="og:description" content="확대해도 깨지지 않는, 고화질 위성사진 조립"/>
+        <meta name="keyword" content="위성, 위성사진, 위성사진 합치기, 위성사진 병합, 지도 합치기, 지도 병합, 도시공학">
+        <meta name="description" content="고화질의 위성 지도를 넓은 범위로 손쉽게 캡쳐합니다.">
+        <meta name="author" content="chanwoolee">
+        <link rel="canonical" href="https://mapshot.tk">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MapShot</title>
+  </head>
+
+    <body>
+
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="index.html" style="color: white;">Mapshot</a>
+          </div>
+
+          <div>
+            <ul class="nav navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="manual/index.html">사용법</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="log/index.html">패치 내역</a>
+              </li>
+
+             </ul>
+            </div>
+
+        </div>
+      
+      </nav>
+
+      
+        <div class="box">
+          <div class="box-1">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"> 
+                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                위치 검색
+              </h3>
+            </div>
+            <div class="panel-body">
+                <div class="map_wrap">
+                    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+                
+                    <div id="menu_wrap" class="bg_white">
+                        <div class="option">
+                            <div>
+                                <form onsubmit="searchPlaces(); return false;">
+                                    키워드 : <input type="text" id="keyword" size="15"> 
+                                    <button type="submit">검색하기</button> 
+                                </form>
+                            </div>
+                        </div>
+                        <hr>
+                        <ul id="placesList"></ul>
+                        <div id="pagination"></div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="box-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">1. 중심점 설정</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                      <div class="input-group">
+                        <span class="input-group-addon">위도</span>
+                        <input type="text" class="form-control" id="lat">    
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="input-group">
+                        <span class="input-group-addon">경도</span>
+                        <input type="text" class="form-control" id="lng">
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">2. 배율 설정</div>
+            <div class="panel-body">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-default" style="margin:10px;" onclick="setZoomLevel(0x5, 0x1);">
+                      <input type="radio" name="jb-radio" id="jb-radio-3" > 1단계 ( 반경 1km )
+                  </label>
+                  <label class="btn btn-default" style="margin:10px;" onclick="setZoomLevel(0x8, 0x1);">
+                      <input type="radio" name="jb-radio" id="jb-radio-3" > 2단계 ( 반경 2km )
+                  </label>
+                  <label class="btn btn-default" style="margin:10px;" onclick="setZoomLevel(0x5, 0x2);">
+                    <input type="radio" name="jb-radio" id="jb-radio-3" > 3단계 ( 반경 5km )
+                </label>
+                <label class="btn btn-default" style="margin:10px;" id="default_click_level" onclick="setZoomLevel(0xa, 0x3);">
+                  <input type="radio" name="jb-radio" id="jb-radio-3" > 4단계 ( 반경 10km )
+              </label>
+                </div>  
+            </div>
+          </div>
+         
+          <div class="panel panel-default">
+            <div class="panel-heading">3. 지도 종류 설정</div>
+            <div class="panel-body">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                	<label class="btn btn-default" style="margin:10px;" onclick="setBaseMap(0x1);">
+                		<input type="radio" name="jb-radio" id="jb-radio-1"> 일반 지도 
+                	</label>
+                	<label class="btn btn-default" id="default_click_map" style="margin:10px;" onclick="setBaseMap(0x2);">
+                		<input type="radio" name="jb-radio" id="jb-radio-2"> 위성 지도
+                	</label>
+                	<label class="btn btn-default" style="margin:10px;" onclick="setBaseMap(0x3);">
+                		<input type="radio" name="jb-radio" id="jb-radio-3"> 하이브리드
+                    </label>
+                </div>  
+             </div> 
+          </div>
+
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <span>4.</span>
+              <button class="btn btn-primary" onclick="startCapture();">조립 시작</button>
+            </div>
+            <div class="panel-body">
+                <input type="checkbox" id="traceMode" checked="true" style="margin-right: 10px;"><span>흔적 남기기</span>
+                <p><strong id="resultStatus"></strong></p>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" id="progressBar">                    
+                  </div>
+                </div>
+                <a id="resultTag" download="mapshot_result.jpg">
+                </a>
+            </div>
+          </div>
+        </div>
+          <canvas id="canvas" style="display: none;"></canvas>
+        </div>
+
+        <footer class="adsFooter">
+          <div style="width: 300px; height: 250px;">
+            <!-- <ins class="kakao_ad_area" style="display:none;" 
+            data-ad-unit    = "DAN-z1uSQGosd1fHiGZd" 
+            data-ad-width   = "300" 
+            data-ad-height  = "250"></ins> 
+            <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script> -->
+          </div>        
+          
+          <div style="width: 320px; height: 100px;">
+            <!-- <ins class="kakao_ad_area" style="display:none;" 
+                 data-ad-unit    = "DAN-YjcfICJxahRuAF3r" 
+                 data-ad-width   = "320" 
+                 data-ad-height  = "100">
+            </ins> 
+          <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script> -->
+          </div>
+
+          <div style="width: 300px; height: 250px;">
+            <!-- <ins class="kakao_ad_area" style="display:none;" 
+            data-ad-unit    = "DAN-nlz9bEJX9nC1nDjR" 
+            data-ad-width   = "300" 
+            data-ad-height  = "250"></ins> 
+            <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script> -->
+          </div>
+      </footer>
+    </body>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cf6334d96f548310595c5643cb199334&libraries=services"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/map.css">
+    <script src="js/map.js"></script>
+    <script src="js/userconfig.js"></script>
+    <script src="js/canvas-toBlob.js"></script>
+
+</html>
