@@ -14,9 +14,6 @@
     margin-left: 10px;
 }
 
-.adsFooter{
-    display: flex;
-}
 
 @media screen and (max-width: 600px){
     .box{
@@ -36,9 +33,8 @@
     #menu_wrap{
         height: 20%;
     }
-
-    .adsFooter{
-        display: block;
+    
+    #navbarNavAltMarkup{
+        display: inline-flex;
     }
-
 }

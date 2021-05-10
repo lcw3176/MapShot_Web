@@ -11,79 +11,64 @@
         <title>MapShot</title>
   </head>
 
-    <body>
+  <body>
 
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="../index.html" style="color: white;">Mapshot</a>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html" style="color: white;">Mapshot</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="../manual/index.html">사용법</a>
+            <a class="nav-link" href="../log/index.html">패치 내역</a>
           </div>
-        
-          <div>
-            <ul class="nav navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="../manual/index.html">사용법</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="../log/index.html">패치 내역</a>
-              </li>
-
-             </ul>
-            </div>
         </div>
-      
-      </nav>
+      </div>
+    </nav>
 
-      
-        <div style="margin: 20px;">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">패치 내역</h3>
-            </div>
-            <div class="panel-body">
-                <ul>
-                  <li><strong>2021.01.26</strong></li>
-                  <br>
-                  <strong>추가된 옵션: 흔적 남기기</strong>
-                  <p>옵션 적용 시 자신이 캡쳐했던 영역의 범위가 지도에 남게 됩니다.</p>
-                  <br>
-                </ul>
-
-                <ul>
-                  <li><strong>2021.04.04</strong></li>
-                  <br>
-                  <strong>인터넷 익스플로러 호환 패치</strong>
-                  <p>인터넷 익스플로러 버전 10 이상에서만 정상 작동합니다. 그 이하의 버전에서는 정상적인 작동을 장담할 수 없습니다.</p>
-                  <br>
-                </ul>
-
-                <ul>
-                  <li><strong>2021.04.11</strong></li>
-                  <br>
-                  <strong>추가된 옵션: 반경 5km, 10km</strong>
-                  <p>반경 5km, 10km의 사진을 찍습니다. 5km의 화질이 조금 더 우수합니다.</p>
-                  <br>
-                </ul>
-
-                <ul>
-                  <li><strong>2021.04.27</strong></li>
-                  <br>
-                  <strong>복구된 옵션: 반경 1km, 2km</strong>
-                  <p>반경 1km, 2km의 사진을 찍습니다. </p>
-                  <br>
-                </ul>
-               
-            </div>
-          </div>
-          <strong>문의: chanwoo3176@naver.com</strong>
-        </div>
-    </body>
 
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    
+    <div class="container-fluid" style="padding: 20px;">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-success fw-bold">패치 내역</li>
+        <li class="list-group-item"> <span class="badge bg-primary">2021.01.26</span><strong>  흔적 남기기 옵션 추가</strong></li>
+        <li class="list-group-item">
+          <p>옵션 적용 시 자신이 캡쳐했던 영역의 범위가 지도에 남게 됩니다.</p></li>
+
+        
+        <li class="list-group-item"> <span class="badge bg-primary">2021.04.04</span><strong>  인터넷 익스플로러 호환 패치</strong></li>
+        <li class="list-group-item">
+          <p>인터넷 익스플로러 버전 10 이상에서만 정상 작동합니다. 그 이하의 버전에서는 정상적인 작동을 장담할 수 없습니다.</p>
+        </li>
+        
+        <li class="list-group-item"> <span class="badge bg-primary">2021.04.11</span><strong>  반경 5km, 10km 추가</strong></li>
+        <li class="list-group-item">
+            <p>반경 5km, 10km의 사진을 찍습니다. 5km의 화질이 조금 더 우수합니다.</p>
+        </li>
+
+        <li class="list-group-item"> <span class="badge bg-primary">2021.04.27</span><strong>  반경 1km, 2km 복구</strong></li>
+        <li class="list-group-item">
+            <p>반경 1km, 2km의 사진을 찍습니다.</p>
+        </li>
+        
+        <li class="list-group-item"> <span class="badge bg-primary">2021.05.08</span><strong>  레이어 옵션 추가</strong></li>
+        <li class="list-group-item">
+            <p>레이어 옵션이 추가되었습니다.</p>
+        </li>
+
+        <li class="list-group-item">
+          <strong>문의: chanwoo3176@naver.com</strong>
+        </li>
+      </ul>
+    </div>  
+        
+  </body>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../css/nav.css">
+
 
 </html>
