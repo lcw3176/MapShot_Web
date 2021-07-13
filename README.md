@@ -2,22 +2,42 @@
 ### MapShot WebVersion
 
 #### __개발 기간__
-*   _21.01.17 ~ 21.01.21_
-*   Netlify, Freenom을 이용한 배포
-*   Github Commit시 자동 반영
+* _21.01.17 ~ 21.01.21_
+* 지속적 고도화 중
 
 #### __API__
-*   Kakao (맵 표시, 위치 검색, 좌표 탐색)
-*   Naver Static Map (정적 사진 호출)
+* Kakao Map (동적 지도 표시, 위치 검색, 좌표 탐색)
+* Naver Static Map (정적 사진 호출)
+* Vworld OpenAPI (레이어 호출)
+* Google Analytics
 
-#### __Language__
-* HTML
-* CSS
-* JavaScript
+#### __Platform__
+* Netlify
+* ~~Freenom~~
+* ~~Oracle Cloud~~
+* ~~Naver Cloud~~
+* Naver Cloud Function
+
+#### __Language & FrameWorks__
+* HTML, CSS, JavaScript (난독화 적용 후 배포)
+* ~~Java, Spring Boot~~
+* Node.js
 
 #### __Link__
-*   https://mapshot.netlify.app/
+* [Site] https://mapshot.netlify.app/
+* [Package] https://github.com/lcw3176/MapshotProxyServer-Public
 
+#### __호환 브라우저__
+- 데스크탑, 랩탑
+    * IE 10 이상
+    * Chrome, Microsoft Edge, FireFox, etc...
+- 모바일
+    * 안드로이드는 거의 다 호환됨
+
+#### __작동 불가 브라우저__
+- Safari Mobile
+    - 맥 기기가 전혀 없어서 디버깅 불가
+    - 맥북에선 잘됨, 모바일은 작동 X
 
 ---
 ### 작동 방식, 사용법
