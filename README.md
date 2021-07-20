@@ -1,8 +1,8 @@
 # MapShot_Web
-### MapShot WebVersion
+MapShot WebVersion
 
 #### __개발 기간__
-* _21.01.17 ~ 21.01.21_
+* _21.01.17 ~ 21.01.21_ (개발 후 첫 번째 배포까지)
 * 지속적 고도화 중
 
 #### __API__
@@ -13,31 +13,30 @@
 
 #### __Platform__
 * Netlify
-* ~~Freenom~~
-* ~~Oracle Cloud~~
-* ~~Naver Cloud~~
-* Naver Cloud Function
+* ~~Freenom~~ (국내 환경에서의 .tk, .ga 등의 도메인 접속 문제로 사용 중단)
+* ~~Oracle Cloud~~ (API 호출 아이피 문제로 사용 중단, [MapshotProxyServer-Public](https://github.com/lcw3176/MapshotProxyServer-Public) 참고)
+* ~~Naver Cloud Server~~ (비용 문제로 사용 중단)
+* Naver Cloud Function 
 
 #### __Language & FrameWorks__
 * HTML, CSS, JavaScript (난독화 적용 후 배포)
 * ~~Java, Spring Boot~~
 * Node.js
 
+
+#### __Browser Validation__
+|브라우저|동작|테스트 환경|비고|
+|----|----|----|---|
+|Google Chrome|O|Desktop, Mobile||
+|Microsoft Edge|O|Desktop||
+|Internet Explorer|△|Desktop|ie 10 버전만 테스트|
+|FireFox|O|Desktop||
+|Brave Browser|O|Desktop||
+|Safari|△|Desktop, Mobile|모바일 동작 안함|
+
+
 #### __Link__
 * [Site] https://mapshot.netlify.app/
-* [Package] https://github.com/lcw3176/MapshotProxyServer-Public
-
-#### __호환 브라우저__
-- 데스크탑, 랩탑
-    * IE 10 이상
-    * Chrome, Microsoft Edge, FireFox, etc...
-- 모바일
-    * 안드로이드는 거의 다 호환됨
-
-#### __작동 불가 브라우저__
-- Safari Mobile
-    - 맥 기기가 전혀 없어서 디버깅 불가
-    - 맥북에선 잘됨, 모바일은 작동 X
 
 ---
 ### 작동 방식, 사용법
