@@ -16,6 +16,14 @@
 
 .adsFooter{
     display: flex;
+    border: 2px solid black;
+    margin-top: 2%;
+}
+
+.ads{
+    margin: 0 auto;
+    width: 250px;
+    height: 250px;
 }
 
 
