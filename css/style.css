@@ -25,6 +25,10 @@
     height: 250px;
 }
 
+.layers{
+    margin-left: 10px;
+}
+
 
 @media screen and (max-width: 600px){
     .box{
