@@ -1,6 +1,15 @@
+#adsBanner{
+    text-align: center;
+    width: 1200px;
+}
+
 @media screen and (max-width: 770px){
     #menu_wrap{
         height: 20%;
+    }
+
+    #adsBanner{
+        text-align: center;
     }
 
 }
