@@ -6,9 +6,9 @@ MapShot WebVersion
 * 지속적 고도화 중
 
 #### __API__
-* Kakao Map (동적 지도 표시, 위치 검색, 좌표 탐색)
+* Kakao Map (동적 지도 표시, 위치 검색, 좌표 탐색, 사진 호출)
 * Naver Static Map (정적 사진 호출)
-* Vworld OpenAPI (레이어 호출)
+* ~~Vworld OpenAPI (레이어 호출)~~
 * Google Analytics
 
 #### __Platform__
@@ -16,12 +16,22 @@ MapShot WebVersion
 * ~~Freenom~~ (국내 환경에서의 .tk, .ga 등의 도메인 접속 문제로 사용 중단)
 * ~~Oracle Cloud~~ (API 호출 아이피 문제로 사용 중단, [MapshotProxyServer-Public](https://github.com/lcw3176/MapshotProxyServer-Public) 참고)
 * ~~Naver Cloud Server~~ (비용 문제로 사용 중단)
-* Naver Cloud Function 
+* ~~Naver Cloud Function~~ (Cloud Log Analytics 비용 문제로 사용 중단) 
+* Heroku
 
-#### __Language & FrameWorks__
-* HTML, CSS, JavaScript (난독화 적용 후 배포)
-* ~~Java, Spring Boot~~
-* Node.js
+#### __Language & FrameWorks & Library__
+* 운영 사이트
+    - html, css, Javasciprt
+    - Bulma
+    - canvas-to-blob.js
+    - Emailjs
+* ~~Layer 서버~~
+    - ~~Java, Spring Boot~~
+    - ~~Node.js~~
+* Kakao 서버
+    - Java, Spring Boot
+    - Selenium
+    - Thymeleaf, Javasciprt
 
 
 #### __Browser Validation__
@@ -35,8 +45,11 @@ MapShot WebVersion
 |Safari|△|Desktop, Mobile|모바일 동작 안함|
 
 
-#### __Link__
-* [Site] https://mapshot.netlify.app/
+#### __Site & Package Project__
+* Site: https://mapshot.netlify.app/
+* TestSite : https://testservermapshot.netlify.app/
+* MapshotProxyServer-Public: https://github.com/lcw3176/MapshotProxyServer-Public
+* MapshotKakaoServer: https://github.com/lcw3176/Mapshot-Kakao-Server
 
 ---
 ### 작동 방식, 사용법
