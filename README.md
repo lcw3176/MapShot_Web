@@ -47,7 +47,7 @@
 ## __Site & Package Project__
 * Site: https://mapshot.netlify.app/
 * TestSite : https://testservermapshot.netlify.app/
-* MapshotProxyServer-Public: https://github.com/lcw3176/MapshotProxyServer-Public
+* MapshotLayerServer: https://github.com/lcw3176/MapshotLayerServer
 * MapshotKakaoServer: https://github.com/lcw3176/Mapshot-Kakao-Server
 * Mapshot-Library: https://github.com/lcw3176/mapshot-lib
 
