@@ -1,5 +1,3 @@
-"use strict";
-
 window.onload = function () {
   var naverProfile = new mapshot.profile.Naver();
   naverProfile.setKey("ny5d4sdo0e");
