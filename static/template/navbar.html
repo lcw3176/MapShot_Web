@@ -1,0 +1,48 @@
+<div class="navbar-brand">
+    <a class="navbar-item" href="../index.html">
+        <p class="title is-4">MAPSHOT</p>
+    </a>
+
+    <a role="button" class="navbar-burger" onclick="navbarBurgerClick(this)">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+</div>
+
+<div class="navbar-menu" id="navbar-menu">
+    <div class="navbar-start">
+        <a class="navbar-item" href="../manual/index.html">
+            사용법
+        </a>
+
+        <a class="navbar-item" href="../log/index.html">
+            패치내역
+        </a>
+
+        <a class="navbar-item" href="../contact/index.html">
+            문의
+        </a>
+    </div>
+
+    <div class="navbar-end">
+        <a class="navbar-item" href="../opensource/index.html">
+            오픈소스
+        </a>
+    </div>
+
+</div>
+
+<script>    
+
+    navbarBurgerClick = function(id){
+        if(id.getAttribute("class") === "navbar-burger"){
+            id.setAttribute("class", "navbar-burger is-active");
+            document.getElementById("navbar-menu").setAttribute("class", "navbar-menu is-active");
+        } else{
+            id.setAttribute("class", "navbar-burger");
+            document.getElementById("navbar-menu").setAttribute("class", "navbar-menu");
+        }
+    }
+
+</script>
