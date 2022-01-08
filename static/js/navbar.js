@@ -1,1 +1,26 @@
-'use strict';var _0x52c305=_0x5da0;function _0x5da0(_0x42539b,_0x59a5f9){var _0x1bb37f=_0x1bb3();return _0x5da0=function(_0x5da051,_0x54ee37){_0x5da051=_0x5da051-0x125;var _0x48f203=_0x1bb37f[_0x5da051];return _0x48f203;},_0x5da0(_0x42539b,_0x59a5f9);}(function(_0x1eaaf6,_0x27989b){var _0x209297=_0x5da0,_0x401e08=_0x1eaaf6();while(!![]){try{var _0x1714b8=-parseInt(_0x209297(0x133))/0x1*(-parseInt(_0x209297(0x138))/0x2)+-parseInt(_0x209297(0x13a))/0x3*(parseInt(_0x209297(0x139))/0x4)+-parseInt(_0x209297(0x13d))/0x5+parseInt(_0x209297(0x131))/0x6+-parseInt(_0x209297(0x12b))/0x7*(parseInt(_0x209297(0x132))/0x8)+-parseInt(_0x209297(0x142))/0x9+parseInt(_0x209297(0x126))/0xa;if(_0x1714b8===_0x27989b)break;else _0x401e08['push'](_0x401e08['shift']());}catch(_0x3852c2){_0x401e08['push'](_0x401e08['shift']());}}}(_0x1bb3,0x78f7e));function _0x1bb3(){var _0x1b7e88=['getElementById','3374420YlIyap','Access-Control-Allow-Origin','navbar-burger','../static/template/navbar.html','load','5295456NBFBWj','onreadystatechange','16296820FNxUIl','navbar-menu','getAttribute','open','addEventListener','21YwPWvY','setAttribute','readyState','class','navbar-burger\x20is-active','send','1020438IAwcYW','1600232gVHfTb','8giRmOz','responseText','setRequestHeader','navbar-menu\x20is-active','GET','211298QSbZVe','8qAiyrX','429159tYZTiU','navbar'];_0x1bb3=function(){return _0x1b7e88;};return _0x1bb3();}window[_0x52c305(0x12a)](_0x52c305(0x141),function(){var _0x644050=_0x52c305,_0x5596e9=new XMLHttpRequest();_0x5596e9[_0x644050(0x125)]=function(){var _0x438b6d=_0x644050;this['status']==0xc8&&this[_0x438b6d(0x12d)]==this['DONE']&&(document[_0x438b6d(0x13c)](_0x438b6d(0x13b))['innerHTML']=_0x5596e9[_0x438b6d(0x134)]);},_0x5596e9[_0x644050(0x129)](_0x644050(0x137),_0x644050(0x140),!![]),_0x5596e9[_0x644050(0x135)](_0x644050(0x13e),'*'),_0x5596e9[_0x644050(0x130)](),navbarBurgerClick=function _0x299941(_0x371eb4){var _0x5b2d69=_0x644050;_0x371eb4[_0x5b2d69(0x128)](_0x5b2d69(0x12e))===_0x5b2d69(0x13f)?(_0x371eb4[_0x5b2d69(0x12c)]('class',_0x5b2d69(0x12f)),document['getElementById'](_0x5b2d69(0x127))[_0x5b2d69(0x12c)](_0x5b2d69(0x12e),_0x5b2d69(0x136))):(_0x371eb4[_0x5b2d69(0x12c)](_0x5b2d69(0x12e),_0x5b2d69(0x13f)),document[_0x5b2d69(0x13c)](_0x5b2d69(0x127))[_0x5b2d69(0x12c)]('class','navbar-menu'));};});
+window.addEventListener("load", function(){
+    
+    var xml = new XMLHttpRequest();
+    xml.onreadystatechange = function(){
+
+        if(this.status == 200 && this.readyState == this.DONE) {
+            document.getElementById("navbar").innerHTML = xml.responseText;            
+        }
+    }
+
+    xml.open("GET", "../static/template/navbar.html", true);
+    xml.setRequestHeader("Access-Control-Allow-Origin", "*");
+    xml.send();
+
+    navbarBurgerClick = function(id){
+        if(id.getAttribute("class") === "navbar-burger"){
+            id.setAttribute("class", "navbar-burger is-active");
+            document.getElementById("navbar-menu").setAttribute("class", "navbar-menu is-active");
+        } else{
+            id.setAttribute("class", "navbar-burger");
+            document.getElementById("navbar-menu").setAttribute("class", "navbar-menu");
+        }
+    }
+    
+})
+
