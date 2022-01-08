@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVR1PZCLDT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SVR1PZCLDT');
+        gtag('config', 'UA-188506770-1');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MapShot</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <script type="text/javascript" src="../static/js/navbar.js"></script>
+    <script type="text/javascript" src="../static/js/manual.js"></script>
+</head>
+
+<body>
+    <nav class="navbar is-light">
+        <div class="container is-fluid" id="navbar">
+      
+        </div>
+
+    </nav>
+    <div class="container is-fluid">
+
+        <div class="container is-fluid tabs mt-5">
+            <ul>
+                <li class="manuals is-active" id="1"><a onclick="changeManual(1);">좌표 탐색</a></li>
+                <li class="manuals" id="2"><a onclick="changeManual(2);">반경</a></li>
+                <li class="manuals" id="3"><a onclick="changeManual(3);">지도 종류</a></li>
+                <li class="manuals" id="4"><a onclick="changeManual(4);">출력</a></li>
+                <li class="manuals" id="5"><a onclick="changeManual(5);">옵션</a></li>
+                <li class="manuals" id="6"><a onclick="changeManual(6);">수집</a></li>
+            </ul>
+        </div>
+
+        <div class="container is-fluid card" id="manual">
+        
+        </div>
+
+    </div>
+
+</body>
+
+</html>
