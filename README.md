@@ -47,9 +47,10 @@
 ## __Site & Package Project__
 * Site: https://mapshot.netlify.app/
 * TestSite : https://testservermapshot.netlify.app/
-* MapshotLayerServer: https://github.com/lcw3176/MapshotLayerServer
-* MapshotKakaoServer: https://github.com/lcw3176/Mapshot-Kakao-Server
+* ~~MapshotLayerServer: https://github.com/lcw3176/MapshotLayerServer~~
+* ~~MapshotKakaoServer: https://github.com/lcw3176/Mapshot-Kakao-Server~~
 * Mapshot-Library: https://github.com/lcw3176/mapshot-lib
+* MapshotServer: https://github.com/lcw3176/MapshotServer
 
 ## __작동 방식__
 1. 중심 위도, 경도 설정
@@ -70,7 +71,16 @@
     -   가져온 사진은 Canvas에 조립
 
 ## __사용법__
-- https://mapshot.netlify.app/manual/1/
+- https://mapshot.netlify.app/manual
 
 ## __패치 로그__
 - https://mapshot.netlify.app/log/index.html
+
+## __URI__
+|uri|기능|
+|---|-------|
+|/|위성 사진 캡쳐 기능|
+|/opensource|활용된 오픈소스 목록|
+|/manual|사이트 사용법|
+|/log|패치 내역|
+|/contact|문의 보내기|
