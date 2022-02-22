@@ -1,13 +1,11 @@
 window.addEventListener("load", function () {
+  loadGoogleAds();
+  
   var xml = new XMLHttpRequest();
-
+  
   xml.onreadystatechange = function () {
     if (this.status == 200 && this.readyState == this.DONE) {
       document.getElementById("navbar").innerHTML = xml.responseText;
-    }
-
-    if(this.readyState == this.DONE){
-      loadGoogleAds();
     }
   };
 
