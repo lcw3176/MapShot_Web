@@ -28,9 +28,8 @@ window.addEventListener("load", function () {
   function loadGoogleAds() {
     var scriptTag = document.createElement('script');
     scriptTag.setAttribute("data-ad-client", "ca-pub-7390022674285155");
+    scriptTag.async = true;
     scriptTag.setAttribute('src', 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
-    scriptTag.setAttribute('type', 'text/javascript');
-    scriptTag.setAttribute('async', 'async');
     document.head.appendChild(scriptTag);
   }
 });
