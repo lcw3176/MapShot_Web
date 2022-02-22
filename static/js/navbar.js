@@ -31,6 +31,6 @@ window.addEventListener("load", function () {
     scriptTag.setAttribute('src', 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
     scriptTag.setAttribute('type', 'text/javascript');
     scriptTag.setAttribute('async', 'async');
-    document.body.appendChild(scriptTag);
+    document.head.appendChild(scriptTag);
   }
 });
