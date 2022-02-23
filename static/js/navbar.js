@@ -1,6 +1,4 @@
 window.addEventListener("load", function () {
-  loadGoogleAds();
-  
   var xml = new XMLHttpRequest();
   
   xml.onreadystatechange = function () {
@@ -22,12 +20,4 @@ window.addEventListener("load", function () {
       document.getElementById("navbar-menu").setAttribute("class", "navbar-menu");
     }
   };
-
-  function loadGoogleAds() {
-    var scriptTag = document.createElement('script');
-    scriptTag.setAttribute("data-ad-client", "ca-pub-7390022674285155");
-    scriptTag.async = true;
-    scriptTag.setAttribute('src', 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
-    document.head.appendChild(scriptTag);
-  }
 });
