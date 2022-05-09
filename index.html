@@ -38,7 +38,27 @@
     <script type="text/javascript" src="static/js/app.js"></script>
     <script type="text/javascript" src="static/js/map.js"></script>
     <script type="text/javascript" src="static/js/navbar.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blockadblock/3.2.1/blockadblock.js" 
+    integrity="sha256-uaQssnQX0rh7jVmDZVVmcxo4CJ1eMHNenpMQCOpZxjQ=" 
+    crossorigin="anonymous"></script>
+    <script>
+        window.addEventListener("load", function(){
+            // Function called if AdBlock is detected
+            function adBlockDetected() {
+                try{
+                    ga('send', 'event', 'adblock', 'enabled' ); 
+                } catch(e) {
+                    console.error(e);
+                }
+            }
+
+
+            if(typeof blockAdBlock === 'undefined') {
+                adBlockDetected();
+            } 
+        });
+
+    </script>
 </head>
 
 <body>
