@@ -42,9 +42,9 @@
         window.addEventListener("load", function(){
             function adBlockDetected() {
                 try{
-                    ga('send', 'event', 'adblock', 'enabled' ); 
+                    gtag('event','adblock',{'event_category' : 'adblock'});
                 } catch(e) {
-                    console.error(e)
+                    console.log(e)
                 }
             }
 
