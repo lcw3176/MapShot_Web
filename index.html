@@ -38,24 +38,6 @@
     <script type="text/javascript" src="static/js/app.js"></script>
     <script type="text/javascript" src="static/js/map.js"></script>
     <script type="text/javascript" src="static/js/navbar.js"></script>
-    <script>
-        window.addEventListener("load", function(){
-            function adBlockDetected() {
-                try{
-                    gtag('event','adblock',{'event_category' : 'adblock'});
-                } catch(e) {
-                    console.log(e)
-                }
-            }
-
-            var styleProp = document.getElementsByClassName("adsBanner")[0].style.display;
-            
-            if(styleProp == "" || styleProp == "none"){
-                adBlockDetected();
-            }
-        });
-
-    </script>
 </head>
 
 <body>
