@@ -1,0 +1,5 @@
+# Redirects from what the browser requests to what we serve
+/                       https://kmapshot.com
+/manual/index.html      https://kmapshot.com/manual/0
+/log/index.html         https://kmapshot.com/notice/1
+/contact/index.html     https://kmapshot.com/contact
